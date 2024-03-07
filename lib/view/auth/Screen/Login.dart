@@ -11,7 +11,7 @@ import '../../../core/decoration/Colors.dart';
 import '../../../services/myServices.dart';
 import '../widget/forgetPassword.dart';
 import '../widget/signUpTextButton.dart';
-import '../widget/welcome.dart';
+import '../../../core/constant/widget/customText.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
@@ -89,7 +89,7 @@ class Login extends StatelessWidget {
                       }
              }
            ),
-              SignUpTextButton(
+              SignUpButton(
                 text: 'Do you create a new account?'.tr,
                 textButton: 'Sign Up',
                 onPressed: () { Get.toNamed("/signUp"); }, ),

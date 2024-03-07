@@ -27,7 +27,7 @@ class SlideBackground extends StatelessWidget {
                 color: Colors.white,
                 size: 25,
               ),
-              const SizedBox(height: 5,),
+              const SizedBox(height: 7,),
               Text( text,
                 style:  TextStyle(
                     color: ColorC.white,
@@ -35,7 +35,7 @@ class SlideBackground extends StatelessWidget {
                     fontSize: 17),
                 textAlign: TextAlign.left,
               ),
-              const SizedBox(height: 5,),
+            //  const SizedBox(height: 5,),
             ],
           ),
         ),

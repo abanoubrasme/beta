@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../../../core/constant/font.dart';
 import '../../../core/decoration/Colors.dart';
 
-class SignUpTextButton extends StatelessWidget {
+class SignUpButton extends StatelessWidget {
 
-   SignUpTextButton({super.key,
+   SignUpButton({super.key,
      required this.text,
      required this.onPressed,
      required this.textButton,

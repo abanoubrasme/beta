@@ -1,12 +1,12 @@
+import 'package:beta/core/constant/widget/customText.dart';
 import 'package:beta/view/creator/widget/hasData.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/RDB_Controller.dart';
 import '../../../control/creator/nameQuizController.dart';
-import '../../../core/constant/font.dart';
 import '../../../core/decoration/Colors.dart';
 import '../../../services/myServices.dart';
-import '../widget/slideBackground.dart';
+import '../widget/cardListTitle.dart';
 
 class PageOfQuizzes extends StatelessWidget {
    PageOfQuizzes({super.key});
@@ -20,7 +20,7 @@ class PageOfQuizzes extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: ColorC.teal,
             elevation: 0,
-            title:  Text("Main Page".tr,style: const TextStyle(color: Colors.white)),
+            title:  CustomText(text:"Main Page".tr, fontSize: 22, color: ColorC.white,),
             centerTitle: true,
             actions: [
               IconButton(
@@ -58,71 +58,17 @@ class PageOfQuizzes extends StatelessWidget {
                                 "name_quiz": snapshot.data['data'][index]["name_quiz"]});
                               nameOfQuizController.name = snapshot.data['data'][index]["name_quiz"];
                             },
-                            child: Card(
-                              child: Dismissible(
-                                  movementDuration: const Duration(milliseconds: 1000),
-                                  resizeDuration: const Duration(milliseconds: 1000),
-                                  background: SlideBackground(
-                                    color: ColorC.green, text: 'Edit',
-                                    icon: Icons.edit,
-                                    alignment: Alignment.centerLeft,
-                                    padding: const EdgeInsets.only(top: 20, bottom: 20, left: 30),),
-                                  secondaryBackground: SlideBackground(
-                                    color: ColorC.red, text: 'Delete',
-                                    icon: Icons.delete,
-                                    alignment: Alignment.centerRight,
-                                    padding: const EdgeInsets.only(top: 20, bottom: 20, right: 30),),
-                                  key: Key( snapshot.data.toString()),
-                                  onDismissed: (direction) {},
-                                  confirmDismiss: (direction) async {
-                                    myServices.sharePref!.setInt("idQuiz",snapshot.data['data'][index]["id_quiz"]) ;
-                                    
-                                    if (direction == DismissDirection.endToStart) {
-                                      return showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return AlertDialog(
-                                              content: const Text("Are you sure you want to delete this quiz?"),
-                                              actions: <Widget>[
-                                                TextButton(
-                                                  child: const Text("Cancel", style: TextStyle(color: Colors.black),),
-                                                  onPressed: () {
-                                                    Get.back(); },),
-                                                TextButton(
-                                                  child: const Text("Delete",style: TextStyle(color: Colors.red),),
-                                                  onPressed: () {
-                                                    dbQuizController.deleteQuiz(myServices.sharePref!.get("idQuiz"));
-                                                    nameOfQuizController.update();
-                                                    Get.back();
+                            child:CardListTitle(
+                              keys:  Key( snapshot.data.toString()),
+                              setIdUser: snapshot.data['data'][index]["id_quiz"],
+                              onPressedDelete: () {
+                                dbQuizController.deleteQuiz(myServices.sharePref!.get("idQuiz"));
+                                nameOfQuizController.update();
+                                Get.back();
+                              },
+                              index: index,
+                              nameQuiz: snapshot.data['data'][index]["name_quiz"],)
 
-                                                  },),],);
-                                          });}
-                                    else {}
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                          height: 95,
-                                          width: 95,
-                                          decoration: BoxDecoration(
-                                              color: ColorC.teal,
-                                              borderRadius: const BorderRadius.only(topLeft: Radius.circular(20))
-                                          ),
-                                          child: Center(child: Text("${index+1}",
-                                            style: const TextStyle(fontSize: 30,color: Colors.white),))
-                                      ),
-                                      Padding(
-                                          padding:  const EdgeInsets.only(left: 25,),
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Text("${snapshot.data['data'][index]["name_quiz"]}",style: const TextStyle(fontSize: 22),),
-                                              const SizedBox(height: 10,),
-                                            ],
-                                          ))
-                                    ],)
-                              ),
-                            ),
                           );
                         } ,
                       );

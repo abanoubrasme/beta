@@ -2,7 +2,7 @@ import 'package:beta/control/auth/forgetController.dart';
 import 'package:beta/view/auth/Screen/verifyCode.dart';
 import 'package:beta/view/auth/widget/loginButton.dart';
 import 'package:beta/view/auth/widget/loginTextField.dart';
-import 'package:beta/view/auth/widget/welcome.dart';
+import 'package:beta/core/constant/widget/customText.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/auth/helperController.dart';
@@ -53,7 +53,7 @@ class Forget extends StatelessWidget {
                     },),
 
                   const SizedBox(height: 20,),
-                  SignUpTextButton(
+                  SignUpButton(
                       textButton: "Back to Login".tr,
                       onPressed: () {
                           Get.toNamed("/login");

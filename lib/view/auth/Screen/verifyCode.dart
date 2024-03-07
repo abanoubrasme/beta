@@ -1,6 +1,6 @@
 import 'package:beta/view/auth/widget/loginButton.dart';
 import 'package:beta/view/auth/widget/signUpTextButton.dart';
-import 'package:beta/view/auth/widget/welcome.dart';
+import 'package:beta/core/constant/widget/customText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
@@ -56,7 +56,7 @@ class VerifyCode extends StatelessWidget {
                       text: "Request reset link".tr,
                     onPressed: () {  } ,),
                   const SizedBox(height: 20,),
-                  SignUpTextButton(text: '',
+                  SignUpButton(text: '',
                     textButton:  "Back to Login".tr,
                     onPressed: () {  Get.toNamed("/login"); },
                     ),

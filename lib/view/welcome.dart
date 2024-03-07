@@ -1,4 +1,4 @@
-import 'package:beta/view/auth/widget/welcome.dart';
+import 'package:beta/core/constant/widget/customText.dart';
 import 'package:beta/view/creator/widget/Button/homeButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
