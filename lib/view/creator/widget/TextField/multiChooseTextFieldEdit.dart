@@ -1,6 +1,7 @@
+import 'package:beta/control/creator/editQuizController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../control/creator/QuizController.dart';
+import '../../../../control/creator/quizController.dart';
 import '../../../../control/RDB_Controller.dart';
 import '../../../../services/myServices.dart';
 
@@ -9,8 +10,10 @@ class MultiChooseTextFieldEdit extends StatelessWidget {
   int ke;
   TextEditingController controller = TextEditingController();
   QuizController quizController = Get.put(QuizController());
-  DBQuizController dbQuizController =Get.put(DBQuizController());
+  EditQuizController editQuizController = Get.put(EditQuizController());
+
   MyServices myServices = Get.find();
+
   MultiChooseTextFieldEdit({super.key, required this.color, required this.ke,required this.controller});
   @override
   Widget build(BuildContext context) {
@@ -39,22 +42,22 @@ class MultiChooseTextFieldEdit extends StatelessWidget {
                 switch (ke) {
                   case 1:
                       quizController.answer1 = answer;
-                      dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(), answer,"answer1");
+                      editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(), answer,"answer1");
                       quizController.update();
                     break;
                   case 2:
                     quizController.answer2 = answer;
-                    dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(), answer,"answer2");
+                    editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(), answer,"answer2");
                      quizController.update();
                     break;
                   case 3:
                     quizController.answer3 = answer;
-                    dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(), answer,"answer3");
+                    editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(), answer,"answer3");
                      quizController.update();
                     break;
                   case 4:
                     quizController.answer4 = answer;
-                    dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(), answer,"answer4");
+                    editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(), answer,"answer4");
                     quizController.update();
                     break;
                 }

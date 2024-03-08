@@ -6,7 +6,6 @@ import '../../../core/decoration/Colors.dart';
 
 class ButtonCode extends StatelessWidget {
   ButtonCode({super.key,required this.onPressed});
-  DBQuizController dbQuizController = Get.put(DBQuizController());
   final void Function()? onPressed;
 
   @override

@@ -1,13 +1,11 @@
 import 'package:beta/control/player/playerController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../control/RDB_Controller.dart';
 import '../../../control/creator/nameQuizController.dart';
 
 class NamePlayerTextField extends StatelessWidget {
   NamePlayerTextField({super.key});
   NameOfQuizController nameOfQuizController = Get.put(NameOfQuizController());
-  DBQuizController dbQuizController = Get.put(DBQuizController());
   PlayerController playerController = Get.put(PlayerController());
 
   @override

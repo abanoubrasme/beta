@@ -1,14 +1,11 @@
-import 'package:beta/view/creator/Screen/pageQuiz.dart';
 import 'package:beta/view/creator/widget/TextField/multiChosseTextFeild.dart';
 import 'package:beta/view/creator/widget/TextField/questionTextField.dart';
 import 'package:beta/view/creator/widget/Button/customButtonTime.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../control/creator/QuizController.dart';
-import '../../../control/RDB_Controller.dart';
+import '../../../control/creator/quizController.dart';
 import '../../../control/creator/nameQuizController.dart';
 import '../../../core/decoration/Colors.dart';
-import '../../../main.dart';
 import '../../../services/myServices.dart';
 import '../widget/Button/correctAnswerButton.dart';
 
@@ -16,7 +13,6 @@ class Quiz extends StatelessWidget {
    Quiz({super.key});
 
    QuizController quizController =Get.put(QuizController());
-   DBQuizController dbQuizController =Get.put(DBQuizController());
    NameOfQuizController nameOfQuizController =Get.put(NameOfQuizController());
    MyServices myServices = Get.find();
 
@@ -32,15 +28,14 @@ class Quiz extends StatelessWidget {
             Get.back();
           },
           child:  Text("Cancel".tr,
-            //"${getLang(context, "Cancel")}",
-            style: TextStyle(fontSize: 17, color: Colors.white),
+            style: const TextStyle(fontSize: 17, color: Colors.white),
           ),
         ),
         leadingWidth: 80,
         actions: [
           MaterialButton(
               onPressed: () async{
-                dbQuizController.insertData(myServices.sharePref!.get("id_user").toString(),myServices.sharePref!.get("idQuiz").toString());
+                quizController.insertData(myServices.sharePref!.get("id_user").toString(),myServices.sharePref!.get("idQuiz").toString());
                 Get.toNamed("/pageOfQuiz");
               },
               child:   Text("Save".tr,

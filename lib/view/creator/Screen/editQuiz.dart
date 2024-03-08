@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../control/creator/QuizController.dart';
-import '../../../control/RDB_Controller.dart';
+import '../../../control/creator/quizController.dart';
 import '../../../control/creator/editQuizController.dart';
 import '../../../core/decoration/Colors.dart';
 import '../../../services/myServices.dart';
@@ -13,7 +12,6 @@ import '../widget/TextField/questionTextFieldEdit.dart';
 class EditQuiz extends StatelessWidget {
    EditQuiz({super.key});
    EditQuizController editQuizController =Get.put(EditQuizController());
-   DBQuizController dbQuizController =Get.put(DBQuizController());
    QuizController quizController =Get.put(QuizController());
    MyServices myServices = Get.find();
    @override
@@ -34,15 +32,15 @@ class EditQuiz extends StatelessWidget {
                   MaterialButton(
                       onPressed: () {
 
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
+                        editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
                               quizController.questionE.text,"question");
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
+                        editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
                               quizController.answer1E.text,'answer1');
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
+                        editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
                               quizController.answer2E.text,'answer2');
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
+                        editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
                               quizController.answer3E.text,'answer3');
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
+                        editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
                               quizController.answer4E.text,'answer4');
                         quizController.update();
                         Get.toNamed("pageOfQuiz");
@@ -53,7 +51,7 @@ class EditQuiz extends StatelessWidget {
                 ],
               ),
               body: FutureBuilder(
-                     future: dbQuizController.getData2(myServices.sharePref!.get("question").toString()),
+                     future: quizController.getData(myServices.sharePref!.get("question").toString()),
                      builder: (BuildContext context, AsyncSnapshot snapshot) {
                              WidgetsBinding.instance.addPostFrameCallback((_){
                                quizController.questionE.text = snapshot.data?["data"][0]['question'] ?? "";

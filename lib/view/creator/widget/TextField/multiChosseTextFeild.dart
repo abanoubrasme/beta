@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../control/creator/QuizController.dart';
+import '../../../../control/creator/quizController.dart';
 
 class multiChooseTextField extends StatelessWidget {
   Color color;

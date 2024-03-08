@@ -1,13 +1,11 @@
 import 'package:beta/control/player/playerController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../control/RDB_Controller.dart';
 import '../../../control/creator/nameQuizController.dart';
 
 class CodeCheckTextField extends StatelessWidget {
   CodeCheckTextField({super.key, required this.val});
   NameOfQuizController nameOfQuizController = Get.put(NameOfQuizController());
-  DBQuizController dbQuizController = Get.put(DBQuizController());
   PlayerController playerController = Get.put(PlayerController());
   final String? Function(String? s) val;
 

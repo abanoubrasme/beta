@@ -1,17 +1,17 @@
+import 'package:beta/control/creator/QuizController.dart';
 import 'package:beta/view/player/widget/buttonCode.dart';
 import 'package:beta/view/player/widget/textFieldNamePlayer.dart';
 import 'package:beta/view/player/widget/textFieldCode.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../control/RDB_Controller.dart';
 import '../../../control/creator/nameQuizController.dart';
 import '../../../core/decoration/Colors.dart';
 
 class CodeOfQuiz extends StatelessWidget {
    CodeOfQuiz({super.key});
 
-  DBQuizController dbQuizController = Get.put(DBQuizController());
   NameOfQuizController nameOfQuizController = Get.put(NameOfQuizController());
+ // QuizController quizController = Get.put(QuizController());
    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
 
@@ -31,8 +31,8 @@ class CodeOfQuiz extends StatelessWidget {
                           color: Colors.white,
                           fontFamily:"Water_Brush" ),),
                       const SizedBox(height: 20,),
-                      GetBuilder<DBQuizController>(
-                          builder: (dbQuizController){
+                      GetBuilder<NameOfQuizController>(
+                          builder: (nameOfQuizController){
                             return  Container(
                               decoration: BoxDecoration(
                                   color: Colors.white,
@@ -55,11 +55,11 @@ class CodeOfQuiz extends StatelessWidget {
                                   NamePlayerTextField(),
                                   CodeCheckTextField(
                                     val: (code) {
-                                      return dbQuizController.validatorName(code!, 6, 4);
+                                      return nameOfQuizController.validatorName(code!, 6, 4);
                                     },),
                                   ButtonCode(
                                     onPressed: () {
-                                      dbQuizController.getCodeCheck(nameOfQuizController.codeC.text);
+                                      nameOfQuizController.getCodeCheck(nameOfQuizController.codeC.text);
                                     },)
                                 ],
                               ),

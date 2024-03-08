@@ -2,14 +2,13 @@ import 'package:beta/view/creator/widget/TextField/widgetNameQuiz.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/nameQuizController.dart';
-import '../../../control/RDB_Controller.dart';
 import '../../../core/constant/font.dart';
 import '../../../core/decoration/Colors.dart';
 import '../../../services/myServices.dart';
 
 class NameOfQuiz extends StatelessWidget {
    NameOfQuiz({super.key});
-   DBQuizController dbQuizController = Get.put(DBQuizController());
+
    NameOfQuizController nameOfQuizController = Get.put(NameOfQuizController());
    MyServices myServices = Get.find();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -32,8 +31,8 @@ class NameOfQuiz extends StatelessWidget {
                             color: Colors.white,
                             fontFamily:Font.f3 ),),
                         const SizedBox(height: 10,),
-                       GetBuilder<DBQuizController>(
-                           builder: (dbQuizController){
+                       GetBuilder<NameOfQuizController>(
+                           builder: (nameOfQuizController){
                          return  Container(
                            decoration: BoxDecoration(
                                color: Colors.white.withOpacity(.8),
@@ -55,22 +54,22 @@ class NameOfQuiz extends StatelessWidget {
                                const SizedBox(height: 20,),
                                NameQuizTextField(
                                  val: (name){
-                                   return  dbQuizController.validatorName(name!, 20, 2);
+                                   return  nameOfQuizController.validatorName(name!, 20, 2);
                                  },
                                ),
                                CodeQuizTextField(
                                  val: (code) {
-                                   return dbQuizController.validatorName(code!, 6, 4);
+                                   return nameOfQuizController.validatorName(code!, 6, 4);
                                  },),
                                Row(
                                  children: [
                                    const SizedBox(width: 15,),
                                    CreateButton(
                                      onPressed: () {
-                                       dbQuizController.getCode();
-                                       dbQuizController.update();
+                                       nameOfQuizController.getCode();
+                                       nameOfQuizController.update();
                                        if(formKey.currentState!.validate()){
-                                         dbQuizController.addName(
+                                         nameOfQuizController.addName(
                                              nameOfQuizController.name,
                                              nameOfQuizController.code,
                                              myServices.sharePref!.get("id_user").toString());

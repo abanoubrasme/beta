@@ -9,7 +9,6 @@ import '../../../../core/decoration/Colors.dart';
 class NameQuizTextField extends StatelessWidget {
     NameQuizTextField({super.key, required this.val});
     NameOfQuizController nameOfQuizController = Get.put(NameOfQuizController());
-    DBQuizController dbQuizController = Get.put(DBQuizController());
     final String? Function(String? s) val;
 
   @override
@@ -74,7 +73,6 @@ class NameQuizTextField extends StatelessWidget {
 class CodeQuizTextField extends StatelessWidget {
   CodeQuizTextField({super.key, required this.val});
   NameOfQuizController nameOfQuizController = Get.put(NameOfQuizController());
-  DBQuizController dbQuizController = Get.put(DBQuizController());
   final String? Function(String? s) val;
 
   @override
@@ -108,11 +106,11 @@ class CodeQuizTextField extends StatelessWidget {
           if(code.isEmpty){
             nameOfQuizController.code = Random().nextInt(10000)+100000;
             nameOfQuizController.update();
-            dbQuizController.getCode();
+            nameOfQuizController.getCode();
           }else{
             nameOfQuizController.code = int.parse(code)  ;
             nameOfQuizController.update();
-            dbQuizController.getCode();
+            nameOfQuizController.getCode();
           }
 
         },
@@ -146,8 +144,9 @@ class CodeQuizTextField extends StatelessWidget {
 }
 
 class CreateButton extends StatelessWidget {
-   CreateButton({super.key,required this.onPressed});
-   DBQuizController dbQuizController = Get.put(DBQuizController());
+
+   const CreateButton({super.key,required this.onPressed});
+
   final void Function()? onPressed;
 
   @override

@@ -1,8 +1,8 @@
+import 'package:beta/control/creator/quizzesController.dart';
 import 'package:beta/core/constant/widget/customText.dart';
 import 'package:beta/view/creator/widget/hasData.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../control/RDB_Controller.dart';
 import '../../../control/creator/nameQuizController.dart';
 import '../../../core/decoration/Colors.dart';
 import '../../../services/myServices.dart';
@@ -10,8 +10,8 @@ import '../widget/cardListTitle.dart';
 
 class PageOfQuizzes extends StatelessWidget {
    PageOfQuizzes({super.key});
-   DBQuizController dbQuizController =Get.put(DBQuizController());
-    NameOfQuizController nameOfQuizController=Get.put(NameOfQuizController());
+   QuizzesController quizzesController = Get.put(QuizzesController());
+   NameOfQuizController nameOfQuizController=Get.put(NameOfQuizController());
    MyServices myServices = Get.find();
 
   @override
@@ -37,7 +37,7 @@ class PageOfQuizzes extends StatelessWidget {
               },),
           ),
           body: FutureBuilder(
-            future: dbQuizController.getName(myServices.sharePref!.get("id_user").toString()),
+            future: quizzesController.getName(myServices.sharePref!.get("id_user").toString()),
             builder: (BuildContext context,AsyncSnapshot snapshot) {
               if(!snapshot.hasData){
                 return const HasData();
@@ -46,8 +46,8 @@ class PageOfQuizzes extends StatelessWidget {
                 return const HasData();
               }
               else{
-                return GetBuilder<NameOfQuizController>(
-                    builder: (nameOfQuizController){
+                return GetBuilder<QuizzesController>(
+                    builder: (quizzesController){
                       return ListView.builder(
                         itemCount: snapshot.data['data'].length,
                         itemBuilder: (context, index){
@@ -55,19 +55,26 @@ class PageOfQuizzes extends StatelessWidget {
                             onTap: (){
                               myServices.sharePref!.setInt("idQuiz",snapshot.data['data'][index]["id_quiz"]);
                               Get.toNamed("/pageOfQuiz",parameters: {
-                                "name_quiz": snapshot.data['data'][index]["name_quiz"]});
+                                // "name_quiz": snapshot.data['data'][index]["name_quiz"]
+                              });
                               nameOfQuizController.name = snapshot.data['data'][index]["name_quiz"];
                             },
-                            child:CardListTitle(
-                              keys:  Key( snapshot.data.toString()),
-                              setIdUser: snapshot.data['data'][index]["id_quiz"],
-                              onPressedDelete: () {
-                                dbQuizController.deleteQuiz(myServices.sharePref!.get("idQuiz"));
-                                nameOfQuizController.update();
-                                Get.back();
-                              },
-                              index: index,
-                              nameQuiz: snapshot.data['data'][index]["name_quiz"],)
+                            child:GetBuilder<NameOfQuizController>(
+                              builder: (nameOfQuizController) {
+                                return CardListTitle(
+                                  keys:  Key( snapshot.data.toString()),
+                                  setIdUser: snapshot.data['data'][index]["id_quiz"],
+                                  onPressedDelete: () {
+                                    quizzesController.deleteQuiz(myServices.sharePref!.get("idQuiz"));
+                                    Get.back();
+                                    quizzesController.update();
+                                    nameOfQuizController.update();
+
+                                  },
+                                  index: index,
+                                  nameQuiz: snapshot.data['data'][index]["name_quiz"],);
+                              }
+                            )
 
                           );
                         } ,

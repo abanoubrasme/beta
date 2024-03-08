@@ -1,9 +1,10 @@
+import 'package:beta/control/creator/editQuizController.dart';
 import 'package:beta/core/decoration/Colors.dart';
 import 'package:beta/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:group_button/group_button.dart';
-import '../../../../control/creator/QuizController.dart';
+import '../../../../control/creator/quizController.dart';
 import '../../../../control/RDB_Controller.dart';
 import '../../../../services/myServices.dart';
 
@@ -12,8 +13,9 @@ class CustomButtonTimeEdit extends StatelessWidget {
   int selectIndexTime ;
   CustomButtonTimeEdit({super.key, required this.time, required this.selectIndexTime});
   QuizController quizController =Get.put(QuizController());
-  DBQuizController dbQuizController =Get.put(DBQuizController());
+  EditQuizController editQuizController = Get.put(EditQuizController());
   MyServices myServices = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<QuizController>(
@@ -81,9 +83,9 @@ class CustomButtonTimeEdit extends StatelessWidget {
                           selectIndexTime = index ;
                           quizController.time = 5;
                           quizController.selectIndexTime = index;
-                          quizController.Update();
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
+                          quizController.update();
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
                           quizController.update();
                           break;
                         case 1:
@@ -91,72 +93,72 @@ class CustomButtonTimeEdit extends StatelessWidget {
                           selectIndexTime = index ;
                           quizController.time = 10;
                           quizController.selectIndexTime = index;
-                          quizController.Update();
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
-                          quizController.Update();
+                          quizController.update();
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
+                          quizController.update();
                           break;
                         case 2:
                           time = 15;
                           selectIndexTime = index ;
                           quizController.time = 15;
                           quizController.selectIndexTime = index;
-                          quizController.Update();
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
-                          quizController.Update();
+                          quizController.update();
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
+                          quizController.update();
                           break;
                         case 3:
                           time = 20;
                           selectIndexTime = index ;
                           quizController.time = 20;
                           quizController.selectIndexTime = index;
-                          quizController.Update();
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
-                          quizController.Update();
+                          quizController.update();
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
+                          quizController.update();
                           break;
                         case 4:
                           time = 25;
                           selectIndexTime = index ;
                           quizController.time = 25;
                           quizController.selectIndexTime = index;
-                          quizController.Update();
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
-                          quizController.Update();
+                          quizController.update();
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
+                          quizController.update();
                           break;
                         case 5:
                           time = 30;
                           selectIndexTime = index ;
                           quizController.time = 30;
                           quizController.selectIndexTime = index;
-                          quizController.Update();
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
-                          quizController.Update();
+                          quizController.update();
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
+                          quizController.update();
                           break;
                         case 6:
                           time = 35;
                           selectIndexTime = index ;
                           quizController.time = 35;
                           quizController.selectIndexTime = index;
-                          quizController.Update();
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
-                          quizController.Update();
+                          quizController.update();
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
+                          quizController.update();
                           break;
                         case 7:
                           time = 40;
                           quizController.time = 40;
                           selectIndexTime = index ;
                           quizController.selectIndexTime = index;
-                          quizController.Update();
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
-                          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
-                          quizController.Update();
+                          quizController.update();
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),time,"time");
+                          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),selectIndexTime,"index_time");
+                          quizController.update();
                           break;
-                      } quizController.Update();
+                      } quizController.update();
                     },
                   )
               );

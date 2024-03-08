@@ -1,8 +1,8 @@
+import 'package:beta/control/creator/editQuizController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:group_button/group_button.dart';
-import '../../../../control/creator/QuizController.dart';
-import '../../../../control/RDB_Controller.dart';
+import '../../../../control/creator/quizController.dart';
 import '../../../../core/decoration/Colors.dart';
 import '../../../../services/myServices.dart';
 
@@ -18,8 +18,9 @@ class CorrectAnswerEdit extends StatelessWidget {
   CorrectAnswerEdit({super.key, required this.answer, required this.answerColor,
     required this.selectIndexCorrect, required this.answer1,
     required this.answer2, required this.answer3, required this.answer4});
+
   QuizController quizController = Get.put(QuizController());
-  DBQuizController dbQuizController =Get.put(DBQuizController());
+  EditQuizController editQuizController = Get.put(EditQuizController());
   MyServices myServices = Get.find();
 
   @override
@@ -86,7 +87,7 @@ class CorrectAnswerEdit extends StatelessWidget {
                                   quizController.correctAnswer = quizController.answer1;
                                   quizController.answerColor = ColorC.red.value.toString();
                                   quizController.selectIndexCorrect = index;
-                                  dbQuizController.updateCorrectAnswer(myServices.sharePref!.get("id_question").toString(),
+                                  editQuizController.updateCorrectAnswer(myServices.sharePref!.get("id_question").toString(),
                                       answerColor, selectIndexCorrect, answer);
                                   quizController.update();
                                   break;
@@ -97,7 +98,7 @@ class CorrectAnswerEdit extends StatelessWidget {
                                   quizController.correctAnswer = quizController.answer2;
                                   quizController.answerColor = ColorC.amber.value.toString();
                                   quizController.selectIndexCorrect = index;
-                                  dbQuizController.updateCorrectAnswer(myServices.sharePref!.get("id_question").toString(),
+                                  editQuizController.updateCorrectAnswer(myServices.sharePref!.get("id_question").toString(),
                                       answerColor, selectIndexCorrect, answer);
                                   quizController.update();
                                   break;
@@ -108,7 +109,7 @@ class CorrectAnswerEdit extends StatelessWidget {
                                   quizController.correctAnswer = quizController.answer3;
                                   quizController.answerColor = ColorC.blue.value.toString();
                                   quizController.selectIndexCorrect= index;
-                                  dbQuizController.updateCorrectAnswer(myServices.sharePref!.get("id_question").toString(),
+                                  editQuizController.updateCorrectAnswer(myServices.sharePref!.get("id_question").toString(),
                                       answerColor, selectIndexCorrect, answer);
                                   quizController.update();
                                   break;
@@ -119,7 +120,7 @@ class CorrectAnswerEdit extends StatelessWidget {
                                   quizController.correctAnswer = quizController.answer4;
                                   quizController.answerColor = ColorC.green.value.toString();
                                   quizController.selectIndexCorrect = index;
-                                  dbQuizController.updateCorrectAnswer(myServices.sharePref!.get("id_question").toString(),
+                                  editQuizController.updateCorrectAnswer(myServices.sharePref!.get("id_question").toString(),
                                       answerColor, selectIndexCorrect, answer);
                                   quizController.update();
                                   break;

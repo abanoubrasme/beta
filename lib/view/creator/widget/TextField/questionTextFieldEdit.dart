@@ -1,14 +1,15 @@
+import 'package:beta/control/creator/editQuizController.dart';
 import 'package:beta/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../control/creator/QuizController.dart';
+import '../../../../control/creator/quizController.dart';
 import '../../../../control/RDB_Controller.dart';
 import '../../../../services/myServices.dart';
 
 class QuestionTextFieldEdit extends StatelessWidget {
   QuestionTextFieldEdit({super.key, this.controller});
   QuizController quizController =Get.put(QuizController());
-  DBQuizController dbQuizController =Get.put(DBQuizController());
+  EditQuizController editQuizController =Get.put(EditQuizController());
   MyServices myServices = Get.find();
   TextEditingController? controller = TextEditingController();
 
@@ -23,7 +24,7 @@ class QuestionTextFieldEdit extends StatelessWidget {
         onChanged: (s) {
           quizController.question = s ;
          String question = s ;
-          dbQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
+          editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
               question,"question");
           quizController.update();
         },

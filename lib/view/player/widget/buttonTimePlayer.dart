@@ -2,7 +2,7 @@ import 'package:beta/core/decoration/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:group_button/group_button.dart';
-import '../../../../control/creator/QuizController.dart';
+import '../../../../control/creator/quizController.dart';
 
 class ButtonTimePlayer extends StatelessWidget {
   int time ;

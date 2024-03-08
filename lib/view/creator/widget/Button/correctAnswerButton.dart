@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:group_button/group_button.dart';
-import '../../../../control/creator/QuizController.dart';
+import '../../../../control/creator/quizController.dart';
 import '../../../../core/constant/font.dart';
 import '../../../../core/decoration/Colors.dart';
 
@@ -93,7 +93,7 @@ class CustomCorrectAnswerButton extends StatelessWidget {
                           quizController.correctAnswer = quizController.answer1;
                           quizController.answerColor = ColorC.red.value.toString();
                           quizController.selectIndexCorrect = index;
-                          quizController.Update();
+                          quizController.update();
                           quizController.update();
                           print( quizController.answerColor);
                           break;
@@ -104,7 +104,7 @@ class CustomCorrectAnswerButton extends StatelessWidget {
                           quizController.correctAnswer = quizController.answer2;
                           quizController.answerColor = ColorC.amber.value.toString();
                           quizController.selectIndexCorrect = index;
-                          quizController.Update();
+                          quizController.update();
                           quizController.update();
                           print( quizController.answerColor);
                           break;
@@ -115,7 +115,7 @@ class CustomCorrectAnswerButton extends StatelessWidget {
                           quizController.correctAnswer = quizController.answer3;
                           quizController.answerColor = ColorC.blue.value.toString();
                           quizController.selectIndexCorrect= index;
-                          quizController.Update();
+                          quizController.update();
                           quizController.update();
                           print( quizController.answerColor);
                           break;
@@ -126,12 +126,12 @@ class CustomCorrectAnswerButton extends StatelessWidget {
                           quizController.correctAnswer = quizController.answer4;
                           quizController.answerColor = ColorC.green.value.toString();
                           quizController.selectIndexCorrect = index;
-                          quizController.Update();
+                          quizController.update();
                           quizController.update();
                           print( quizController.answerColor);
                           break;
                       }
-                      quizController.Update();
+                      quizController.update();
                     },
                   );
                 })

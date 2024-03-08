@@ -1,17 +1,13 @@
 import 'package:beta/view/creator/Screen/pageQuizzes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
-import '../../../control/creator/QuizController.dart';
-import '../../../control/RDB_Controller.dart';
+import '../../../control/creator/quizController.dart';
 import '../../../control/creator/nameQuizController.dart';
 import '../../../core/decoration/Colors.dart';
-import '../../../main.dart';
 import '../../../services/myServices.dart';
 
 class PageOfQuiz extends StatelessWidget {
    PageOfQuiz({super.key});
-   DBQuizController dbQuizController =Get.put(DBQuizController());
    QuizController quizController =Get.put(QuizController());
    MyServices myServices = Get.find();
    NameOfQuizController nameOfQuizController =Get.put(NameOfQuizController());
@@ -50,7 +46,7 @@ class PageOfQuiz extends StatelessWidget {
           },),
       ),
         body: FutureBuilder(
-              future: dbQuizController.getQuiz(
+              future: quizController.getQuiz(
                   myServices.sharePref!.get("id_user").toString(),
                   myServices.sharePref!.get("idQuiz").toString()),
               builder: (BuildContext context,AsyncSnapshot snapshot) {
@@ -126,11 +122,11 @@ class PageOfQuiz extends StatelessWidget {
                                       style: const TextStyle(fontSize: 30,color: Colors.white),))
                                 ),
                                 Padding(
-                                    padding:  EdgeInsets.only(left: 25,),
+                                    padding:  const EdgeInsets.only(left: 25,),
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Text("${snapshot.data['data'][index]["question"]}",style: TextStyle(fontSize: 20),),
+                                        Text("${snapshot.data['data'][index]["question"]}",style: const TextStyle(fontSize: 20),),
                                         SizedBox(height: 5,),
                                       ],
                                     ))

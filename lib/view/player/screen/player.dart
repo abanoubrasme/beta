@@ -4,8 +4,7 @@ import 'package:beta/view/player/widget/multiChoosePlayer.dart';
 import 'package:beta/view/player/widget/questionPlayer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../control/creator/QuizController.dart';
-import '../../../../control/RDB_Controller.dart';
+import '../../../../control/creator/quizController.dart';
 import '../../../../control/creator/nameQuizController.dart';
 import '../../../../core/decoration/Colors.dart';
 import '../../../control/player/playerController.dart';
@@ -16,7 +15,6 @@ class Player extends StatelessWidget {
   Player({super.key});
 
   QuizController quizController =Get.put(QuizController());
-  DBQuizController dbQuizController =Get.put(DBQuizController());
   NameOfQuizController nameOfQuizController =Get.put(NameOfQuizController());
   PlayerController playerController = Get.put(PlayerController());
   MyServices myServices = Get.find();
@@ -39,13 +37,12 @@ class Player extends StatelessWidget {
                 ],
               ),
         body:FutureBuilder(
-            future: dbQuizController.getQuiz(
+            future: quizController.getQuiz(
                 myServices.sharePref!.get("id_user").toString(),
               myServices.sharePref!.get("idQuiz").toString()),
             builder: (BuildContext context,AsyncSnapshot snapshot) {
               playerController.content=[];
               playerController.next = 0;
-
               int len =snapshot.data?["data"].length?? 0;
               playerController.totalRank = len;
               if(playerController.content.isEmpty){

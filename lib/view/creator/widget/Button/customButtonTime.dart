@@ -2,7 +2,7 @@ import 'package:beta/core/decoration/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:group_button/group_button.dart';
-import '../../../../control/creator/QuizController.dart';
+import '../../../../control/creator/quizController.dart';
 
 class CustomButtonTime extends StatelessWidget {
    int time ;
@@ -76,58 +76,58 @@ class CustomButtonTime extends StatelessWidget {
                         selectIndexTime = index ;
                         quizController.time = 5;
                         quizController.selectIndexTime = index;
-                        quizController.Update();
+                        quizController.update();
                         break;
                       case 1:
                         time = 10;
                         selectIndexTime = index ;
                         quizController.time = 10;
                         quizController.selectIndexTime = index;
-                        quizController.Update();
+                        quizController.update();
                         break;
                       case 2:
                         time = 15;
                         selectIndexTime = index ;
                         quizController.time = 15;
                         quizController.selectIndexTime = index;
-                        quizController.Update();
+                        quizController.update();
                         break;
                       case 3:
                         time = 20;
                         selectIndexTime = index ;
                         quizController.time = 20;
                         quizController.selectIndexTime = index;
-                        quizController.Update();
+                        quizController.update();
                         break;
                       case 4:
                         time = 25;
                         selectIndexTime = index ;
                         quizController.time = 25;
                         quizController.selectIndexTime = index;
-                        quizController.Update();
+                        quizController.update();
                         break;
                       case 5:
                         time = 30;
                         selectIndexTime = index ;
                         quizController.time = 30;
                         quizController.selectIndexTime = index;
-                        quizController.Update();
+                        quizController.update();
                         break;
                       case 6:
                         time = 35;
                         selectIndexTime = index ;
                         quizController.time = 35;
                         quizController.selectIndexTime = index;
-                        quizController.Update();
+                        quizController.update();
                         break;
                       case 7:
                         time = 40;
                         quizController.time = 40;
                         selectIndexTime = index ;
                         quizController.selectIndexTime = index;
-                        quizController.Update();
+                        quizController.update();
                         break;
-                    } quizController.Update();
+                    } quizController.update();
                   },
                 )
               );
