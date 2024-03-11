@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/player/playerController.dart';
-import '../../../core/constant/font.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/font.dart';
+import '../../../core/decoration/color.dart';
 
 class FinalScore extends StatelessWidget {
    FinalScore({super.key});

@@ -19,7 +19,6 @@ class Pages {
     GetPage(name: "/quiz",           page: () =>   Quiz()),
     GetPage(name: "/pageOfQuiz",     page: () =>   PageOfQuiz()),
     GetPage(name: "/editQuiz",       page: () =>   EditQuiz()),
-    GetPage(name: "/nameOfQuiz",     page: () =>   NameOfQuiz()),
     GetPage(name: "/pageOfQuizzes",  page: () =>   PageOfQuizzes()),
     GetPage(name: "/codeOfQuiz",     page: () =>   CodeOfQuiz()),
     GetPage(name: "/player",         page: () =>   Player()),

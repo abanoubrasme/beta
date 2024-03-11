@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/constant/font.dart';
+import '../../../core/decoration/font.dart';
 
 class LoginButton extends StatelessWidget {
 

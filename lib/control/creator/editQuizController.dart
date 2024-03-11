@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../core/constant/link_api.dart';
-import '../../core/decoration/Colors.dart';
+import '../../core/decoration/color.dart';
 import '../../model/RequestData.dart';
 import 'quizController.dart';
 

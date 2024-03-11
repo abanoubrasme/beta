@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constant/font.dart';
+import '../../../core/decoration/font.dart';
 
 class AuthButton extends StatelessWidget {
    AuthButton({super.key,required this.text,required this.onPressed});

@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
-import '../../../core/constant/font.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/font.dart';
+import '../../../core/decoration/color.dart';
 
 class IndexContainer extends StatelessWidget {
 
-   const IndexContainer({super.key, required this.index});
+   const IndexContainer({super.key,
+     required this.index,
+     required this.height,
+     required this.width
+   });
 
   final int index;
+  final double height;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return  Container(
-        height: 90,
-        width: 90,
+        height: height,
+        width: width,
         decoration: BoxDecoration(
             color: ColorC.teal,
             borderRadius: const BorderRadius.only(

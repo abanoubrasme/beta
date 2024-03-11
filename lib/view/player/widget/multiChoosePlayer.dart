@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../control/creator/quizController.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/color.dart';
 
 class MultiChoosePlayer extends StatelessWidget {
   Color color;

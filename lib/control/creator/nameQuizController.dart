@@ -10,11 +10,10 @@ class NameOfQuizController extends GetxController{
 
   RequestData requestData = RequestData();
   MyServices myServices = Get.find();
-
   final TextEditingController nameC = TextEditingController();
   final TextEditingController codeC = TextEditingController();
 
-   String name = "   ";
+   String name = "";
    int code = 111;
    int valid = 1;
 
@@ -73,4 +72,5 @@ class NameOfQuizController extends GetxController{
       }
     }
   }
+
 }

@@ -1,13 +1,10 @@
 import 'package:beta/control/auth/loginController.dart';
-import 'package:beta/view/auth/Screen/forgetPassword.dart';
 import 'package:beta/view/auth/widget/loginButton.dart';
 import 'package:beta/view/auth/widget/loginTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../control/auth/AuthController.dart';
 import '../../../control/auth/helperController.dart';
-import '../../../core/constant/font.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
 import '../widget/forgetPassword.dart';
 import '../widget/signUpTextButton.dart';
@@ -41,7 +38,7 @@ class Login extends StatelessWidget {
                   Icons.person_outline_outlined,
                 ),
                 controller: loginController.userName,
-                val: (s) {
+                validator: (s) {
                   return loginController.validLogin(helper.validator);
                 },
                 onChange: (s){
@@ -68,7 +65,7 @@ class Login extends StatelessWidget {
                   loginController.checkEP();
                 },
                 controller: loginController.password,
-                val: (s) {
+                validator: (s) {
                   return loginController.validLogin(helper.validator);
                 },
                 obscureText: !helper.obscure,

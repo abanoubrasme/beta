@@ -3,7 +3,7 @@ import 'package:beta/view/auth/widget/loginTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/auth/helperController.dart';
-import '../../../core/constant/font.dart';
+import '../../../core/decoration/font.dart';
 import '../../../services/myServices.dart';
 
 class SignUp extends StatelessWidget {
@@ -47,7 +47,7 @@ class SignUp extends StatelessWidget {
                     Icons.person_outline_outlined,
                   ),
                   controller: authController.userName,
-                  val: (s) {
+                  validator: (s) {
                     return authController.validator(s!, 15, 3);
                   }, obscureText: false, enableSuggestions: true,
 
@@ -58,7 +58,7 @@ class SignUp extends StatelessWidget {
                     Icons.email_outlined,
                   ),
                   controller: authController.email,
-                  val: (s) {
+                  validator: (s) {
                     return authController.validator(s!, 40, 3);
                   }, obscureText: false, enableSuggestions: true,
 
@@ -77,7 +77,7 @@ class SignUp extends StatelessWidget {
                           color: Colors.grey.shade500),),
                   ),
                   controller: authController.password,
-                  val: (s) {
+                  validator: (s) {
                     return authController.validator(s!, 15, 3);
                   },
                   obscureText: !helper.obscure,

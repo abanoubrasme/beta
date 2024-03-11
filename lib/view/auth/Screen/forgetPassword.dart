@@ -6,7 +6,7 @@ import 'package:beta/core/constant/widget/customText.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/auth/helperController.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
 import '../widget/signUpTextButton.dart';
 
@@ -40,7 +40,7 @@ class Forget extends StatelessWidget {
                       Icons.email_outlined,
                     ),
                     controller: forgetController.email,
-                    val: (s) {
+                    validator: (s) {
                       return forgetController.validLogin(helper.validator);
                     },
                     obscureText: false, enableSuggestions: true,

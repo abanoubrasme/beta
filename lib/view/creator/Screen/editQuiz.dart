@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/quizController.dart';
 import '../../../control/creator/editQuizController.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
 import '../widget/Button/correctAnswerButtonEdit.dart';
 import '../widget/Button/customButtonTimeEdit.dart';
@@ -31,7 +31,6 @@ class EditQuiz extends StatelessWidget {
                 actions: [
                   MaterialButton(
                       onPressed: () {
-
                         editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
                               quizController.questionE.text,"question");
                         editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),

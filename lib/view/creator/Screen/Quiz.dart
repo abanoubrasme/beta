@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/quizController.dart';
 import '../../../control/creator/nameQuizController.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
 import '../widget/Button/correctAnswerButton.dart';
 

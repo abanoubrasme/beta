@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/constant/font.dart';
+import '../../../core/decoration/font.dart';
 
 class HasData extends StatelessWidget {
   const HasData({super.key});

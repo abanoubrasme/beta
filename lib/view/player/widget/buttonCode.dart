@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/RDB_Controller.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/color.dart';
 
 class ButtonCode extends StatelessWidget {
   ButtonCode({super.key,required this.onPressed});

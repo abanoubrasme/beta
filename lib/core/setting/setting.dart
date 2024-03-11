@@ -3,8 +3,8 @@ import 'package:beta/core/localization/changeLanguage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../services/myServices.dart';
-import '../constant/font.dart';
-import '../decoration/Colors.dart';
+import '../decoration/font.dart';
+import '../decoration/color.dart';
 
 class Setting extends StatelessWidget {
    Setting({super.key});

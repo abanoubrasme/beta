@@ -5,7 +5,7 @@ import 'package:beta/view/player/widget/textFieldCode.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/nameQuizController.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/color.dart';
 
 class CodeOfQuiz extends StatelessWidget {
    CodeOfQuiz({super.key});

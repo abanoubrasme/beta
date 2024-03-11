@@ -3,7 +3,7 @@ import 'package:beta/view/creator/widget/Button/homeButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../core/constant/betaText.dart';
-import '../core/decoration/Colors.dart';
+import '../core/decoration/color.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);

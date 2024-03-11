@@ -1,4 +1,4 @@
-import 'package:beta/core/decoration/Colors.dart';
+import 'package:beta/core/decoration/color.dart';
 import 'package:flutter/material.dart';
 
 ThemeData darkTheme(){

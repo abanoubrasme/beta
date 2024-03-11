@@ -4,7 +4,7 @@ import 'package:beta/core/constant/widget/customText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/color.dart';
 
 class VerifyCode extends StatelessWidget {
   const VerifyCode({Key? key}) : super(key: key);

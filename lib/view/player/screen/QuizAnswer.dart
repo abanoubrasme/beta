@@ -1,7 +1,7 @@
 import 'package:beta/view/player/widget/CustomButtonChosseExpanded.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/color.dart';
 
 
 class QuizAnswer extends StatelessWidget {

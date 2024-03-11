@@ -15,12 +15,14 @@ GetStorage box = GetStorage();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
+
   runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
    MyApp({super.key});
   MyServices myServices = Get.put(MyServices());
+
   @override
   Widget build(BuildContext context) {
     ChangeLanguageController changeLanguageController =Get.put(ChangeLanguageController());
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
               fontFamily: "Water_Brush"),
         ),
-        nextScreen: myServices.sharePref!.get("email") != null? Home():Login(),
+        nextScreen: myServices.sharePref!.get("userName") != null? Home():Login(),
         splashIconSize: 300,
         backgroundColor: Colors.teal,
       ),

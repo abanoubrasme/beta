@@ -1,5 +1,5 @@
 import 'package:beta/control/creator/editQuizController.dart';
-import 'package:beta/core/decoration/Colors.dart';
+import 'package:beta/core/decoration/color.dart';
 import 'package:beta/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

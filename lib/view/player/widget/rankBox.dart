@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/constant/font.dart';
-import '../../../core/decoration/Colors.dart';
+import '../../../core/decoration/font.dart';
+import '../../../core/decoration/color.dart';
 
 class RankBox extends StatelessWidget {
 

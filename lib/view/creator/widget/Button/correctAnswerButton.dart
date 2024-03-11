@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:group_button/group_button.dart';
 import '../../../../control/creator/quizController.dart';
-import '../../../../core/constant/font.dart';
-import '../../../../core/decoration/Colors.dart';
+import '../../../../core/decoration/font.dart';
+import '../../../../core/decoration/color.dart';
 
 
 class CustomCorrectAnswerButton extends StatelessWidget {

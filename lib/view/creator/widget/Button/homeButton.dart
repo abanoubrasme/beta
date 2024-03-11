@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/constant/font.dart';
-import '../../../../core/decoration/Colors.dart';
+import '../../../../core/decoration/font.dart';
+import '../../../../core/decoration/color.dart';
 
 class HomeButton extends StatelessWidget {
   const HomeButton({super.key,
