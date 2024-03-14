@@ -10,8 +10,7 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-           Scaffold(
+    return Scaffold(
              backgroundColor: ColorC.teal,
              appBar: AppBar(
                title: BeTaText(text: "BeTa", color: ColorC.white, fontSize: 50,),
@@ -42,7 +41,7 @@ class Welcome extends StatelessWidget {
                     child:  ListView(
                       children: [
                         const SizedBox(height: 50,),
-                        CustomText(text: "login as admin", fontSize: 22, color: ColorC.grey),
+                        CustomText(text: "login as admin", fontSize: 22, color: ColorC.grey, padding: EdgeInsets.zero,),
                         const SizedBox(height: 30,),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 140.0),
@@ -51,13 +50,12 @@ class Welcome extends StatelessWidget {
                               Icons.content_paste,
                               color: Colors.teal,
                               size: 60,),
-                            page: "/login",
                             width: 80,
                             height: 80,
-                            text: 'Login'.tr,),
+                            text: 'Login'.tr, onTap: () {Get.toNamed("/login");  },),
                         ),
                         const SizedBox(height: 30,),
-                        CustomText(text: "login as player", fontSize: 22, color: ColorC.grey),
+                        CustomText(text: "login as player", fontSize: 22, color: ColorC.grey, padding: EdgeInsets.zero,),
                         const SizedBox(height: 30,),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 140.0,),
@@ -66,10 +64,10 @@ class Welcome extends StatelessWidget {
                               Icons.content_paste,
                               color: Colors.teal,
                               size: 60,),
-                            page: "/codeOfQuiz",
+
                             width: 80,
                             height: 80,
-                            text: 'Play'.tr,),
+                            text: 'Play'.tr, onTap: () {Get.toNamed("/codeOfQuiz");  },),
                         ),
                         const SizedBox(height: 25,),
                       ],

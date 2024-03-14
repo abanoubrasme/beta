@@ -28,11 +28,11 @@ class Forget extends StatelessWidget {
                 children: [
 
                   const SizedBox(height: 50,),
-                  CustomText(text: "Forget password".tr, fontSize: 35, color: ColorC.grey2),
+                  CustomText(text: "Forget password".tr, fontSize: 35, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                   const SizedBox(height: 30,),
                   CustomText(
                       text: "     Please enter your email address you would like your password reset information sent to".tr,
-                      fontSize: 15, color: ColorC.grey),
+                      fontSize: 15, color: ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                   const SizedBox(height: 30,),
                   LoginTextField(
                     labelText: 'email',

@@ -19,12 +19,12 @@ class VerifyCode extends StatelessWidget {
                 children: [
                   const SizedBox(height: 40,),
                   CustomText(text: "Verification Code".tr,
-                      fontSize: 25, color: ColorC.grey),
+                      fontSize: 25, color: ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                   const SizedBox(height: 50,),
-                  CustomText(text: "Check Code".tr, fontSize: 35, color: ColorC.grey2),
+                  CustomText(text: "Check Code".tr, fontSize: 35, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                   const SizedBox(height: 30,),
                   CustomText(text:"Please enter the digit code sent to your email ",
-                      fontSize: 15, color:  ColorC.grey),
+                      fontSize: 15, color:  ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                   const SizedBox(height: 30,),
                   OtpTextField(
                     fieldWidth: 50,

@@ -4,24 +4,24 @@ import '../../../../core/decoration/font.dart';
 import '../../../../core/decoration/color.dart';
 
 class HomeButton extends StatelessWidget {
-  const HomeButton({super.key,
+   HomeButton({super.key,
     required this.icon,
-    required this.page,
     required this.width,
-    required this.height, required this.text});
+    required this.height,
+    required this.text,
+    required this.onTap
+  });
 
   final Widget icon;
-  final String page;
   final double width;
   final double height;
   final String text;
+  void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.toNamed(page);
-      },
+      onTap: onTap,
       child: Container(
         height: 160,
         width: 150,

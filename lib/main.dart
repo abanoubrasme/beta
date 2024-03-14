@@ -15,7 +15,6 @@ GetStorage box = GetStorage();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
-
   runApp( MyApp());
 }
 

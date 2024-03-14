@@ -10,6 +10,7 @@ class ColorC {
   static  Color teal =   Colors.teal;
   static  Color white =   Colors.white;
   static  Color white2 =   Colors.white70;
+  static  Color white3 =   Colors.white10;
   static  Color black =   Colors.black;
   static  Color black2 =   Colors.black54;
   static  Color grey =   Colors.grey;

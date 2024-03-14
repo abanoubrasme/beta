@@ -32,7 +32,7 @@ class PageOfQuizzes extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: ColorC.teal,
             elevation: 0,
-            title:CustomText(text:"Main Page".tr, fontSize: 22, color: ColorC.white,),
+            title:CustomText(text:"Main Page".tr, fontSize: 22, color: ColorC.white, padding: const EdgeInsets.symmetric(horizontal: 0),),
             centerTitle: true,
             actions: [
               IconButton(
@@ -176,7 +176,7 @@ class PageOfQuizzes extends StatelessWidget {
                                             content: CustomText(
                                                 text: "Are you sure you want to delete this quiz?".tr,
                                                 fontSize: 22,
-                                                color: ColorC.grey2),
+                                                color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                                             actions: <Widget>[
                                               CustomTextButton(
                                                 text: "Cancel".tr,
@@ -216,7 +216,7 @@ class PageOfQuizzes extends StatelessWidget {
                                                 children: [
                                                   const SizedBox(height: 10,),
                                                   CustomText(
-                                                    text:snapshot.data["data"][index]["name_quiz"], fontSize: 20, color: ColorC.grey2,),
+                                                    text:snapshot.data["data"][index]["name_quiz"], fontSize: 20, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                                                   const SizedBox(height: 10,),
                                                   NameEditTextField(
                                                     labelText: 'quiz name',

@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/nameQuizController.dart';
 
-class NamePlayerTextField extends StatelessWidget {
-  NamePlayerTextField({super.key});
-  NameOfQuizController nameOfQuizController = Get.put(NameOfQuizController());
-  PlayerController playerController = Get.put(PlayerController());
+class TextFieldNamePlayer extends StatelessWidget {
+
+  TextFieldNamePlayer({super.key,
+  required this.onChanged,
+  });
+
+  void Function(String)? onChanged;
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110,
+      height: 100,
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
       child: TextFormField(
         textCapitalization: TextCapitalization.words,
@@ -29,9 +33,7 @@ class NamePlayerTextField extends StatelessWidget {
           fontSize: 20,
         ),
         strutStyle: const StrutStyle(leading: .5,),
-        onChanged: (name) {
-          playerController.name=name;
-        },
+        onChanged:onChanged,
         decoration:  const InputDecoration(
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black45),

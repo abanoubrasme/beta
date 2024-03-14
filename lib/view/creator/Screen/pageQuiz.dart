@@ -26,7 +26,7 @@ class PageOfQuiz extends StatelessWidget {
             backgroundColor: ColorC.teal,
             title:  CustomText(
               text:myServices.sharePref!.getString("nameQuiz").toString(),
-              color: ColorC.white, fontSize: 24,),
+              color: ColorC.white, fontSize: 24, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
             centerTitle: true,
             actions: [
               IconButton(
@@ -43,6 +43,7 @@ class PageOfQuiz extends StatelessWidget {
                   quizController.answerColor = ColorC.teal.value.toString();
                   quizController.update();
                   Get.toNamed("/quiz");
+                  print(quizController.question);
                 },
                 icon: const Icon(Icons.add),
                 iconSize: 30,
@@ -68,12 +69,11 @@ class PageOfQuiz extends StatelessWidget {
                 return ListView.builder(
                   itemCount: snapshot.data['data'].length,
                   itemBuilder: (context, index){
-                    quizController.question = snapshot.data['data'][index]["question"];
                     return InkWell(
                       onTap: (){
-                        quizController.question = snapshot.data['data'][index]["question"];
-                        myServices.sharePref!.setString("question", snapshot.data['data'][index]["question"]);
                         myServices.sharePref!.setInt("idQuestion", snapshot.data['data'][index]["id_question"]);
+                        String idQuestion = myServices.sharePref!.get("idQuestion").toString();
+                        print(idQuestion);
                         quizController.update();
                         Get.toNamed("/editQuiz");
                       },
@@ -83,7 +83,8 @@ class PageOfQuiz extends StatelessWidget {
                               keys: Key(snapshot.data["data"].toString()),
                               index:  IndexContainer(index: index, height: 80, width: 80,),
                               label: const Text(""),
-                              title: NameQuiz(name: snapshot.data["data"][index]["question"], titleSize: 22,),
+                              title:NameQuiz(name: quizController.lengthQuestion(snapshot.data["data"][index]["question"]),
+                                titleSize: 22,),
                               background: SlideBackground(
                                 color: ColorC.green,
                                 text: 'Edit',
@@ -96,7 +97,7 @@ class PageOfQuiz extends StatelessWidget {
                                 icon: Icons.delete,
                                 alignment: Alignment.centerRight,
                                 padding: const EdgeInsets.only(top: 12, bottom: 10, right: 30),),
-                              confirmDismiss: (direction )async{
+                              confirmDismiss: (direction) async {
                                 if (direction == DismissDirection.endToStart) {
                                   myServices.sharePref!.setInt("idQuestion",snapshot.data['data'][index]["id_question"]);
                                   Get.defaultDialog(
@@ -105,7 +106,7 @@ class PageOfQuiz extends StatelessWidget {
                                     content: CustomText(
                                         text: "Are you sure you want to delete this question?".tr,
                                         fontSize: 20,
-                                        color: ColorC.grey2),
+                                        color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                                     actions: <Widget>[
                                       CustomTextButton(
                                         text: "Cancel".tr,
@@ -124,6 +125,7 @@ class PageOfQuiz extends StatelessWidget {
                                           quizController.update();
                                         },)
                                     ],
+
                                   );
                                 }else{
                                   Get.toNamed("/editQuiz");

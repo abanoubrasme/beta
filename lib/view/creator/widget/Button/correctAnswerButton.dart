@@ -6,11 +6,11 @@ import '../../../../core/decoration/font.dart';
 import '../../../../core/decoration/color.dart';
 
 
-class CustomCorrectAnswerButton extends StatelessWidget {
+class CorrectAnswerButton extends StatelessWidget {
    String text ;
    String answerColor ;
    int selectIndexCorrect;
-   CustomCorrectAnswerButton({super.key, required this.text, required this.answerColor, required this.selectIndexCorrect});
+   CorrectAnswerButton({super.key, required this.text, required this.answerColor, required this.selectIndexCorrect});
    QuizController quizController = Get.put(QuizController());
 
   @override

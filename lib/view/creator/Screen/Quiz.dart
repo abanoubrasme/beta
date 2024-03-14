@@ -1,10 +1,10 @@
-import 'package:beta/view/creator/widget/TextField/multiChosseTextFeild.dart';
+import 'package:beta/core/constant/widget/customText.dart';
+import 'package:beta/view/creator/widget/TextField/multiChoose.dart';
 import 'package:beta/view/creator/widget/TextField/questionTextField.dart';
 import 'package:beta/view/creator/widget/Button/customButtonTime.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/quizController.dart';
-import '../../../control/creator/nameQuizController.dart';
 import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
 import '../widget/Button/correctAnswerButton.dart';
@@ -13,90 +13,111 @@ class Quiz extends StatelessWidget {
    Quiz({super.key});
 
    QuizController quizController =Get.put(QuizController());
-   NameOfQuizController nameOfQuizController =Get.put(NameOfQuizController());
    MyServices myServices = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ColorC.teal,
-        centerTitle: true,
-        title: const Text(""),
-        leading: TextButton(
-          onPressed: () {
-            Get.back();
-          },
-          child:  Text("Cancel".tr,
-            style: const TextStyle(fontSize: 17, color: Colors.white),
-          ),
-        ),
-        leadingWidth: 80,
-        actions: [
-          MaterialButton(
-              onPressed: () async{
-                quizController.insertData(myServices.sharePref!.get("id_user").toString(),myServices.sharePref!.get("idQuiz").toString());
-                Get.toNamed("/pageOfQuiz");
-              },
-              child:   Text("Save".tr,
-                style: const TextStyle(color: Colors.white, fontSize: 17),
-              )),
-        ],
-      ),
-      body: ListView(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: CustomButtonTime(
-                  time: quizController.time,
-                  selectIndexTime: quizController.selectIndexTime,),
+    return GetBuilder<QuizController>(
+        builder: (quizController){
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: ColorC.teal,
+              centerTitle: true,
+              title: const Text(""),
+              leading: TextButton(
+                onPressed: () {
+                  Get.back();
+                },
+                child: CustomText(text:"Cancel".tr, fontSize: 20, color: ColorC.white, padding: const EdgeInsets.symmetric(horizontal:0),),
               ),
-              Expanded(
-                child:  CustomCorrectAnswerButton(
-                  text: quizController.correctAnswer.tr,
-                  answerColor: quizController.answerColor,
-                  selectIndexCorrect: quizController.selectIndexCorrect,),)
-            ],
-          ),
-          Container(
-            height: 260,
-            width: Material.defaultSplashRadius,
-            decoration: BoxDecoration(color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 3,
-                      blurRadius: 3,
-                      offset: const Offset(0, 2)),
-                ]),
-            margin: const EdgeInsets.all(10),
-            child: Center(
-                child: QuestionTextField()),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    multiChooseTextField( color: ColorC.red, ke:1,),
-                    multiChooseTextField(color: ColorC.amber,ke:2),
-                  ],
-                ),
-                Row(
-                  children: [
-                    multiChooseTextField(color:ColorC.blue,ke: 3,),
-                    multiChooseTextField(color : ColorC.green,ke:4),
-                  ],
+              leadingWidth: 80,
+              actions: [
+                MaterialButton(
+                  onPressed:(){
+                    String idQuiz = myServices.sharePref!.get("idQuiz").toString();
+                    String idUser = myServices.sharePref!.get("id_user").toString();
+                    quizController.insertData(idUser,idQuiz);
+                    print(quizController.question);
+                    Get.offAllNamed("/pageOfQuiz");
+                    quizController.update();
+                  },
+                  child:CustomText(text:"Save".tr,color: ColorC.white, fontSize: 20, padding: const EdgeInsets.symmetric(horizontal: 0),),
                 ),
               ],
             ),
-          ),
-        ],
-      ),
+            body: ListView(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child:CustomButtonTime(
+                        time: quizController.time,
+                        selectIndexTime: quizController.selectIndexTime,),
+                    ),
+                    Expanded(
+                      child:CorrectAnswerButton(
+                        text: quizController.correctAnswer,
+                        answerColor: quizController.answerColor,
+                        selectIndexCorrect: quizController.selectIndexCorrect,),
+                    )
+                  ],
+                ),
+                QuestionTextField(
+                  onChanged: (question) {
+                    quizController.question = question;
+                  },),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          MultiChoose(
+                            color: ColorC.red,
+                            answer: quizController.answer1,
+                            onChanged: (s) {
+                              quizController.answer1 = s ;
+                            },
 
-    );
+                          ),
+                          MultiChoose(
+                            color: ColorC.amber,
+                            answer: quizController.answer2,
+                            onChanged: (s) {
+                              quizController.answer2 = s;
+                            },
+                            //controller: quizController.answer2E,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          MultiChoose(
+                            color:ColorC.blue,
+                            answer: quizController.answer3,
+                            onChanged: (s) {
+                              quizController.answer3 = s;
+                            },
+                            // controller: quizController.answer3E,
+                          ),
+                          MultiChoose(
+                            color:ColorC.green,
+                            answer: quizController.answer4,
+                            onChanged: (s) {
+                              quizController.answer4 = s;
+                            },
+                            //controller: quizController.answer4E,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+
+          );
+        });
 
   }
 }

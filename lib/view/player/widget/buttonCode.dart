@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../control/RDB_Controller.dart';
 import '../../../core/decoration/color.dart';
+import '../../../core/decoration/font.dart';
 
 class ButtonCode extends StatelessWidget {
-  ButtonCode({super.key,required this.onPressed});
+  const ButtonCode({super.key,required this.onPressed});
+
   final void Function()? onPressed;
 
   @override
@@ -16,12 +15,13 @@ class ButtonCode extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(width: 2, color: ColorC.teal),
           borderRadius: BorderRadius.circular(15),
-          color: Colors.white.withOpacity(0),
+          color: ColorC.teal,
         ),
         margin:  const EdgeInsets.all(15),
         child: TextButton(
             onPressed: onPressed,
-            child: Text("Connect", style: TextStyle(fontSize: 24, color: ColorC.teal,fontFamily: 'ProtestStrike'),
+            child: Text("Connect",
+              style: TextStyle(fontSize: 24, color: ColorC.white,fontFamily: Font.f1),
             )));
   }
 }

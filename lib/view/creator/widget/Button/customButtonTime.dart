@@ -5,10 +5,16 @@ import 'package:group_button/group_button.dart';
 import '../../../../control/creator/quizController.dart';
 
 class CustomButtonTime extends StatelessWidget {
+
    int time ;
    int selectIndexTime ;
-   CustomButtonTime({super.key, required this.time, required this.selectIndexTime});
+
+   CustomButtonTime({super.key,
+     required this.time,
+     required this.selectIndexTime});
+
    QuizController quizController =Get.put(QuizController());
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<QuizController>(

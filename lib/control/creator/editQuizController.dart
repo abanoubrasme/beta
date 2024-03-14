@@ -6,16 +6,18 @@ import '../../model/RequestData.dart';
 import 'quizController.dart';
 
 class EditQuizController extends GetxController{
-  String question = "";
-  String answer1  = "";
-  String answer2  = "";
-  String answer3  = "";
-  String answer4  = "";
-  String correctAnswer = "Select the Correct answer";
-  int time = 5;
-  int selectIndexTime = 8 ;
-  int selectIndexCorrect = 5 ;
-  String answerColor = ColorC.teal.value.toString();
+
+  // String question = "";
+  // String answer1  = "";
+  // String answer2  = "";
+  // String answer3  = "";
+  // String answer4  = "";
+  // String correctAnswer = "Select the Correct answer";
+  // int time = 5;
+  // int selectIndexTime = 8 ;
+  // int selectIndexCorrect = 5 ;
+  // String answerColor = ColorC.teal.value.toString();
+
   TextEditingController questionE =TextEditingController();
   TextEditingController answer1E  =TextEditingController();
   TextEditingController answer2E  =TextEditingController();
@@ -50,7 +52,7 @@ class EditQuizController extends GetxController{
       print("Sign Up is Fail -----------------------------");
     }
   }
-  updateCorrectAnswer(String idQuestion,String color,int selectIndexColor,String correctAnswer) async {
+  updateCorrectAnswer(String idQuestion,String correctAnswer,String color,int selectIndexColor) async {
     var response = await requestData.postRequest(linkUpdateAnswer, {
       "color"            :color.toString(),
       "index_color"      :selectIndexColor.toString(),
@@ -63,11 +65,12 @@ class EditQuizController extends GetxController{
       print("Sign Up is Fail -----------------------------");
     }
   }
+
   updateQuestion(String idQuestion, var new_, var column) async {
     var response = await requestData.postRequest(linkUpdateQuestion, {
-      "column"             :column.toString(),
-      "new_"                 :new_.toString(),
-      "id_question"        :idQuestion.toString()
+      "column"            :column.toString(),
+      "new_"              :new_.toString(),
+      "id_question"       :idQuestion.toString()
     });
     if(response["status"]=="success"){
       return response;
@@ -77,5 +80,13 @@ class EditQuizController extends GetxController{
     }
   }
 
+  getAllData(String idQuestion)async{
+    var response = await requestData.postRequest(linkGetData2, {
+      "id_question" : idQuestion.toString(),
+    });
+    if (response["status"] == "success"){
+      return response;
+    }
+  }
 
 }

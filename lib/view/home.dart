@@ -1,6 +1,11 @@
 import 'package:beta/core/constant/betaText.dart';
+import 'package:beta/view/player/widget/buttonCode.dart';
+import 'package:beta/view/player/widget/namePlayerTextField.dart';
+import 'package:beta/view/player/widget/textFieldNamePlayer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../control/creator/nameQuizController.dart';
+import '../control/player/playerController.dart';
 import '../core/decoration/font.dart';
 import '../core/decoration/color.dart';
 import '../services/myServices.dart';
@@ -8,10 +13,14 @@ import 'creator/widget/Button/homeButton.dart';
 
 class Home extends StatelessWidget {
    Home({super.key});
-  MyServices myServices = Get.find();
+
+   MyServices myServices = Get.find();
+   NameOfQuizController nameOfQuizController = Get.put(NameOfQuizController());
+   PlayerController playerController = Get.put(PlayerController());
+   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         backgroundColor: ColorC.teal,
         appBar: AppBar(
@@ -103,20 +112,59 @@ class Home extends StatelessWidget {
                             Icons.content_paste,
                             color: Colors.teal,
                             size: 60,),
-                          page: "/pageOfQuizzes",
                           width: 80,
                           height: 80,
-                          text: 'Create'.tr,),
+                          text: 'Create'.tr,
+                          onTap: () {
+                            Get.toNamed("/pageOfQuizzes");
+                          },),
                         const SizedBox(width: 30,),
                         HomeButton(
                           icon:const Icon(
                           Icons.play_lesson_outlined,
                           color: Colors.teal,
                           size: 60,),
-                          page:"/codeOfQuiz",
                           width: 80,
                           height: 80,
-                          text: 'Play'.tr,),
+                          text: 'Play'.tr,
+                          onTap: () {
+                            Get.defaultDialog(
+                              contentPadding: EdgeInsets.zero,
+                              title:  "BeTa",
+                              titleStyle: TextStyle(fontFamily: Font.f3,fontSize: 50,color: ColorC.teal),
+                              content: SizedBox(
+                                width: 350,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    NamePlayerTextField(
+                                      labelText: 'enter your name',
+                                      prefixIcon: const Icon(Icons.person_outline_outlined),
+                                      onChanged: (name) {
+                                        playerController.name=name;
+                                      },
+                                    ),
+                                    NamePlayerTextField(
+                                      labelText: 'enter the code',
+                                      maxLength: 8,
+                                      validator: (code) {
+                                        return nameOfQuizController.validatorName(code!, 6, 4);
+                                      },
+                                      onChanged: (code) {
+                                        nameOfQuizController.codeC.text = code;
+                                        playerController.code = int.parse(code) ;
+                                      },
+                                      prefixIcon: const Icon(Icons.code),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              actions: [   ButtonCode(
+                                onPressed: () {
+                                  nameOfQuizController.getCodeCheck(nameOfQuizController.codeC.text);
+                                },)]
+                            );
+                          },),
                       ],
                     ),
                   ],

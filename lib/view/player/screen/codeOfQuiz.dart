@@ -1,7 +1,6 @@
-import 'package:beta/control/creator/QuizController.dart';
 import 'package:beta/view/player/widget/buttonCode.dart';
 import 'package:beta/view/player/widget/textFieldNamePlayer.dart';
-import 'package:beta/view/player/widget/textFieldCode.dart';
+import 'package:beta/view/player/widget/namePlayerTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/nameQuizController.dart';
@@ -11,7 +10,6 @@ class CodeOfQuiz extends StatelessWidget {
    CodeOfQuiz({super.key});
 
   NameOfQuizController nameOfQuizController = Get.put(NameOfQuizController());
- // QuizController quizController = Get.put(QuizController());
    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
 
@@ -52,11 +50,11 @@ class CodeOfQuiz extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const SizedBox(height: 20,),
-                                  NamePlayerTextField(),
-                                  CodeCheckTextField(
-                                    val: (code) {
-                                      return nameOfQuizController.validatorName(code!, 6, 4);
-                                    },),
+                                //  NamePlayerTextField(),
+                                  // CodeCheckTextField(
+                                  //   val: (code) {
+                                  //     return nameOfQuizController.validatorName(code!, 6, 4);
+                                  //   },),
                                   ButtonCode(
                                     onPressed: () {
                                       nameOfQuizController.getCodeCheck(nameOfQuizController.codeC.text);

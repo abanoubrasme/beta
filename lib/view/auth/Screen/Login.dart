@@ -27,9 +27,9 @@ class Login extends StatelessWidget {
           child: ListView(
             children: [
               const SizedBox(height: 30,),
-               CustomText(text: "Login", fontSize: 22, color: ColorC.grey),
+               CustomText(text: "Login", fontSize: 22, color: ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
               const SizedBox(height: 50,),
-               CustomText(text: 'Welcome to BeTa', fontSize: 40, color: ColorC.grey2,
+               CustomText(text: 'Welcome to BeTa', fontSize: 40, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),
                ),
               const SizedBox(height: 30,),
               LoginTextField(

@@ -1,11 +1,13 @@
+import 'package:beta/view/creator/widget/hasData.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/quizController.dart';
 import '../../../control/creator/editQuizController.dart';
+import '../../../core/constant/widget/customText.dart';
 import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
-import '../widget/Button/correctAnswerButtonEdit.dart';
-import '../widget/Button/customButtonTimeEdit.dart';
+import '../widget/Button/correctAnswerEdit.dart';
+import '../widget/Button/timeEdit.dart';
 import '../widget/TextField/multiChooseTextFieldEdit.dart';
 import '../widget/TextField/questionTextFieldEdit.dart';
 
@@ -31,100 +33,192 @@ class EditQuiz extends StatelessWidget {
                 actions: [
                   MaterialButton(
                       onPressed: () {
-                        editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
-                              quizController.questionE.text,"question");
-                        editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
-                              quizController.answer1E.text,'answer1');
-                        editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
-                              quizController.answer2E.text,'answer2');
-                        editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
-                              quizController.answer3E.text,'answer3');
-                        editQuizController.updateQuestion(myServices.sharePref!.get("id_question").toString(),
-                              quizController.answer4E.text,'answer4');
-                        quizController.update();
+                        // String idQuestion = myServices.sharePref!.get("idQuestion").toString();
+                        // editQuizController.updateQuestion(idQuestion,editQuizController.questionE.text,"question");
+                        // editQuizController.updateQuestion(idQuestion,editQuizController.answer1E.text,'answer1');
+                        // editQuizController.updateQuestion(idQuestion,editQuizController.answer2E.text,'answer2');
+                        // editQuizController.updateQuestion(idQuestion,editQuizController.answer3E.text,'answer3');
+                        // editQuizController.updateQuestion(idQuestion,editQuizController.answer4E.text,'answer4');
+                        editQuizController.update();
                         Get.toNamed("pageOfQuiz");
                       },
-                      child:   Text("Save".tr,
-                        style: const TextStyle(color: Colors.white, fontSize: 17),
+                      child:CustomText(text:"Save".tr,color: ColorC.white, fontSize: 20, padding: const EdgeInsets.symmetric(horizontal: 0),
                       )),
                 ],
               ),
               body: FutureBuilder(
-                     future: quizController.getData(myServices.sharePref!.get("question").toString()),
+                     future: editQuizController.getAllData(myServices.sharePref!.get("idQuestion").toString()),
                      builder: (BuildContext context, AsyncSnapshot snapshot) {
                              WidgetsBinding.instance.addPostFrameCallback((_){
-                               quizController.questionE.text = snapshot.data?["data"][0]['question'] ?? "";
-                               quizController.answer1E.text = snapshot.data?['data'][0]['answer1'] ?? "";
-                               quizController.answer2E.text = snapshot.data?['data'][0]['answer2'] ?? "";
-                               quizController.answer3E.text = snapshot.data?['data'][0]['answer3'] ?? "";
-                               quizController.answer4E.text = snapshot.data?['data'][0]['answer4'] ?? "";
-                               quizController.correctAnswer = snapshot.data?['data'][0]['correct_answer'] ?? "";
-                               quizController.time = snapshot.data?['data'][0]['time'] ?? 5;
-                               quizController.selectIndexTime = snapshot.data?['data'][0]['index_time'] ?? 0;
-                               quizController.answerColor = snapshot.data?['data'][0]['color'] ?? Colors.teal.value.toString();
-                               quizController.selectIndexCorrect = snapshot.data?['data'][0]['index_color'] ?? 0;
-                               quizController.update();
+                               editQuizController.questionE.text = snapshot.data?["data"][0]['question'] ?? "";
+                               editQuizController.answer1E.text  = snapshot.data?['data'][0]['answer1'] ?? "";
+                               editQuizController.answer2E.text  = snapshot.data?['data'][0]['answer2'] ?? "";
+                               editQuizController.answer3E.text  = snapshot.data?['data'][0]['answer3'] ?? "";
+                               editQuizController.answer4E.text  = snapshot.data?['data'][0]['answer4'] ?? "";
+                               editQuizController.correctAnswerE = snapshot.data?['data'][0]['correct_answer'] ?? "";
+                               editQuizController.timeE = snapshot.data?['data'][0]['time'] ?? 5;
+                               editQuizController.selectIndexTimeE = snapshot.data?['data'][0]['index_time'] ?? 0;
+                               editQuizController.answerColorE = snapshot.data?['data'][0]['color'] ?? Colors.teal.value.toString();
+                               editQuizController.selectIndexCorrectE = snapshot.data?['data'][0]['index_color'] ?? 0;
+                               editQuizController.update();
                              });
                           if (!snapshot.hasData) {
-                            return const Center(
-                                child: CircularProgressIndicator(color: Colors.teal,));
+                            return const HasData();
                           }
                           if (snapshot.hasError) {
-                            return const Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                      height: 150,
-                                      width: 150,
-                                      child: Image(image: AssetImage(
-                                          'image/notebook.png'))),
-                                  SizedBox(height: 90,)
-                                ],
-                              ),
-                            );
+                            return const HasData();
                           }
                           else {
-                           // quizController.update();
-                            return GetBuilder<QuizController>(
-                            builder: (quizController) {
+                            return GetBuilder<EditQuizController>(
+                            builder: (editQuizController) {
                                return   ListView(
                               children: [
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: CustomButtonTimeEdit(
-                                          time: quizController.time,
-                                          selectIndexTime: quizController.selectIndexTime),
+                                      child: TimeEdit(
+                                          time: editQuizController.timeE,
+                                          selectIndexTime: editQuizController.selectIndexTimeE,
+                                          onSelected: (s, index, b) async {
+                                          String idQuestion = myServices.sharePref!.getInt("idQuestion").toString();
+                                          print(idQuestion);
+                                          switch (index) {
+                                            case 0:
+                                              editQuizController.timeE = 5;
+                                              editQuizController.selectIndexTimeE = index;
+                                              editQuizController.update();
+                                              editQuizController.updateQuestion(idQuestion,editQuizController.timeE,"time");
+                                              editQuizController.updateQuestion(idQuestion,editQuizController.selectIndexTimeE,"index_time");
+                                              editQuizController.update();
+                                              break;
+                                            case 1:
+                                              editQuizController.timeE = 10;
+                                              editQuizController.selectIndexTimeE = index;
+                                              editQuizController.update();
+                                              editQuizController.updateQuestion(idQuestion,editQuizController.timeE,"time");
+                                              editQuizController.updateQuestion(idQuestion, editQuizController.selectIndexTimeE,"index_time");
+                                              editQuizController.update();
+                                              break;
+                                            case 2:
+                                              editQuizController.timeE = 15;
+                                              editQuizController.selectIndexTimeE = index;
+                                              editQuizController.update();
+                                              editQuizController.updateQuestion(idQuestion,editQuizController.timeE,"time");
+                                              editQuizController.updateQuestion(idQuestion, editQuizController.selectIndexTimeE,"index_time");
+                                              editQuizController.update();
+                                              break;
+                                            case 3:
+                                              editQuizController.timeE = 20;
+                                              editQuizController.selectIndexTimeE = index;
+                                              editQuizController.update();
+                                              editQuizController.updateQuestion(idQuestion,editQuizController.timeE,"time");
+                                              editQuizController.updateQuestion(idQuestion, editQuizController.selectIndexTimeE,"index_time");
+                                              editQuizController.update();
+                                              break;
+                                            case 4:
+                                              editQuizController.timeE = 25;
+                                              editQuizController.selectIndexTimeE = index;
+                                              editQuizController.update();
+                                              editQuizController.updateQuestion(idQuestion,editQuizController.timeE,"time");
+                                              editQuizController.updateQuestion(idQuestion, editQuizController.selectIndexTimeE,"index_time");
+                                              editQuizController.update();
+                                              break;
+                                            case 5:
+                                              editQuizController.timeE = 30;
+                                              editQuizController.selectIndexTimeE = index;
+                                              editQuizController.update();
+                                              editQuizController.updateQuestion(idQuestion,editQuizController.timeE,"time");
+                                              editQuizController.updateQuestion(idQuestion, editQuizController.selectIndexTimeE,"index_time");
+                                              editQuizController.update();
+                                              break;
+                                            case 6:
+                                              editQuizController.timeE = 35;
+                                              editQuizController.selectIndexTimeE = index;
+                                              editQuizController.update();
+                                              editQuizController.updateQuestion(idQuestion,editQuizController.timeE,"time");
+                                              editQuizController.updateQuestion(idQuestion, editQuizController.selectIndexTimeE,"index_time");
+                                              editQuizController.update();
+                                              break;
+                                            case 7:
+                                              editQuizController.timeE = 40;
+                                              editQuizController.selectIndexTimeE = index;
+                                              editQuizController.update();
+                                              editQuizController.updateQuestion(idQuestion,editQuizController.timeE,"time");
+                                              editQuizController.updateQuestion(idQuestion, editQuizController.selectIndexTimeE,"index_time");
+                                              editQuizController.update();
+                                              break;
+                                          } editQuizController.update();
+                                        },
+                                      ),
                                     ),
                                     Expanded(
-                                      child: CorrectAnswerEdit(
-                                        answer: quizController.correctAnswer,
-                                        answerColor: quizController.answerColor,
-                                        selectIndexCorrect: quizController.selectIndexCorrect,
-                                        answer1: quizController.answer1E.text,
-                                        answer2: quizController.answer2E.text,
-                                        answer3: quizController.answer3E.text,
-                                        answer4: quizController.answer4E.text,)
-
-                                      ,)
+                                      child:CorrectAnswerEdit(
+                                            answer: editQuizController.correctAnswerE,
+                                            answerColor: editQuizController.answerColorE,
+                                            selectIndexCorrect: editQuizController.selectIndexCorrectE,
+                                            answer1: editQuizController.answer1E.text,
+                                            answer2: editQuizController.answer2E.text,
+                                            answer3: editQuizController.answer3E.text,
+                                            answer4: editQuizController.answer4E.text,
+                                            onSelected: (s,index,b) async {
+                                              String idQuestion = myServices.sharePref!.get("idQuestion").toString();
+                                              switch (index) {
+                                                case 0:
+                                                  editQuizController.correctAnswerE = editQuizController.answer1E.text;
+                                                  editQuizController.answerColorE = ColorC.red.value.toString();
+                                                  editQuizController.selectIndexCorrectE = index;
+                                                  editQuizController.updateCorrectAnswer(idQuestion,
+                                                      editQuizController.correctAnswerE,
+                                                      editQuizController.answerColorE,
+                                                      editQuizController.selectIndexCorrectE);
+                                                  editQuizController.update();
+                                                  break;
+                                                case 1:
+                                                  editQuizController.correctAnswerE = editQuizController.answer2E.text;
+                                                  editQuizController.answerColorE = ColorC.amber.value.toString();
+                                                  editQuizController.selectIndexCorrectE = index;
+                                                  editQuizController.updateCorrectAnswer(idQuestion,
+                                                      editQuizController.correctAnswerE,
+                                                      editQuizController.answerColorE,
+                                                      editQuizController.selectIndexCorrectE);
+                                                  editQuizController.update();
+                                                  break;
+                                                case 2:
+                                                  editQuizController.correctAnswerE = editQuizController.answer3E.text;
+                                                  editQuizController.answerColorE = ColorC.blue.value.toString();
+                                                  editQuizController.selectIndexCorrectE = index;
+                                                  editQuizController.updateCorrectAnswer(idQuestion,
+                                                      editQuizController.correctAnswerE,
+                                                      editQuizController.answerColorE,
+                                                      editQuizController.selectIndexCorrectE);
+                                                  editQuizController.update();
+                                                  break;
+                                                case 3:
+                                                  editQuizController.correctAnswerE  = editQuizController.answer4E.text;
+                                                  editQuizController.answerColorE  = ColorC.green.value.toString();
+                                                  editQuizController.selectIndexCorrectE = index;
+                                                  editQuizController.update();
+                                                  editQuizController.updateCorrectAnswer(idQuestion,
+                                                      editQuizController.correctAnswerE,
+                                                      editQuizController.answerColorE,
+                                                      editQuizController.selectIndexCorrectE);
+                                                  editQuizController.update();
+                                                  break;
+                                              }
+                                              editQuizController.update();
+                                            },
+                                          ),
+                                    )
                                   ],
                                 ),
-                                Container(
-                                  height: 260,
-                                  width: Material.defaultSplashRadius,
-                                  decoration: BoxDecoration(color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            spreadRadius: 3,
-                                            blurRadius: 3,
-                                            offset: const Offset(0, 2)),
-                                      ]),
-                                  margin: const EdgeInsets.all(10),
-                                  child: Center(
-                                      child: QuestionTextFieldEdit(
-                                          controller: quizController.questionE)),
+                                QuestionTextFieldEdit(
+                                  controller: editQuizController.questionE,
+                                  onChanged: (question) {
+                                    editQuizController.questionE.text = question ;
+                                    String idQuestion = myServices.sharePref!.getInt("idQuestion").toString();
+                                    editQuizController.updateQuestion(idQuestion,question,"question");
+                                    editQuizController.update();
+                                  },
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -132,29 +226,49 @@ class EditQuiz extends StatelessWidget {
                                     children: [
                                       Row(
                                         children: [
-                                          MultiChooseTextFieldEdit(
+                                          MultiChooseEdit(
                                             color: ColorC.red,
-                                            ke: 1,
-                                            controller: quizController.answer1E,
+                                            controller: editQuizController.answer1E,
+                                            onChanged : (answer){
+                                              editQuizController.answer1E.text = answer;
+                                              String  idQuestion = myServices.sharePref!.get("idQuestion").toString();
+                                              editQuizController.updateQuestion(idQuestion, answer,"answer1");
+                                              editQuizController.update();
+                                            }
                                           ),
-                                          MultiChooseTextFieldEdit(
+                                          MultiChooseEdit(
                                             color: ColorC.amber,
-                                            ke: 2,
-                                            controller: quizController.answer2E,
+                                            controller: editQuizController.answer2E,
+                                              onChanged : (answer){
+                                                editQuizController.answer2E.text = answer;
+                                                String  idQuestion = myServices.sharePref!.get("idQuestion").toString();
+                                                editQuizController.updateQuestion(idQuestion, answer,"answer2");
+                                                editQuizController.update();
+                                              }
                                           ),
                                         ],
                                       ),
                                       Row(
                                         children: [
-                                          MultiChooseTextFieldEdit(
+                                          MultiChooseEdit(
                                             color: ColorC.blue,
-                                            ke: 3,
-                                            controller: quizController.answer3E,
+                                            controller: editQuizController.answer3E,
+                                              onChanged : (answer){
+                                                editQuizController.answer3E.text = answer;
+                                                String  idQuestion = myServices.sharePref!.get("idQuestion").toString();
+                                                editQuizController.updateQuestion(idQuestion, answer,"answer3");
+                                                editQuizController.update();
+                                              }
                                           ),
-                                          MultiChooseTextFieldEdit(
+                                          MultiChooseEdit(
                                             color: ColorC.green,
-                                            ke: 4,
-                                            controller: quizController.answer4E,
+                                            controller: editQuizController.answer4E,
+                                              onChanged : (answer){
+                                                editQuizController.answer4E.text = answer;
+                                                String  idQuestion = myServices.sharePref!.get("idQuestion").toString();
+                                                editQuizController.updateQuestion(idQuestion, answer,"answer4");
+                                                editQuizController.update();
+                                              }
                                           ),
                                         ],
                                       ),
@@ -162,10 +276,10 @@ class EditQuiz extends StatelessWidget {
                                   ),
                                 ),
                               ],
-                            );});
+                            );
+                            });
                           }
                         },)
-
      );
    }
   }
