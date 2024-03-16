@@ -1,42 +1,33 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../../control/RDB_Controller.dart';
-import '../../../../control/creator/nameQuizController.dart';
-import '../../../../control/creator/quizzesController.dart';
 import '../../../../core/decoration/color.dart';
 
+class EditNameTextField extends StatelessWidget {
 
-class NameQuizTextField extends StatelessWidget {
+  EditNameTextField({super.key,
+    required this.labelText,
+    required this.padding,
+    this.valid,
+    required this.onChanged,
+    required this.icon,
+    required this.maxLength,
+    required this.keyboardType,
+  });
 
-    NameQuizTextField({super.key,
-      required this.padding,
-      required this.controller,
-      required this.labelText,
-      required this.icon,
-      required this.maxLength,
-      required this.keyboardType,
-      this.valid,
-      this.onChanged,
-    });
-
-    EdgeInsetsGeometry padding;
-    final String labelText;
-    final TextEditingController controller;
-    final Widget icon;
-    final int maxLength ;
-    final TextInputType keyboardType;
-    String? Function(String? s)? valid;
-    final void Function(String)? onChanged;
+  String? Function(String? s)? valid;
+  final void Function(String)? onChanged;
+  EdgeInsetsGeometry padding;
+  final String labelText;
+   TextEditingController? controller = TextEditingController();
+  final Widget icon;
+  final int maxLength ;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: padding,
-      child: TextFormField(
-        controller: controller,
+      child: TextField(
         textInputAction: TextInputAction.done,
-        validator: valid,
         maxLength: maxLength,
         textCapitalization: TextCapitalization.words,
         keyboardType: keyboardType,

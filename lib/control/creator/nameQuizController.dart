@@ -32,6 +32,13 @@ class NameOfQuizController extends GetxController{
     }
 
   }
+
+  validatorCode(String code){
+    if(code != valid.toString() ){
+      return "Wrong code";
+    }
+  }
+
   addName(var name,var code, var idUser)async{
     var response = await requestData.postRequest(linkAddName, {
       "name_quiz": name.toString(),
@@ -47,16 +54,17 @@ class NameOfQuizController extends GetxController{
     }
 
   }
+
   getCode()async{
     var response = await requestData.postRequest(linkGetCode, {
       "code_quiz" :code.toString(),
     });
     if(response["status"]=="success"){
-      int val = response["data"][0]["code_quiz"];
-      valid = val;
+      valid = response["data"][0]["code_quiz"];
       update();
     }
   }
+
   getCodeCheck(code)async{
     var response = await requestData.postRequest(linkGetCode, {
       "code_quiz" :code.toString(),
@@ -64,7 +72,6 @@ class NameOfQuizController extends GetxController{
     if(response["status"]=="success"){
       myServices.sharePref!.setInt("idQuiz",response["data"][0]["id_quiz"]) ;
       if(response["data"].length > 0){
-        print(response["data"].length);
         Get.toNamed("/player");
       }
       else{

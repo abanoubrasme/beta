@@ -85,8 +85,7 @@ class QuizzesController extends GetxController{
       "code_quiz" :code.toString(),
     });
     if(response["status"]=="success"){
-      int val = response["data"][0]["code_quiz"];
-      valid = val;
+      valid = response["data"][0]["code_quiz"];
       update();
     }
   }

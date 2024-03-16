@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class PlayerController extends GetxController{
@@ -9,4 +10,7 @@ class PlayerController extends GetxController{
   int rank = 0;
   int totalRank = 0;
   String choose = "";
+  TextEditingController nameP = TextEditingController();
+
+
 }

@@ -1,8 +1,10 @@
 import 'dart:math';
 import 'package:beta/control/creator/quizzesController.dart';
 import 'package:beta/core/constant/widget/customText.dart';
+import 'package:beta/view/creator/widget/addNewQuiz.dart';
 import 'package:beta/view/creator/widget/hasData.dart';
 import 'package:beta/view/creator/widget/nameQuiz.dart';
+import 'package:beta/view/creator/widget/returnToBack.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/constant/widget/customTextButton.dart';
@@ -12,7 +14,7 @@ import '../../../services/myServices.dart';
 import '../widget/TextField/nameQuizTextField.dart';
 import '../widget/cardView.dart';
 import '../widget/indexContainer.dart';
-import '../widget/nameEditTextField.dart';
+import '../widget/editNameTextField.dart';
 import '../widget/showCode.dart';
 import '../widget/slideBackground.dart';
 
@@ -30,113 +32,20 @@ class PageOfQuizzes extends StatelessWidget {
           String lang = myServices.sharePref!.get("lang").toString();
         return   Scaffold(
           appBar: AppBar(
-            backgroundColor:ColorC.white2,
+           // backgroundColor:ColorC.white2,
             elevation: 0,
             toolbarHeight: 70,
             title:CustomText(text:"Main Page".tr, fontSize: 22, color: ColorC.teal, padding: const EdgeInsets.symmetric(horizontal: 0),),
             centerTitle: true,
             actions: [
-              IconButton(
-                onPressed: (){
-                  Get.defaultDialog(
-                      barrierDismissible: false,
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 15),
-                        title: "Add new quiz".tr,
-                        titleStyle: const TextStyle(fontFamily: Font.f1),
-                        titlePadding:  const EdgeInsets.symmetric(vertical: 15),
-                        content: GetBuilder<QuizzesController>(
-                            builder: (quizzesController){
-                          return  SizedBox(width: 350,
-                            child: Form(
-                              key: formKey,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const SizedBox(height: 20,),
-                                  NameQuizTextField(
-                                    labelText: 'quiz name'.tr,
-                                    controller: quizzesController.nameC,
-                                    valid: (name){
-                                      return  quizzesController.validatorName(name!, 20, 2);
-                                    },
-                                    onChanged: (name) {
-                                      quizzesController.name = name ;
-                                     // quizzesController.update();
-                                    }, icon: const Icon(Icons.drive_file_rename_outline),
-                                    maxLength: 20,
-                                    keyboardType: TextInputType.name,
-                                  ),
-                                  const SizedBox(height: 10,),
-                                  NameQuizTextField(
-                                    labelText: 'quiz code'.tr,
-                                    controller: quizzesController.codeC,
-                                    valid: (code) {
-                                      return quizzesController.validatorName(code!, 6, 4);
-                                    },
-                                    onChanged:(code) {
-                                      if(code.isEmpty){
-                                        quizzesController.code = Random().nextInt(10000)+100000;
-                                        quizzesController.getCode();
-                                      }else{
-                                        quizzesController.code = int.parse(code)  ;
-                                        quizzesController.getCode();
-                                      }
-                                    },
-                                    icon: const Icon(Icons.code),
-                                    maxLength: 8,
-                                    keyboardType: TextInputType.number,
-                                  ),
-                                  const SizedBox(height: 20,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                    CustomTextButton(
-                                      text: "Cancel".tr,
-                                      fontSize: 20,
-                                      onPressed: (){
-                                        Get.back();
-                                      },
-                                      color: ColorC.red,),
-                                    const SizedBox(width: 70,),
-                                    CustomTextButton(
-                                      text: "Create".tr,
-                                      fontSize: 20,
-                                      onPressed: () {
-                                        quizzesController.getCode();
-                                        quizzesController.update();
-                                        if(formKey.currentState!.validate()){
-                                          var idUser =  myServices.sharePref!.get("id_user").toString();
-                                          quizzesController.addName(quizzesController.name, quizzesController.code, idUser);
-                                          Get.back();
-                                          quizzesController.update();
-                                        }
-                                        quizzesController.update();
-                                      },
-                                      color: ColorC.green,),
-                                  ],)
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
-                      );
-                },
-                icon:  Icon(Icons.add,color: ColorC.grey,),
-                iconSize: 30,
-              )],
-            leading: IconButton(icon: const Icon(Icons.arrow_back_ios_new),
-              color: ColorC.grey,
-              onPressed: () {
-                Get.offAllNamed("/home");
-              },),
+             AddNewQuiz()
+            ],
+            leading:  Back(page: "/home"),
           ),
           body: FutureBuilder(
             future: quizzesController.getName(myServices.sharePref!.get("id_user").toString()),
             builder: (BuildContext context,AsyncSnapshot snapshot) {
               if(!snapshot.hasData){
-                return const HasData();
-              }
-              if(snapshot.hasError){
                 return const HasData();
               }
               else{
@@ -156,37 +65,39 @@ class PageOfQuizzes extends StatelessWidget {
                                     index: IndexContainer(index: index, height: 90, width: 90,),
                                     title: NameQuiz(name: snapshot.data['data'][index]["name_quiz"], titleSize: 25,),
                                     label: ShowCode(code:snapshot.data['data'][index]["code_quiz"].toString() ),
-                                    background: lang == "en"? SlideBackground(
-                                      color: ColorC.green,
+                                    background: lang == "en"?
+                                    SlideBackground(
+                                      color: ColorC.greenDark,
                                       text: 'Edit'.tr,
                                       icon: Icons.edit,
                                       fontSize: 16,
                                       alignment: Alignment.centerLeft,
                                       padding: const EdgeInsets.only(top: 16, bottom: 18, left: 30), ):
                                     SlideBackground(
-                                      color: ColorC.red,
+                                      color: ColorC.redDark,
                                       text: 'Delete'.tr,
                                       icon: Icons.delete,
                                       fontSize: 16,
                                       alignment: Alignment.centerRight,
                                       padding: const EdgeInsets.only(top: 16, bottom: 18, right: 30), ),
-                                    secondaryBackground:lang == "en"? SlideBackground(
-                                    color: ColorC.red,
+                                    secondaryBackground:lang == "en"?
+                                    SlideBackground(
+                                    color: ColorC.redDark,
                                     text: 'Delete'.tr,
                                     icon: Icons.delete,
                                       fontSize: 16,
                                     alignment: Alignment.centerRight,
                                     padding: const EdgeInsets.only(top: 16, bottom: 18, right: 30),):
                                     SlideBackground(
-                                      color: ColorC.green,
+                                      color: ColorC.greenDark,
                                       text: 'Edit'.tr,
                                       icon: Icons.edit,
                                       fontSize: 16,
                                       alignment: Alignment.centerLeft,
                                       padding: const EdgeInsets.only(top: 16, bottom: 18, left: 30), ),
-                                    confirmDismiss:(direction)async{
+                                    confirmDismiss: (direction) async {
                                         myServices.sharePref!.setInt("idQuiz", snapshot.data['data'][index]["id_quiz"]);
-                                        if (myServices.sharePref!.get("lang")=="en") {
+                                        if (lang=="en") {
                                           if(direction == DismissDirection.endToStart){
                                             Get.defaultDialog(
                                               titlePadding: EdgeInsets.zero,
@@ -202,16 +113,16 @@ class PageOfQuizzes extends StatelessWidget {
                                                   onPressed: () {
                                                     Get.back();
                                                   },
-                                                  color: ColorC.black,),
+                                                  color: ColorC.black, padding: EdgeInsets.zero,),
                                                 CustomTextButton(
                                                   text: "Delete".tr,
                                                   fontSize: 20,
-                                                  color: ColorC.red,
+                                                  color: ColorC.redDark,
                                                   onPressed: () {
                                                     quizzesController.deleteQuiz(myServices.sharePref!.get("idQuiz"));
                                                     Get.back();
                                                     quizzesController.update();
-                                                  },)
+                                                  }, padding: EdgeInsets.zero,)
                                               ],
                                             );
                                           }
@@ -232,11 +143,11 @@ class PageOfQuizzes extends StatelessWidget {
                                                 child: Column(
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
-                                                    const SizedBox(height: 10,),
                                                     CustomText(
-                                                      text:snapshot.data["data"][index]["name_quiz"], fontSize: 20, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
-                                                    const SizedBox(height: 10,),
-                                                    NameEditTextField(
+                                                      text:snapshot.data["data"][index]["name_quiz"],
+                                                      fontSize: 20, color: ColorC.grey2,
+                                                      padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),),
+                                                    EditNameTextField(
                                                       labelText: 'quiz name'.tr,
                                                       onChanged:(name){
                                                         quizzesController.name = name;
@@ -244,8 +155,8 @@ class PageOfQuizzes extends StatelessWidget {
                                                       icon: const Icon(Icons.drive_file_rename_outline),
                                                       maxLength: 20,
                                                       keyboardType: TextInputType.name,
+                                                      padding: const EdgeInsets.only(top: 10,bottom: 20),
                                                     ),
-                                                    const SizedBox(height: 20,),
                                                     Row(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
@@ -255,19 +166,18 @@ class PageOfQuizzes extends StatelessWidget {
                                                           onPressed: () {
                                                             Get.back();
                                                           },
-                                                          color: ColorC.red,),
-                                                        const SizedBox(
-                                                          width: 70,),
+                                                          color: ColorC.redDark,
+                                                          padding: EdgeInsets.symmetric(horizontal: 35),),
                                                         CustomTextButton(
                                                           text: "Edit".tr,
                                                           fontSize: 20,
-                                                          color: ColorC.green,
+                                                          color: ColorC.greenDark,
                                                           onPressed: () {
                                                             quizzesController.updateName(idQuiz);
                                                             quizzesController.update();
                                                             Get.back();
                                                             quizzesController.update();
-                                                          },
+                                                          }, padding: EdgeInsets.symmetric(horizontal: 35),
                                                         ),
                                                       ],)
                                                   ],
@@ -275,7 +185,8 @@ class PageOfQuizzes extends StatelessWidget {
                                               ),
                                             );
                                           }
-                                        }else{
+                                        }
+                                        else{
                                           if(direction == DismissDirection.startToEnd){
                                             Get.defaultDialog(
                                               titlePadding: EdgeInsets.zero,
@@ -291,19 +202,20 @@ class PageOfQuizzes extends StatelessWidget {
                                                   onPressed: () {
                                                     Get.back();
                                                   },
-                                                  color: ColorC.black,),
+                                                  color: ColorC.black, padding: EdgeInsets.symmetric(horizontal: 35),),
                                                 CustomTextButton(
                                                   text: "Delete".tr,
                                                   fontSize: 20,
-                                                  color: ColorC.red,
+                                                  color: ColorC.redDark,
                                                   onPressed: () {
                                                     quizzesController.deleteQuiz(myServices.sharePref!.get("idQuiz"));
                                                     Get.back();
                                                     quizzesController.update();
-                                                  },)
+                                                  }, padding: EdgeInsets.symmetric(horizontal: 35),)
                                               ],
                                             );
-                                          }else {
+                                          }
+                                          else {
                                             myServices.sharePref!.setInt("idQuiz",snapshot.data['data'][index]["id_quiz"])  ;
                                             int? idQuiz = myServices.sharePref!.getInt("idQuiz") ;
                                             WidgetsBinding.instance.addPersistentFrameCallback((_) {
@@ -320,13 +232,11 @@ class PageOfQuizzes extends StatelessWidget {
                                                 child: Column(
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
-                                                    const SizedBox(height: 10,),
                                                     CustomText(
                                                       text:snapshot.data["data"][index]["name_quiz"],
                                                       fontSize: 20, color: ColorC.grey2,
-                                                      padding: const EdgeInsets.symmetric(horizontal: 20.0),),
-                                                    const SizedBox(height: 10,),
-                                                    NameEditTextField(
+                                                      padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),),
+                                                    EditNameTextField(
                                                       labelText: 'quiz name'.tr,
                                                       onChanged:(name){
                                                         quizzesController.name = name;
@@ -334,8 +244,8 @@ class PageOfQuizzes extends StatelessWidget {
                                                       icon: const Icon(Icons.drive_file_rename_outline),
                                                       maxLength: 20,
                                                       keyboardType: TextInputType.name,
+                                                      padding: EdgeInsets.zero,
                                                     ),
-                                                    const SizedBox(height: 20,),
                                                     Row(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
@@ -345,18 +255,18 @@ class PageOfQuizzes extends StatelessWidget {
                                                           onPressed: () {
                                                             Get.back();
                                                           },
-                                                          color: ColorC.red,),
-                                                        const SizedBox(width: 70,),
+                                                          color: ColorC.redDark,
+                                                          padding: const EdgeInsets.symmetric(horizontal: 35),),
                                                         CustomTextButton(
                                                           text: "Edit".tr,
                                                           fontSize: 20,
-                                                          color: ColorC.green,
+                                                          color: ColorC.greenDark,
                                                           onPressed: () {
                                                             quizzesController.updateName(idQuiz);
                                                             quizzesController.update();
                                                             Get.back();
                                                             quizzesController.update();
-                                                          },
+                                                          }, padding: const EdgeInsets.symmetric(horizontal: 35),
                                                         ),
                                                       ],)
                                                   ],
@@ -378,16 +288,3 @@ class PageOfQuizzes extends StatelessWidget {
         });
   }
 }
-
-
-
-
-// AnimateIcon(
-// key: UniqueKey(),
-// onTap: () {},
-// iconType: IconType.continueAnimation,
-// height: 100,
-// width: 100,
-// color: Colors.teal,
-// animateIcon: AnimateIcons.loading5,
-// )

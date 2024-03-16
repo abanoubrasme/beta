@@ -4,8 +4,9 @@ import '../../decoration/font.dart';
 
 class CustomTextButton extends StatelessWidget {
 
-  const CustomTextButton({
+   CustomTextButton({
     super.key,
+    required this.padding,
     required this.text ,
     required this.fontSize,
     required this.onPressed,
@@ -15,16 +16,20 @@ class CustomTextButton extends StatelessWidget {
   final Color color;
   final String text ;
   final double fontSize;
+  EdgeInsetsGeometry padding;
   final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      child:  Text(text,
-        style: TextStyle(
-          color: color,
-          fontSize: fontSize,
-          fontFamily: Font.f1),),);
+    return Padding(
+      padding: padding,
+      child: TextButton(
+        onPressed: onPressed,
+        child:  Text(text,
+          style: TextStyle(
+            color: color,
+            fontSize: fontSize,
+            fontFamily: Font.f1),),),
+    );
   }
 }
