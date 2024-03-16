@@ -24,7 +24,6 @@ class PageOfQuiz extends StatelessWidget {
         String lang = myServices.sharePref!.get("lang").toString();
       return Scaffold(
           appBar: AppBar(
-            backgroundColor: ColorC.white2,
             elevation: 0,
             toolbarHeight: 70,
             title:  CustomText(
@@ -46,7 +45,6 @@ class PageOfQuiz extends StatelessWidget {
                   quizController.answerColor = ColorC.teal.value.toString();
                   quizController.update();
                   Get.toNamed("/quiz");
-                  print(quizController.question);
                 },
                 icon:  Icon(Icons.add,color: ColorC.grey,),
                 iconSize: 30,
@@ -89,28 +87,28 @@ class PageOfQuiz extends StatelessWidget {
                                 name: quizController.lengthQuestion(snapshot.data["data"][index]["question"]),
                                 titleSize: 22,),
                               background: lang == "en"? SlideBackground(
-                                color: ColorC.green,
+                                color: ColorC.greenDark,
                                 text: 'Edit'.tr,
                                 icon: Icons.edit,
                                 fontSize: 15,
                                 alignment: Alignment.centerLeft,
                                 padding: const EdgeInsets.only(top: 13, bottom: 14, left: 30), ):
                               SlideBackground(
-                                color: ColorC.red,
+                                color: ColorC.redDark,
                                 text: 'Delete'.tr,
                                 icon: Icons.delete,
                                 fontSize: 15,
                                 alignment: Alignment.centerRight,
                                 padding: const EdgeInsets.only(top: 13, bottom: 14, right: 30), ),
                               secondaryBackground:lang == "en"? SlideBackground(
-                                color: ColorC.red,
+                                color: ColorC.redDark,
                                 text: 'Delete'.tr,
                                 icon: Icons.delete,
                                 fontSize: 15,
                                 alignment: Alignment.centerRight,
                                 padding: const EdgeInsets.only(top: 13, bottom: 14, right: 30), ):
                               SlideBackground(
-                                color: ColorC.green,
+                                color: ColorC.greenDark,
                                 text: 'Edit'.tr,
                                 icon: Icons.edit,
                                 fontSize: 15,
@@ -134,16 +132,16 @@ class PageOfQuiz extends StatelessWidget {
                                           onPressed: () {
                                             Get.back();
                                           },
-                                          color: ColorC.black,),
+                                          color: ColorC.black, padding: EdgeInsets.zero,),
                                         CustomTextButton(
                                           text: "Delete".tr,
                                           fontSize: 18,
-                                          color: ColorC.red,
+                                          color: ColorC.redDark,
                                           onPressed: () {
                                             quizController.deleteQuestion(myServices.sharePref!.get("idQuestion"));
                                             Get.back();
                                             quizController.update();
-                                          },)
+                                          }, padding: EdgeInsets.zero,)
                                       ],
 
                                     );
@@ -168,16 +166,16 @@ class PageOfQuiz extends StatelessWidget {
                                           onPressed: () {
                                             Get.back();
                                           },
-                                          color: ColorC.black,),
+                                          color: ColorC.black, padding: EdgeInsets.zero,),
                                         CustomTextButton(
                                           text: "Delete".tr,
                                           fontSize: 18,
-                                          color: ColorC.red,
+                                          color: ColorC.redDark,
                                           onPressed: () {
                                             quizController.deleteQuestion(myServices.sharePref!.get("idQuestion"));
                                             Get.back();
                                             quizController.update();
-                                          },)
+                                          }, padding: EdgeInsets.zero,)
                                       ],
 
                                     );

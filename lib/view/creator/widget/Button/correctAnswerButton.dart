@@ -92,10 +92,10 @@ class CorrectAnswerButton extends StatelessWidget {
                       switch (index) {
                         case 0:
                           text = quizController.answer1;
-                          answerColor = ColorC.red.value.toString();
+                          answerColor = ColorC.redDark.value.toString();
                           selectIndexCorrect = index;
                           quizController.correctAnswer = quizController.answer1;
-                          quizController.answerColor = ColorC.red.value.toString();
+                          quizController.answerColor = ColorC.redDark.value.toString();
                           quizController.selectIndexCorrect = index;
                           quizController.update();
                           quizController.update();
@@ -103,10 +103,10 @@ class CorrectAnswerButton extends StatelessWidget {
                           break;
                         case 1:
                           text = quizController.answer2;
-                          answerColor = ColorC.amber.value.toString();
+                          answerColor = ColorC.amberDark.value.toString();
                           selectIndexCorrect = index;
                           quizController.correctAnswer = quizController.answer2;
-                          quizController.answerColor = ColorC.amber.value.toString();
+                          quizController.answerColor = ColorC.amberDark.value.toString();
                           quizController.selectIndexCorrect = index;
                           quizController.update();
                           quizController.update();
@@ -114,10 +114,10 @@ class CorrectAnswerButton extends StatelessWidget {
                           break;
                         case 2:
                           text = quizController.answer3;
-                          answerColor = ColorC.blue.value.toString();
+                          answerColor = ColorC.blueDark.value.toString();
                           selectIndexCorrect = index;
                           quizController.correctAnswer = quizController.answer3;
-                          quizController.answerColor = ColorC.blue.value.toString();
+                          quizController.answerColor = ColorC.blueDark.value.toString();
                           quizController.selectIndexCorrect= index;
                           quizController.update();
                           quizController.update();
@@ -125,10 +125,10 @@ class CorrectAnswerButton extends StatelessWidget {
                           break;
                         case 3:
                           text = quizController.answer4;
-                          answerColor = ColorC.green.value.toString();
+                          answerColor = ColorC.greenDark.value.toString();
                           selectIndexCorrect = index;
                           quizController.correctAnswer = quizController.answer4;
-                          quizController.answerColor = ColorC.green.value.toString();
+                          quizController.answerColor = ColorC.greenDark.value.toString();
                           quizController.selectIndexCorrect = index;
                           quizController.update();
                           quizController.update();

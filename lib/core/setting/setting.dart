@@ -83,7 +83,7 @@ class Setting extends StatelessWidget {
                                      elevation: 0,
                                      child: CheckboxListTile(
                                        title:  const Text("english"),
-                                       activeColor: ColorC.green,
+                                       activeColor: ColorC.greenDark,
                                        value: settingController.checkBoxEN,
                                        onChanged: (value) {
                                         if(settingController.checkBoxEN==false){
@@ -102,7 +102,7 @@ class Setting extends StatelessWidget {
                                      elevation: 0,
                                      child: CheckboxListTile(
                                        title:  Text("arabic".tr),
-                                       activeColor: ColorC.green,
+                                       activeColor: ColorC.greenDark,
                                        value:  settingController.checkBoxAR,
                                        onChanged: (value) {
                                          if(settingController.checkBoxAR==false){

@@ -22,7 +22,7 @@ class EditQuiz extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
               appBar: AppBar(
-                backgroundColor: ColorC.white2,
+              //  backgroundColor: ColorC.white2,
                 elevation: 0,
                 toolbarHeight: 70,
                 centerTitle: true,
@@ -162,7 +162,7 @@ class EditQuiz extends StatelessWidget {
                                               switch (index) {
                                                 case 0:
                                                   editQuizController.correctAnswerE = editQuizController.answer1E.text;
-                                                  editQuizController.answerColorE = ColorC.red.value.toString();
+                                                  editQuizController.answerColorE = ColorC.redDark.value.toString();
                                                   editQuizController.selectIndexCorrectE = index;
                                                   editQuizController.updateCorrectAnswer(idQuestion,
                                                       editQuizController.correctAnswerE,
@@ -172,7 +172,7 @@ class EditQuiz extends StatelessWidget {
                                                   break;
                                                 case 1:
                                                   editQuizController.correctAnswerE = editQuizController.answer2E.text;
-                                                  editQuizController.answerColorE = ColorC.amber.value.toString();
+                                                  editQuizController.answerColorE = ColorC.amberDark.value.toString();
                                                   editQuizController.selectIndexCorrectE = index;
                                                   editQuizController.updateCorrectAnswer(idQuestion,
                                                       editQuizController.correctAnswerE,
@@ -182,7 +182,7 @@ class EditQuiz extends StatelessWidget {
                                                   break;
                                                 case 2:
                                                   editQuizController.correctAnswerE = editQuizController.answer3E.text;
-                                                  editQuizController.answerColorE = ColorC.blue.value.toString();
+                                                  editQuizController.answerColorE = ColorC.blueDark.value.toString();
                                                   editQuizController.selectIndexCorrectE = index;
                                                   editQuizController.updateCorrectAnswer(idQuestion,
                                                       editQuizController.correctAnswerE,
@@ -192,7 +192,7 @@ class EditQuiz extends StatelessWidget {
                                                   break;
                                                 case 3:
                                                   editQuizController.correctAnswerE  = editQuizController.answer4E.text;
-                                                  editQuizController.answerColorE  = ColorC.green.value.toString();
+                                                  editQuizController.answerColorE  = ColorC.greenDark.value.toString();
                                                   editQuizController.selectIndexCorrectE = index;
                                                   editQuizController.update();
                                                   editQuizController.updateCorrectAnswer(idQuestion,
@@ -224,7 +224,7 @@ class EditQuiz extends StatelessWidget {
                                       Row(
                                         children: [
                                           MultiChooseEdit(
-                                            color: ColorC.red,
+                                            color: ColorC.redDark,
                                             controller: editQuizController.answer1E,
                                             onChanged : (answer){
                                               editQuizController.answer1E.text = answer;
@@ -234,7 +234,7 @@ class EditQuiz extends StatelessWidget {
                                             }
                                           ),
                                           MultiChooseEdit(
-                                            color: ColorC.amber,
+                                            color: ColorC.amberDark,
                                             controller: editQuizController.answer2E,
                                               onChanged : (answer){
                                                 editQuizController.answer2E.text = answer;
@@ -248,7 +248,7 @@ class EditQuiz extends StatelessWidget {
                                       Row(
                                         children: [
                                           MultiChooseEdit(
-                                            color: ColorC.blue,
+                                            color: ColorC.blueDark,
                                             controller: editQuizController.answer3E,
                                               onChanged : (answer){
                                                 editQuizController.answer3E.text = answer;
@@ -258,7 +258,7 @@ class EditQuiz extends StatelessWidget {
                                               }
                                           ),
                                           MultiChooseEdit(
-                                            color: ColorC.green,
+                                            color: ColorC.greenDark,
                                             controller: editQuizController.answer4E,
                                               onChanged : (answer){
                                                 editQuizController.answer4E.text = answer;

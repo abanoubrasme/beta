@@ -11,63 +11,64 @@ class NamePlayerTextField extends StatelessWidget {
     required this.prefixIcon,
      this.validator,
     this.maxLength,
-    required this.onChanged,
+    this.controller,
+     this.onChanged,
+    this.keyboardType
     });
 
   final String labelText;
   final Widget prefixIcon;
   int? maxLength;
+  TextInputType? keyboardType;
   void Function(String)? onChanged;
    String Function(String?)? validator;
-
+  TextEditingController? controller;
 
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 90,
-      padding: const EdgeInsets.only(left: 20, right: 20,),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: TextFormField(
-        keyboardType: TextInputType.number,
+        controller: controller,
+        keyboardType: keyboardType,
         maxLength: maxLength,
         validator: validator,
-        cursorColor: Colors.grey[700],
+     //   cursorColor: ColorC.grey2,
         cursorWidth: 3,
         cursorHeight: 28,
         style: TextStyle(
+          fontSize: 20,
           shadows: [
             Shadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: ColorC.grey.withOpacity(.5),
               blurRadius: 7,
               offset: const Offset(0 , 3),
             )
           ],
-          fontSize: 20,
         ),
         strutStyle: const StrutStyle(leading: .5,),
         onChanged:onChanged,
         decoration:InputDecoration(
-          // filled: true,
-          // fillColor: Colors.grey,
-
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black45),
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+          focusedBorder:  OutlineInputBorder(
+           // borderSide: BorderSide(color: ColorC.grey),
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
             gapPadding: 5,
           ),
-          enabledBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            borderSide: BorderSide(color: Colors.black45),
+          enabledBorder:  OutlineInputBorder(
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
+           // borderSide: BorderSide(color: ColorC.grey),
             gapPadding: 5,
           ),
-          errorBorder:  const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.red),
-            borderRadius: BorderRadius.all(Radius.circular(30)),
+          errorBorder:   const OutlineInputBorder(
+            borderSide: BorderSide(color: ColorC.redDark),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
             gapPadding: 5,
           ),
           focusedErrorBorder:  const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.red),
-            borderRadius: BorderRadius.all(Radius.circular(30)),
+            borderSide: BorderSide(color: ColorC.redDark),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
             gapPadding: 5,
           ),
 
@@ -75,7 +76,10 @@ class NamePlayerTextField extends StatelessWidget {
           prefixIconColor: ColorC.grey,
           prefixIcon: prefixIcon,
           alignLabelWithHint: true,
-          labelStyle: const TextStyle(letterSpacing: 1, color: Colors.black45,fontSize: 18,),
+          labelStyle: const TextStyle(
+            letterSpacing: 1,
+           // color: Colors.black45,
+            fontSize: 18,),
         ),
       ),
     );

@@ -1,4 +1,4 @@
-import 'package:beta/view/welcome.dart';
+import 'package:beta/view/home/screen/welcome.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import '../view/auth/Screen/Login.dart';
 import '../view/auth/Screen/SignUp.dart';
@@ -8,7 +8,7 @@ import '../view/creator/Screen/Quiz.dart';
 import '../view/creator/Screen/editQuiz.dart';
 import '../view/creator/Screen/pageQuiz.dart';
 import '../view/creator/Screen/pageQuizzes.dart';
-import '../view/home.dart';
+import '../view/home/screen/home.dart';
 import '../view/player/screen/codeOfQuiz.dart';
 import '../view/player/screen/finalScore.dart';
 import '../view/player/screen/player.dart';

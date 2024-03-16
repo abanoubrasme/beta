@@ -1,7 +1,6 @@
 import 'package:beta/core/decoration/color.dart';
 import 'package:flutter/material.dart';
 
-
 class SlideBackground extends StatelessWidget {
   Color color ;
   String text ;

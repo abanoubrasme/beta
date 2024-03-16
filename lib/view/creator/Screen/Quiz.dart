@@ -21,7 +21,7 @@ class Quiz extends StatelessWidget {
         builder: (quizController){
           return Scaffold(
             appBar: AppBar(
-              backgroundColor: ColorC.white2,
+            //  backgroundColor: ColorC.white2,
               elevation: 0,
               toolbarHeight: 70,
               centerTitle: true,
@@ -74,7 +74,7 @@ class Quiz extends StatelessWidget {
                       Row(
                         children: [
                           MultiChoose(
-                            color: ColorC.red,
+                            color: ColorC.redDark,
                             answer: quizController.answer1,
                             onChanged: (s) {
                               quizController.answer1 = s ;
@@ -82,7 +82,7 @@ class Quiz extends StatelessWidget {
 
                           ),
                           MultiChoose(
-                            color: ColorC.amber,
+                            color: ColorC.amberDark,
                             answer: quizController.answer2,
                             onChanged: (s) {
                               quizController.answer2 = s;
@@ -94,7 +94,7 @@ class Quiz extends StatelessWidget {
                       Row(
                         children: [
                           MultiChoose(
-                            color:ColorC.blue,
+                            color:ColorC.blueDark,
                             answer: quizController.answer3,
                             onChanged: (s) {
                               quizController.answer3 = s;
@@ -102,7 +102,7 @@ class Quiz extends StatelessWidget {
                             // controller: quizController.answer3E,
                           ),
                           MultiChoose(
-                            color:ColorC.green,
+                            color:ColorC.greenDark,
                             answer: quizController.answer4,
                             onChanged: (s) {
                               quizController.answer4 = s;

@@ -118,7 +118,7 @@ class Player extends StatelessWidget {
                                    Row(
                                      children: [
                                        MultiChoosePlayer(
-                                         color: ColorC.red,
+                                         color: ColorC.redDark,
                                          ke:1,
                                          answer: snapshot.data["data"][playerController.next]['answer1'],
                                          onTap: () {
@@ -137,7 +137,7 @@ class Player extends StatelessWidget {
 
                                          },),
                                        MultiChoosePlayer(
-                                         color: ColorC.amber,
+                                         color: ColorC.amberDark,
                                          ke:2, answer: snapshot.data["data"][playerController.next]['answer2'],
                                          onTap: () {
                                            playerController.choose=snapshot.data["data"][playerController.next]['answer2'];
@@ -157,7 +157,7 @@ class Player extends StatelessWidget {
                                    ),
                                    Row(
                                      children: [
-                                       MultiChoosePlayer(color:ColorC.blue,ke: 3,
+                                       MultiChoosePlayer(color:ColorC.blueDark,ke: 3,
                                          answer: snapshot.data["data"][playerController.next]['answer3'],
                                          onTap: () {
                                            playerController.choose=snapshot.data["data"][playerController.next]['answer3'];
@@ -173,7 +173,7 @@ class Player extends StatelessWidget {
 
                                            playerController.update();
                                          },),
-                                       MultiChoosePlayer(color : ColorC.green,ke:4,
+                                       MultiChoosePlayer(color : ColorC.greenDark,ke:4,
                                          answer: snapshot.data["data"][playerController.next]['answer4'],
                                          onTap: () {
                                            playerController.choose=snapshot.data["data"][playerController.next]['answer4'];
