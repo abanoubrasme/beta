@@ -6,10 +6,17 @@ class SlideBackground extends StatelessWidget {
   Color color ;
   String text ;
   IconData icon ;
+  double fontSize ;
   AlignmentGeometry alignment;
   EdgeInsetsGeometry padding ;
-   SlideBackground({super.key, required this.color, required this.text,
-     required this.icon,required this.alignment,required this.padding});
+
+   SlideBackground({super.key,
+     required this.color,
+     required this.text,
+     required this.icon,
+     required this.fontSize,
+     required this.alignment
+     ,required this.padding});
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +32,14 @@ class SlideBackground extends StatelessWidget {
                Icon(
                 icon ,
                 color: Colors.white,
-                size: 25,
+                size: 23,
               ),
-              const SizedBox(height: 7,),
+              const SizedBox(height: 4,),
               Text( text,
                 style:  TextStyle(
                     color: ColorC.white,
                     fontWeight: FontWeight.w700,
-                    fontSize: 17),
+                    fontSize: fontSize),
                 textAlign: TextAlign.left,
               ),
             //  const SizedBox(height: 5,),

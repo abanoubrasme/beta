@@ -10,7 +10,10 @@ class CorrectAnswerButton extends StatelessWidget {
    String text ;
    String answerColor ;
    int selectIndexCorrect;
-   CorrectAnswerButton({super.key, required this.text, required this.answerColor, required this.selectIndexCorrect});
+   CorrectAnswerButton({super.key,
+     required this.text,
+     required this.answerColor,
+     required this.selectIndexCorrect});
    QuizController quizController = Get.put(QuizController());
 
   @override
@@ -23,14 +26,15 @@ class CorrectAnswerButton extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
               color: Color(int.parse(answerColor)),
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 3,
-                    blurRadius: 5,
-                    offset: const Offset(2, 4)),
-              ]),
+              borderRadius: BorderRadius.circular(5),
+              // boxShadow: [
+              //   BoxShadow(
+              //       color: Colors.grey.withOpacity(0.5),
+              //       spreadRadius: 3,
+              //       blurRadius: 5,
+              //       offset: const Offset(2, 4)),
+              // ]
+          ),
           child:  Center(
               child: Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8),
@@ -51,12 +55,12 @@ class CorrectAnswerButton extends StatelessWidget {
               quizController.answer4 == "")
           {
             Get.defaultDialog(
-                title: "!Warning",
+                title: "!Warning".tr,
                 titleStyle: const TextStyle(fontFamily: Font.f1,fontSize: 23),
                 content:  Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text("Write The ِِِAnswers First, Then Choose The Correct Answer".tr,
-                               style: TextStyle(fontFamily: Font.f1),
+                               style: const TextStyle(fontFamily: Font.f1),
                     textAlign: TextAlign.center,),
                 ),);
           } else {

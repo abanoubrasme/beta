@@ -24,25 +24,19 @@ class SignUp extends StatelessWidget {
               children: [
                 const SizedBox(height: 20,),
                  Center(
-                    child: Text(
-                      "Sign Up".tr,
+                    child: Text("Sign Up".tr,
                       style: const TextStyle(color: Colors.black38,fontSize: 25,fontFamily: 'ProtestStrike'),
                     )),
-                const SizedBox(
-                  height: 50,
-                ),
-                const Center(
-                    child: Text(
-                      "Welcome to BeTa",
-                      style: TextStyle(
+                const SizedBox(height: 50,),
+                 Center(
+                    child: Text("Welcome to BeTa".tr,
+                      style: const TextStyle(
                           color: Colors.black54,
                           fontSize: 35,fontFamily: Font.f1),
                     )),
-                const SizedBox(
-                  height: 30,
-                ),
+                const SizedBox(height: 30,),
                 LoginTextField(
-                  labelText: 'user name',
+                  labelText: 'user name'.tr,
                   prefixIcon: const Icon(
                     Icons.person_outline_outlined,
                   ),
@@ -53,7 +47,7 @@ class SignUp extends StatelessWidget {
 
                 ),
                 LoginTextField(
-                  labelText: 'email',
+                  labelText: 'email'.tr,
                   prefixIcon: const Icon(
                     Icons.email_outlined,
                   ),
@@ -61,10 +55,9 @@ class SignUp extends StatelessWidget {
                   validator: (s) {
                     return authController.validator(s!, 40, 3);
                   }, obscureText: false, enableSuggestions: true,
-
                 ),
                 LoginTextField(
-                  labelText: 'password',
+                  labelText: 'password'.tr,
                   prefixIcon: const Icon(Icons.lock_outline),
                   suffixIcon: SizedBox(
                     width: 55,
@@ -83,26 +76,7 @@ class SignUp extends StatelessWidget {
                   obscureText: !helper.obscure,
                   enableSuggestions: helper.obscure,
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                     Text("Do you Have An Account?".tr),
-                    TextButton(
-                        onPressed: () {
-                          Get.toNamed("/login");
-                        },
-                        child: const Text(
-                          "Login",
-                          style: TextStyle(color: Colors.teal,fontFamily: Font.f1),
-                        ))
-                  ],
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
+                const SizedBox(height: 70,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 140),
                   child: MaterialButton(
@@ -133,6 +107,20 @@ class SignUp extends StatelessWidget {
 
                     },
                   ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Do you have an account?".tr),
+                    TextButton(
+                        onPressed: () {
+                          Get.toNamed("/login");
+                        },
+                        child:  Text(
+                          "Login".tr,
+                          style: const TextStyle(color: Colors.teal,fontFamily: Font.f1),
+                        ))
+                  ],
                 ),
               ],
             ),

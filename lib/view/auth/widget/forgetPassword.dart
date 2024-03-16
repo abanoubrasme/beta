@@ -14,10 +14,14 @@ class ForgetPassword extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: TextButton(
           onPressed: (){
-            Get.to(Forget());
-          }
-          , child: Text("Do you Forget Password?   ".tr,
-                     style: TextStyle(color: ColorC.grey),)),
+            Get.offNamed("/forget");}
+          , child: Row(
+            children: [
+              const SizedBox(width: 15,),
+              Text("Do you forget password?".tr,
+                         style: TextStyle(color: ColorC.grey),),
+            ],
+          )),
     );
   }
 }

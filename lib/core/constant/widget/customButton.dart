@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import '../../decoration/color.dart';
 import '../../decoration/font.dart';
 
-class CustomTextButton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
 
-  const CustomTextButton({
-    super.key,
+  const CustomButton({super.key,
     required this.text ,
-    required this.fontSize,
-    required this.onPressed,
-    required this.color,
-    });
+    required this.onPressed
+  });
 
-  final Color color;
-  final String text ;
-  final double fontSize;
+  final String text;
   final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      child:  Text(text,
-        style: TextStyle(
-          color: color,
-          fontSize: fontSize,
-          fontFamily: Font.f1),),);
+    return Container(
+        width: 150,
+        height: 55,
+        decoration: BoxDecoration(
+          border: Border.all(width: 2, color: ColorC.teal),
+          borderRadius: BorderRadius.circular(15),
+          color: ColorC.teal,
+        ),
+        margin:  const EdgeInsets.all(15),
+        child: TextButton(
+            onPressed: onPressed,
+            child: Text(text,
+              style: TextStyle(fontSize: 24, color: ColorC.white,fontFamily: Font.f1),
+            )));
   }
 }

@@ -1,8 +1,6 @@
 import 'package:beta/control/creator/quizzesController.dart';
-import 'package:beta/view/creator/widget/slideBackground.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
 
 class CardView extends StatelessWidget {
@@ -18,9 +16,7 @@ class CardView extends StatelessWidget {
      required this.label,
      required this.background,
      required this.secondaryBackground,
-
    });
-
    Key keys;
    Widget label;
    Widget title;
@@ -35,7 +31,7 @@ class CardView extends StatelessWidget {
         builder: (quizzesController){
           return  Card(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
+              borderRadius: BorderRadius.circular(5.0),
             ),
             child: Dismissible(
                 movementDuration: const Duration(milliseconds: 1000),

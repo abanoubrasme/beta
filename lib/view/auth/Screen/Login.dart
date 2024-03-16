@@ -27,13 +27,13 @@ class Login extends StatelessWidget {
           child: ListView(
             children: [
               const SizedBox(height: 30,),
-               CustomText(text: "Login", fontSize: 22, color: ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
+               CustomText(text: "Login".tr, fontSize: 22, color: ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
               const SizedBox(height: 50,),
-               CustomText(text: 'Welcome to BeTa', fontSize: 40, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),
+               CustomText(text: 'Welcome to BeTa'.tr, fontSize: 40, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),
                ),
               const SizedBox(height: 30,),
               LoginTextField(
-                labelText: 'user name',
+                labelText: 'user name'.tr,
                 prefixIcon:  const Icon(
                   Icons.person_outline_outlined,
                 ),
@@ -48,7 +48,7 @@ class Login extends StatelessWidget {
                 obscureText: false, enableSuggestions: true,
               ),
               LoginTextField(
-                labelText: 'password',
+                labelText: 'password'.tr,
                 prefixIcon:   const Icon(Icons.lock_outline,),
                 suffixIcon: SizedBox(
                   width: 55,
@@ -72,9 +72,7 @@ class Login extends StatelessWidget {
                 enableSuggestions: helper.obscure,
               ),
               const ForgetPassword(),
-              const SizedBox(
-                height: 50,
-              ),
+              const SizedBox(height: 50,),
               LoginButton(
                  text: "Login".tr,
                  onPressed: () {
@@ -87,8 +85,8 @@ class Login extends StatelessWidget {
              }
            ),
               SignUpButton(
-                text: 'Do you create a new account?'.tr,
-                textButton: 'Sign Up',
+                text: 'Do you want create a new account?'.tr,
+                textButton: 'Sign Up'.tr,
                 onPressed: () { Get.toNamed("/signUp"); }, ),
               const SizedBox(height: 25,),
             ],

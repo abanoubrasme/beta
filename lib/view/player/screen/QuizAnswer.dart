@@ -1,4 +1,4 @@
-import 'package:beta/view/player/widget/CustomButtonChosseExpanded.dart';
+import 'package:beta/view/player/widget/buttonMultiChosse.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/decoration/color.dart';

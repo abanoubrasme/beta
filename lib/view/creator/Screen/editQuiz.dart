@@ -13,14 +13,18 @@ import '../widget/TextField/questionTextFieldEdit.dart';
 
 class EditQuiz extends StatelessWidget {
    EditQuiz({super.key});
+
    EditQuizController editQuizController =Get.put(EditQuizController());
    QuizController quizController =Get.put(QuizController());
    MyServices myServices = Get.find();
+
    @override
   Widget build(BuildContext context) {
     return  Scaffold(
               appBar: AppBar(
-                backgroundColor: ColorC.teal,
+                backgroundColor: ColorC.white2,
+                elevation: 0,
+                toolbarHeight: 70,
                 centerTitle: true,
                 title: const Text(""),
                 leading: IconButton(
@@ -28,21 +32,15 @@ class EditQuiz extends StatelessWidget {
                     quizController.update();
                     Get.back();
                   },
-                  icon: const Icon(Icons.arrow_back_outlined) ,
+                  icon: Icon(Icons.arrow_back_ios_new,color: ColorC.grey,) ,
                 ),
                 actions: [
                   MaterialButton(
                       onPressed: () {
-                        // String idQuestion = myServices.sharePref!.get("idQuestion").toString();
-                        // editQuizController.updateQuestion(idQuestion,editQuizController.questionE.text,"question");
-                        // editQuizController.updateQuestion(idQuestion,editQuizController.answer1E.text,'answer1');
-                        // editQuizController.updateQuestion(idQuestion,editQuizController.answer2E.text,'answer2');
-                        // editQuizController.updateQuestion(idQuestion,editQuizController.answer3E.text,'answer3');
-                        // editQuizController.updateQuestion(idQuestion,editQuizController.answer4E.text,'answer4');
                         editQuizController.update();
                         Get.toNamed("pageOfQuiz");
                       },
-                      child:CustomText(text:"Save".tr,color: ColorC.white, fontSize: 20, padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child:CustomText(text:"Save".tr,color: ColorC.grey, fontSize: 20, padding: const EdgeInsets.symmetric(horizontal: 0),
                       )),
                 ],
               ),
@@ -76,12 +74,11 @@ class EditQuiz extends StatelessWidget {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: TimeEdit(
+                                      child: TimeButtonEdit(
                                           time: editQuizController.timeE,
                                           selectIndexTime: editQuizController.selectIndexTimeE,
                                           onSelected: (s, index, b) async {
                                           String idQuestion = myServices.sharePref!.getInt("idQuestion").toString();
-                                          print(idQuestion);
                                           switch (index) {
                                             case 0:
                                               editQuizController.timeE = 5;

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../core/constant/link_api.dart';
 import '../../core/decoration/color.dart';
@@ -13,7 +12,7 @@ class QuizController extends GetxController{
   late String answer2 ;
   late String answer3 ;
   late String answer4 ;
-  String correctAnswer = "Select the Correct answer";
+  String correctAnswer = "Select the Correct answer".tr;
   int time = 5 ;
   int selectIndexTime    = 8 ;
   int selectIndexCorrect = 5 ;

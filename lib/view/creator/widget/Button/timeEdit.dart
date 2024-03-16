@@ -6,13 +6,13 @@ import 'package:group_button/group_button.dart';
 import '../../../../core/constant/widget/customText.dart';
 import '../../../../services/myServices.dart';
 
-class TimeEdit extends StatelessWidget {
+class TimeButtonEdit extends StatelessWidget {
 
   int time ;
   int selectIndexTime ;
   dynamic Function(String , int, bool)? onSelected;
 
-  TimeEdit({super.key,
+  TimeButtonEdit({super.key,
     required this.time,
     required this.selectIndexTime,
     required this.onSelected
@@ -30,14 +30,15 @@ class TimeEdit extends StatelessWidget {
               const EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
                   color: ColorC.teal,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        color: ColorC.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 5,
-                        offset: const Offset(2, 4)),
-                  ]),
+                  borderRadius: BorderRadius.circular(5),
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //       color: ColorC.grey.withOpacity(0.5),
+                  //       spreadRadius: 3,
+                  //       blurRadius: 5,
+                  //       offset: const Offset(2, 4)),
+                  // ]
+              ),
               child:  Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

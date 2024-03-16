@@ -24,7 +24,7 @@ class Setting extends StatelessWidget {
             onPressed: (){
               Get.back();
             },
-            icon: const Icon(Icons.arrow_back_outlined),
+            icon: const Icon(Icons.arrow_back_ios_new_outlined),
             color: ColorC.black,
         ),
       ),
@@ -83,6 +83,7 @@ class Setting extends StatelessWidget {
                                      elevation: 0,
                                      child: CheckboxListTile(
                                        title:  const Text("english"),
+                                       activeColor: ColorC.green,
                                        value: settingController.checkBoxEN,
                                        onChanged: (value) {
                                         if(settingController.checkBoxEN==false){
@@ -101,6 +102,7 @@ class Setting extends StatelessWidget {
                                      elevation: 0,
                                      child: CheckboxListTile(
                                        title:  Text("arabic".tr),
+                                       activeColor: ColorC.green,
                                        value:  settingController.checkBoxAR,
                                        onChanged: (value) {
                                          if(settingController.checkBoxAR==false){
@@ -109,13 +111,10 @@ class Setting extends StatelessWidget {
                                            localeController.changeLanguage("ar");
                                            settingController.update();
                                        }
-
                                        },
-
                                      ),
                                    ),
                                  ),
-                              
                             ],
                           ),
                         );
@@ -131,46 +130,3 @@ class Setting extends StatelessWidget {
     );
   }
 }
-// ListTile(
-// title: Text("english".tr,
-// style: TextStyle(color: ColorC.black,fontFamily: Font.f1,fontSize: 20),),
-// leading: Checkbox.adaptive(
-// shape: const OvalBorder(side:BorderSide(width: 20,color: Colors.red) ),
-// value: settingController.checkBoxEN,
-// onChanged: (value) {
-// settingController.checkBoxEN = value!;
-// settingController.checkBoxAR = !value!;
-// localeController.changeLanguage("en");
-// settingController.update();
-// },checkColor: ColorC.green,
-// activeColor: ColorC.green,
-// ),
-// onTap: (){
-// localeController.changeLanguage("en");
-// settingController.checkBoxEN = !settingController.checkBoxEN;
-// settingController.checkBoxAR = !settingController.checkBoxAR;
-// settingController.update();
-// },
-// ),
-// ListTile(
-// title: Text("arabic".tr,
-// style: TextStyle(color: ColorC.black,fontFamily: Font.f1,fontSize: 20),),
-// leading: Checkbox.adaptive(
-// shape: const OvalBorder(side:BorderSide(width: 20,color: Colors.red) ),
-// value: settingController.checkBoxAR,
-// onChanged: ( value) {
-// settingController.checkBoxAR = value!;
-// settingController.checkBoxEN = !value!;
-// localeController.changeLanguage("ar");
-// settingController.update();
-// },checkColor: ColorC.green,
-// activeColor: ColorC.green,
-// ),
-// onTap: (){
-// print("=============");
-// localeController.changeLanguage("ar");
-// settingController.checkBoxAR = !settingController.checkBoxAR;
-// settingController.checkBoxEN = !settingController.checkBoxEN;
-// settingController.update();
-// },
-// ),

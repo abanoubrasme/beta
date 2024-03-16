@@ -35,7 +35,7 @@ class Forget extends StatelessWidget {
                       fontSize: 15, color: ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                   const SizedBox(height: 30,),
                   LoginTextField(
-                    labelText: 'email',
+                    labelText: 'email'.tr,
                     prefixIcon:    const Icon(
                       Icons.email_outlined,
                     ),
@@ -47,16 +47,16 @@ class Forget extends StatelessWidget {
                   ),
                   const SizedBox(height: 50,),
                   LoginButton(
-                    text: "Request reset link".tr,
+                    text: "Request reset a link".tr,
                     onPressed: () {
-                      Get.to( const VerifyCode());
+                      Get.offNamed( "/verifyCode");
                     },),
 
                   const SizedBox(height: 20,),
                   SignUpButton(
                       textButton: "Back to Login".tr,
                       onPressed: () {
-                          Get.toNamed("/login");
+                          Get.offNamed("/login");
                           },
                       text: '', ),
 

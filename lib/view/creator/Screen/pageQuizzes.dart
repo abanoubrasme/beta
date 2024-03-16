@@ -5,7 +5,7 @@ import 'package:beta/view/creator/widget/hasData.dart';
 import 'package:beta/view/creator/widget/nameQuiz.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../core/constant/widget/customButton.dart';
+import '../../../core/constant/widget/customTextButton.dart';
 import '../../../core/decoration/color.dart';
 import '../../../core/decoration/font.dart';
 import '../../../services/myServices.dart';
@@ -23,16 +23,17 @@ class PageOfQuizzes extends StatelessWidget {
    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
    MyServices myServices = Get.find();
 
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<QuizzesController>(
         builder: (quizzesController){
+          String lang = myServices.sharePref!.get("lang").toString();
         return   Scaffold(
           appBar: AppBar(
-            backgroundColor: ColorC.teal,
+            backgroundColor:ColorC.white2,
             elevation: 0,
-            title:CustomText(text:"Main Page".tr, fontSize: 22, color: ColorC.white, padding: const EdgeInsets.symmetric(horizontal: 0),),
+            toolbarHeight: 70,
+            title:CustomText(text:"Main Page".tr, fontSize: 22, color: ColorC.teal, padding: const EdgeInsets.symmetric(horizontal: 0),),
             centerTitle: true,
             actions: [
               IconButton(
@@ -40,7 +41,7 @@ class PageOfQuizzes extends StatelessWidget {
                   Get.defaultDialog(
                       barrierDismissible: false,
                         contentPadding: const EdgeInsets.symmetric(horizontal: 15),
-                        title: "Add new quiz",
+                        title: "Add new quiz".tr,
                         titleStyle: const TextStyle(fontFamily: Font.f1),
                         titlePadding:  const EdgeInsets.symmetric(vertical: 15),
                         content: GetBuilder<QuizzesController>(
@@ -53,7 +54,7 @@ class PageOfQuizzes extends StatelessWidget {
                                 children: [
                                   const SizedBox(height: 20,),
                                   NameQuizTextField(
-                                    labelText: 'quiz name',
+                                    labelText: 'quiz name'.tr,
                                     controller: quizzesController.nameC,
                                     valid: (name){
                                       return  quizzesController.validatorName(name!, 20, 2);
@@ -67,7 +68,7 @@ class PageOfQuizzes extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 10,),
                                   NameQuizTextField(
-                                    labelText: 'quiz code',
+                                    labelText: 'quiz code'.tr,
                                     controller: quizzesController.codeC,
                                     valid: (code) {
                                       return quizzesController.validatorName(code!, 6, 4);
@@ -120,11 +121,11 @@ class PageOfQuizzes extends StatelessWidget {
                         }),
                       );
                 },
-                icon: const Icon(Icons.add),
+                icon:  Icon(Icons.add,color: ColorC.grey,),
                 iconSize: 30,
               )],
-            leading: IconButton(icon: const Icon(Icons.arrow_back_outlined),
-              color: Colors.white,
+            leading: IconButton(icon: const Icon(Icons.arrow_back_ios_new),
+              color: ColorC.grey,
               onPressed: () {
                 Get.offAllNamed("/home");
               },),
@@ -155,108 +156,214 @@ class PageOfQuizzes extends StatelessWidget {
                                     index: IndexContainer(index: index, height: 90, width: 90,),
                                     title: NameQuiz(name: snapshot.data['data'][index]["name_quiz"], titleSize: 25,),
                                     label: ShowCode(code:snapshot.data['data'][index]["code_quiz"].toString() ),
-                                    background: SlideBackground(
+                                    background: lang == "en"? SlideBackground(
                                       color: ColorC.green,
-                                      text: 'Edit',
+                                      text: 'Edit'.tr,
                                       icon: Icons.edit,
+                                      fontSize: 16,
                                       alignment: Alignment.centerLeft,
-                                      padding: const EdgeInsets.only(top: 18, bottom: 20, left: 30),),
-                                    secondaryBackground: SlideBackground(
+                                      padding: const EdgeInsets.only(top: 16, bottom: 18, left: 30), ):
+                                    SlideBackground(
+                                      color: ColorC.red,
+                                      text: 'Delete'.tr,
+                                      icon: Icons.delete,
+                                      fontSize: 16,
+                                      alignment: Alignment.centerRight,
+                                      padding: const EdgeInsets.only(top: 16, bottom: 18, right: 30), ),
+                                    secondaryBackground:lang == "en"? SlideBackground(
                                     color: ColorC.red,
-                                    text: 'Delete',
+                                    text: 'Delete'.tr,
                                     icon: Icons.delete,
+                                      fontSize: 16,
                                     alignment: Alignment.centerRight,
-                                    padding: const EdgeInsets.only(top: 18, bottom: 20, right: 30),),
+                                    padding: const EdgeInsets.only(top: 16, bottom: 18, right: 30),):
+                                    SlideBackground(
+                                      color: ColorC.green,
+                                      text: 'Edit'.tr,
+                                      icon: Icons.edit,
+                                      fontSize: 16,
+                                      alignment: Alignment.centerLeft,
+                                      padding: const EdgeInsets.only(top: 16, bottom: 18, left: 30), ),
                                     confirmDismiss:(direction)async{
                                         myServices.sharePref!.setInt("idQuiz", snapshot.data['data'][index]["id_quiz"]);
-                                        if (direction == DismissDirection.endToStart) {
-                                          Get.defaultDialog(
-                                            titlePadding: EdgeInsets.zero,
-                                            title: "",
-                                            content: CustomText(
+                                        if (myServices.sharePref!.get("lang")=="en") {
+                                          if(direction == DismissDirection.endToStart){
+                                            Get.defaultDialog(
+                                              titlePadding: EdgeInsets.zero,
+                                              title: "",
+                                              content: CustomText(
                                                 text: "Are you sure you want to delete this quiz?".tr,
                                                 fontSize: 22,
                                                 color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
-                                            actions: <Widget>[
-                                              CustomTextButton(
-                                                text: "Cancel".tr,
-                                                fontSize: 20,
-                                                onPressed: () {
-                                                  Get.back();
-                                                },
-                                                color: ColorC.black,),
-                                              CustomTextButton(
-                                                text: "Delete".tr,
-                                                fontSize: 20,
-                                                color: ColorC.red,
-                                                onPressed: () {
-                                                  quizzesController.deleteQuiz(myServices.sharePref!.get("idQuiz"));
-                                                  Get.back();
-                                                  quizzesController.update();
-                                                },)
-                                            ],
-                                          );
-                                        }
-                                        else {
-                                           myServices.sharePref!.setInt("idQuiz",snapshot.data['data'][index]["id_quiz"])  ;
-                                           int? idQuiz = myServices.sharePref!.getInt("idQuiz") ;
-                                          WidgetsBinding.instance.addPersistentFrameCallback((_) {
-                                            quizzesController.nameE.text = snapshot.data?['data'][index]["name_quiz"]??"";
-                                          });
-                                          Get.defaultDialog(
-                                            barrierDismissible: false,
-                                            contentPadding: const EdgeInsets.symmetric(horizontal: 15),
-                                            title: "Edit name quiz",
-                                            titleStyle: const TextStyle(fontFamily: Font.f1),
-                                            titlePadding: const EdgeInsets.symmetric(vertical: 15),
-                                            content: SizedBox(
-                                              width: 350,
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: [
-                                                  const SizedBox(height: 10,),
-                                                  CustomText(
-                                                    text:snapshot.data["data"][index]["name_quiz"], fontSize: 20, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
-                                                  const SizedBox(height: 10,),
-                                                  NameEditTextField(
-                                                    labelText: 'quiz name',
-                                                    onChanged:(name){
-                                                      quizzesController.name = name;
-                                                      print(quizzesController.name);
-                                                    },
-                                                    icon: const Icon(Icons.drive_file_rename_outline),
-                                                    maxLength: 20,
-                                                    keyboardType: TextInputType.name,
-                                                  ),
-                                                  const SizedBox(height: 20,),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    children: [
-                                                      CustomTextButton(
-                                                        text: "Cancel".tr,
-                                                        fontSize: 20,
-                                                        onPressed: () {
-                                                          Get.back();
-                                                        },
-                                                        color: ColorC.red,),
-                                                      const SizedBox(
-                                                        width: 70,),
-                                                      CustomTextButton(
-                                                        text: "Edit".tr,
-                                                        fontSize: 20,
-                                                        color: ColorC.green,
-                                                        onPressed: () {
-                                                          quizzesController.updateName(idQuiz);
-                                                          quizzesController.update();
-                                                          Get.back();
-                                                          quizzesController.update();
-                                                        },
-                                                      ),
-                                                    ],)
-                                                ],
+                                              actions: <Widget>[
+                                                CustomTextButton(
+                                                  text: "Cancel".tr,
+                                                  fontSize: 20,
+                                                  onPressed: () {
+                                                    Get.back();
+                                                  },
+                                                  color: ColorC.black,),
+                                                CustomTextButton(
+                                                  text: "Delete".tr,
+                                                  fontSize: 20,
+                                                  color: ColorC.red,
+                                                  onPressed: () {
+                                                    quizzesController.deleteQuiz(myServices.sharePref!.get("idQuiz"));
+                                                    Get.back();
+                                                    quizzesController.update();
+                                                  },)
+                                              ],
+                                            );
+                                          }
+                                          else {
+                                            myServices.sharePref!.setInt("idQuiz",snapshot.data['data'][index]["id_quiz"])  ;
+                                            int? idQuiz = myServices.sharePref!.getInt("idQuiz") ;
+                                            WidgetsBinding.instance.addPersistentFrameCallback((_) {
+                                              quizzesController.nameE.text = snapshot.data?['data'][index]["name_quiz"]??"";
+                                            });
+                                            Get.defaultDialog(
+                                              barrierDismissible: false,
+                                              contentPadding: const EdgeInsets.symmetric(horizontal: 15),
+                                              title: "Edit name quiz".tr,
+                                              titleStyle: const TextStyle(fontFamily: Font.f1),
+                                              titlePadding: const EdgeInsets.symmetric(vertical: 15),
+                                              content: SizedBox(
+                                                width: 350,
+                                                child: Column(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: [
+                                                    const SizedBox(height: 10,),
+                                                    CustomText(
+                                                      text:snapshot.data["data"][index]["name_quiz"], fontSize: 20, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
+                                                    const SizedBox(height: 10,),
+                                                    NameEditTextField(
+                                                      labelText: 'quiz name'.tr,
+                                                      onChanged:(name){
+                                                        quizzesController.name = name;
+                                                      },
+                                                      icon: const Icon(Icons.drive_file_rename_outline),
+                                                      maxLength: 20,
+                                                      keyboardType: TextInputType.name,
+                                                    ),
+                                                    const SizedBox(height: 20,),
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        CustomTextButton(
+                                                          text: "Cancel".tr,
+                                                          fontSize: 20,
+                                                          onPressed: () {
+                                                            Get.back();
+                                                          },
+                                                          color: ColorC.red,),
+                                                        const SizedBox(
+                                                          width: 70,),
+                                                        CustomTextButton(
+                                                          text: "Edit".tr,
+                                                          fontSize: 20,
+                                                          color: ColorC.green,
+                                                          onPressed: () {
+                                                            quizzesController.updateName(idQuiz);
+                                                            quizzesController.update();
+                                                            Get.back();
+                                                            quizzesController.update();
+                                                          },
+                                                        ),
+                                                      ],)
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          );
+                                            );
+                                          }
+                                        }else{
+                                          if(direction == DismissDirection.startToEnd){
+                                            Get.defaultDialog(
+                                              titlePadding: EdgeInsets.zero,
+                                              title: "",
+                                              content: CustomText(
+                                                text: "Are you sure you want to delete this quiz?".tr,
+                                                fontSize: 22,
+                                                color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
+                                              actions: <Widget>[
+                                                CustomTextButton(
+                                                  text: "Cancel".tr,
+                                                  fontSize: 20,
+                                                  onPressed: () {
+                                                    Get.back();
+                                                  },
+                                                  color: ColorC.black,),
+                                                CustomTextButton(
+                                                  text: "Delete".tr,
+                                                  fontSize: 20,
+                                                  color: ColorC.red,
+                                                  onPressed: () {
+                                                    quizzesController.deleteQuiz(myServices.sharePref!.get("idQuiz"));
+                                                    Get.back();
+                                                    quizzesController.update();
+                                                  },)
+                                              ],
+                                            );
+                                          }else {
+                                            myServices.sharePref!.setInt("idQuiz",snapshot.data['data'][index]["id_quiz"])  ;
+                                            int? idQuiz = myServices.sharePref!.getInt("idQuiz") ;
+                                            WidgetsBinding.instance.addPersistentFrameCallback((_) {
+                                              quizzesController.nameE.text = snapshot.data?['data'][index]["name_quiz"]??"";
+                                            });
+                                            Get.defaultDialog(
+                                              barrierDismissible: false,
+                                              contentPadding: const EdgeInsets.symmetric(horizontal: 15),
+                                              title: "Edit name quiz".tr,
+                                              titleStyle: const TextStyle(fontFamily: Font.f1),
+                                              titlePadding: const EdgeInsets.symmetric(vertical: 15),
+                                              content: SizedBox(
+                                                width: 350,
+                                                child: Column(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: [
+                                                    const SizedBox(height: 10,),
+                                                    CustomText(
+                                                      text:snapshot.data["data"][index]["name_quiz"],
+                                                      fontSize: 20, color: ColorC.grey2,
+                                                      padding: const EdgeInsets.symmetric(horizontal: 20.0),),
+                                                    const SizedBox(height: 10,),
+                                                    NameEditTextField(
+                                                      labelText: 'quiz name'.tr,
+                                                      onChanged:(name){
+                                                        quizzesController.name = name;
+                                                      },
+                                                      icon: const Icon(Icons.drive_file_rename_outline),
+                                                      maxLength: 20,
+                                                      keyboardType: TextInputType.name,
+                                                    ),
+                                                    const SizedBox(height: 20,),
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        CustomTextButton(
+                                                          text: "Cancel".tr,
+                                                          fontSize: 20,
+                                                          onPressed: () {
+                                                            Get.back();
+                                                          },
+                                                          color: ColorC.red,),
+                                                        const SizedBox(width: 70,),
+                                                        CustomTextButton(
+                                                          text: "Edit".tr,
+                                                          fontSize: 20,
+                                                          color: ColorC.green,
+                                                          onPressed: () {
+                                                            quizzesController.updateName(idQuiz);
+                                                            quizzesController.update();
+                                                            Get.back();
+                                                            quizzesController.update();
+                                                          },
+                                                        ),
+                                                      ],)
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          }
                                         }
                                     },
                                   );

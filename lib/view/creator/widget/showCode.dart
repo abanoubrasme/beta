@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../core/decoration/color.dart';
 import '../../../core/decoration/font.dart';
+import '../../../services/myServices.dart';
 
 class ShowCode extends StatelessWidget {
 
-  const ShowCode({super.key, required this.code});
+   ShowCode({super.key, required this.code});
+   MyServices myServices = Get.find();
 
   final String code;
+
   @override
   Widget build(BuildContext context) {
+    String lang = myServices.sharePref!.get("lang").toString();
     return Expanded(
       child: Align(
-        alignment: Alignment.centerRight,
+        alignment:lang == "en" ? Alignment.centerRight :Alignment.centerLeft,
         child:PopupMenuButton(
             iconSize: 30,
             icon: const Icon(Icons.code),

@@ -1,7 +1,6 @@
 import 'package:beta/core/constant/betaText.dart';
-import 'package:beta/view/player/widget/buttonCode.dart';
+import 'package:beta/core/constant/widget/customButton.dart';
 import 'package:beta/view/player/widget/namePlayerTextField.dart';
-import 'package:beta/view/player/widget/textFieldNamePlayer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../control/creator/nameQuizController.dart';
@@ -49,7 +48,7 @@ class Home extends StatelessWidget {
                     }
                     if(e==2){
                       myServices.sharePref!.clear();
-                      Get.offAllNamed('/login');
+                      Get.offAllNamed('/welcome');
                     }
                   },
                   elevation: 10,
@@ -63,7 +62,6 @@ class Home extends StatelessWidget {
                               const SizedBox(width: 10,),
                               Text('Setting'.tr,style: TextStyle(color: Colors.grey[700],
                                   fontFamily:myServices.sharePref!.get("lang")=="en"? Font.f1 : Font.f2  ),),
-                             // SizedBox(width: 50,)
                             ],
                           ),
                     ),
@@ -131,21 +129,22 @@ class Home extends StatelessWidget {
                             Get.defaultDialog(
                               contentPadding: EdgeInsets.zero,
                               title:  "BeTa",
-                              titleStyle: TextStyle(fontFamily: Font.f3,fontSize: 50,color: ColorC.teal),
+                              titlePadding: const EdgeInsets.symmetric(vertical: 15),
+                              titleStyle: TextStyle(fontFamily: Font.f3,fontSize: 50,color: ColorC.teal,fontWeight: FontWeight.w600),
                               content: SizedBox(
                                 width: 350,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     NamePlayerTextField(
-                                      labelText: 'enter your name',
+                                      labelText: 'enter your name'.tr,
                                       prefixIcon: const Icon(Icons.person_outline_outlined),
                                       onChanged: (name) {
                                         playerController.name=name;
                                       },
                                     ),
                                     NamePlayerTextField(
-                                      labelText: 'enter the code',
+                                      labelText: 'enter the code'.tr,
                                       maxLength: 8,
                                       validator: (code) {
                                         return nameOfQuizController.validatorName(code!, 6, 4);
@@ -156,13 +155,14 @@ class Home extends StatelessWidget {
                                       },
                                       prefixIcon: const Icon(Icons.code),
                                     ),
+                                    CustomButton(
+                                      onPressed: () {
+                                        nameOfQuizController.getCodeCheck(nameOfQuizController.codeC.text);
+                                      }, text: 'Connect'.tr,)
                                   ],
                                 ),
                               ),
-                              actions: [   ButtonCode(
-                                onPressed: () {
-                                  nameOfQuizController.getCodeCheck(nameOfQuizController.codeC.text);
-                                },)]
+
                             );
                           },),
                       ],

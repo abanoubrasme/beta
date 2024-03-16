@@ -35,14 +35,15 @@ class CorrectAnswerEdit extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
                   color: Color(int.parse(answerColor)),
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 5,
-                        offset: const Offset(2, 4)),
-                  ]),
+                  borderRadius: BorderRadius.circular(5),
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //       color: Colors.grey.withOpacity(0.5),
+                  //       spreadRadius: 3,
+                  //       blurRadius: 5,
+                  //       offset: const Offset(2, 4)),
+                  // ]
+              ),
               child:  Center(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8, right: 8),

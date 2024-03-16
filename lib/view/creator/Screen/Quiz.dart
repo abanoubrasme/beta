@@ -1,7 +1,7 @@
 import 'package:beta/core/constant/widget/customText.dart';
 import 'package:beta/view/creator/widget/TextField/multiChoose.dart';
 import 'package:beta/view/creator/widget/TextField/questionTextField.dart';
-import 'package:beta/view/creator/widget/Button/customButtonTime.dart';
+import 'package:beta/view/creator/widget/Button/buttonTime.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/quizController.dart';
@@ -21,14 +21,16 @@ class Quiz extends StatelessWidget {
         builder: (quizController){
           return Scaffold(
             appBar: AppBar(
-              backgroundColor: ColorC.teal,
+              backgroundColor: ColorC.white2,
+              elevation: 0,
+              toolbarHeight: 70,
               centerTitle: true,
               title: const Text(""),
               leading: TextButton(
                 onPressed: () {
                   Get.back();
                 },
-                child: CustomText(text:"Cancel".tr, fontSize: 20, color: ColorC.white, padding: const EdgeInsets.symmetric(horizontal:0),),
+                child: CustomText(text:"Cancel".tr, fontSize: 20, color: ColorC.grey, padding: const EdgeInsets.symmetric(horizontal:0),),
               ),
               leadingWidth: 80,
               actions: [
@@ -37,11 +39,10 @@ class Quiz extends StatelessWidget {
                     String idQuiz = myServices.sharePref!.get("idQuiz").toString();
                     String idUser = myServices.sharePref!.get("id_user").toString();
                     quizController.insertData(idUser,idQuiz);
-                    print(quizController.question);
                     Get.offAllNamed("/pageOfQuiz");
                     quizController.update();
                   },
-                  child:CustomText(text:"Save".tr,color: ColorC.white, fontSize: 20, padding: const EdgeInsets.symmetric(horizontal: 0),),
+                  child:CustomText(text:"Save".tr,color: ColorC.grey, fontSize: 20, padding: const EdgeInsets.symmetric(horizontal: 0),),
                 ),
               ],
             ),
@@ -50,13 +51,13 @@ class Quiz extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child:CustomButtonTime(
+                      child:ButtonTime(
                         time: quizController.time,
                         selectIndexTime: quizController.selectIndexTime,),
                     ),
                     Expanded(
                       child:CorrectAnswerButton(
-                        text: quizController.correctAnswer,
+                        text: quizController.correctAnswer.tr,
                         answerColor: quizController.answerColor,
                         selectIndexCorrect: quizController.selectIndexCorrect,),
                     )

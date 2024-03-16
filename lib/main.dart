@@ -7,6 +7,7 @@ import 'package:beta/services/myServices.dart';
 import 'package:beta/services/pages.dart';
 import 'package:beta/view/auth/Screen/Login.dart';
 import 'package:beta/view/home.dart';
+import 'package:beta/view/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
               fontFamily: "Water_Brush"),
         ),
-        nextScreen: myServices.sharePref!.get("userName") != null? Home():Login(),
+        nextScreen: myServices.sharePref!.get("userName") != null? Home():Welcome(),
         splashIconSize: 300,
         backgroundColor: Colors.teal,
       ),

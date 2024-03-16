@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:group_button/group_button.dart';
 import '../../../../control/creator/quizController.dart';
+import '../../../../core/decoration/font.dart';
 
-class CustomButtonTime extends StatelessWidget {
+class ButtonTime extends StatelessWidget {
 
    int time ;
    int selectIndexTime ;
 
-   CustomButtonTime({super.key,
+   ButtonTime({super.key,
      required this.time,
      required this.selectIndexTime});
 
@@ -26,25 +27,26 @@ class CustomButtonTime extends StatelessWidget {
               const EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
                   color: ColorC.teal,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 5,
-                        offset: const Offset(2, 4)),
-                  ]),
+                  borderRadius: BorderRadius.circular(5),
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //       color: Colors.grey.withOpacity(0.5),
+                  //       spreadRadius: 3,
+                  //       blurRadius: 5,
+                  //       offset: const Offset(2, 4)),
+                  // ]
+           ),
               child:  Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
+                       Icon(
                         Icons.watch_later_outlined,
-                        color: Colors.white,
+                        color: ColorC.white,
                       ),
                       const SizedBox(width: 8,),
                       Text("$time ${" Second".tr}" ,
-                        style: const TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(fontSize: 20, color: ColorC.white,fontFamily: Font.f1),
                       ),
                     ],
                   )),

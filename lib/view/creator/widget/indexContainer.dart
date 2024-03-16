@@ -22,8 +22,8 @@ class IndexContainer extends StatelessWidget {
         decoration: BoxDecoration(
             color: ColorC.teal,
             borderRadius: const BorderRadius.only(
-                topRight:Radius.circular(20),
-                bottomRight:Radius.circular(20))
+                topRight:Radius.circular(5),
+                bottomRight:Radius.circular(5))
         ),
         child: Center(child: Text((index+1).toString(),
           style:  TextStyle(fontSize: 30,color: ColorC.white,fontFamily: Font.f1),))

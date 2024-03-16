@@ -25,7 +25,7 @@ class NamePlayerTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 90,
       padding: const EdgeInsets.only(left: 20, right: 20,),
       child: TextFormField(
         keyboardType: TextInputType.number,
@@ -46,7 +46,10 @@ class NamePlayerTextField extends StatelessWidget {
         ),
         strutStyle: const StrutStyle(leading: .5,),
         onChanged:onChanged,
-        decoration:   InputDecoration(
+        decoration:InputDecoration(
+          // filled: true,
+          // fillColor: Colors.grey,
+
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black45),
             borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -67,6 +70,7 @@ class NamePlayerTextField extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(30)),
             gapPadding: 5,
           ),
+
           labelText: labelText,
           prefixIconColor: ColorC.grey,
           prefixIcon: prefixIcon,

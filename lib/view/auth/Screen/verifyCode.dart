@@ -23,7 +23,7 @@ class VerifyCode extends StatelessWidget {
                   const SizedBox(height: 50,),
                   CustomText(text: "Check Code".tr, fontSize: 35, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                   const SizedBox(height: 30,),
-                  CustomText(text:"Please enter the digit code sent to your email ",
+                  CustomText(text:"Please enter the digit code sent to your email".tr,
                       fontSize: 15, color:  ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
                   const SizedBox(height: 30,),
                   OtpTextField(
@@ -53,12 +53,12 @@ class VerifyCode extends StatelessWidget {
                   ),
                   const SizedBox(height: 50,),
                   LoginButton(
-                      text: "Request reset link".tr,
+                      text: "Request reset a link".tr,
                     onPressed: () {  } ,),
                   const SizedBox(height: 20,),
                   SignUpButton(text: '',
                     textButton:  "Back to Login".tr,
-                    onPressed: () {  Get.toNamed("/login"); },
+                    onPressed: () {  Get.offNamed("/login"); },
                     ),
 
                 ],

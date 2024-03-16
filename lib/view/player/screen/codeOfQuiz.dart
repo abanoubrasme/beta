@@ -1,4 +1,4 @@
-import 'package:beta/view/player/widget/buttonCode.dart';
+import 'package:beta/core/constant/widget/customButton.dart';
 import 'package:beta/view/player/widget/textFieldNamePlayer.dart';
 import 'package:beta/view/player/widget/namePlayerTextField.dart';
 import 'package:flutter/material.dart';
@@ -55,10 +55,10 @@ class CodeOfQuiz extends StatelessWidget {
                                   //   val: (code) {
                                   //     return nameOfQuizController.validatorName(code!, 6, 4);
                                   //   },),
-                                  ButtonCode(
+                                  CustomButton(
                                     onPressed: () {
                                       nameOfQuizController.getCodeCheck(nameOfQuizController.codeC.text);
-                                    },)
+                                    }, text: '',)
                                 ],
                               ),
                             );
