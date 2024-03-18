@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/nameQuizController.dart';
 import '../../../control/player/playerController.dart';
-import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
 import '../widget/addNewPlayer.dart';
 import '../widget/homeButton.dart';
@@ -20,38 +19,41 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //  backgroundColor: context.theme.hoverColor,
-        appBar:AppBarHome(
-            text1: 'Setting',
-            text2: 'LogOut',
-            iconItem1: Icons.settings,
-            iconItem2: Icons.login,
-             onSelected:(e){
-                if(e==1){
-                Get.toNamed('/setting');
-                }
-                if(e==2){
-                myServices.sharePref!.clear();
-                Get.offAllNamed('/welcome');
-                }
-                },).buildAppBar(),
+      backgroundColor: context.theme.focusColor,
+      appBar: AppBarHome(
+          text1: 'Setting',
+          text2: 'LogOut',
+          iconItem1: Icons.settings,
+          iconItem2: Icons.login,
+          color: context.theme.focusColor.withOpacity(0),
+          onSelected:(e){
+            if(e==1){
+              Get.toNamed('/setting');
+            }
+            if(e==2){
+              myServices.sharePref!.clear();
+              Get.offAllNamed('/welcome');
+            }
+          },
+        ).buildAppBar(),
+
         body: BodyHome(
           children: [
             HomeButton(
-              icon: const Icon(
-                Icons.content_paste,
-                color: Colors.teal,
-                size: 60,),
+              icon:  Icon(
+                Icons.content_paste, size: 60,
+                color: context.theme.primaryColor,),
               width: 80,
               height: 80,
               text: 'Create'.tr,
               onTap: () {
                 Get.toNamed("/pageOfQuizzes");
-              }, padding: const EdgeInsets.only(left: 15),),
+              },
+              padding: const EdgeInsets.symmetric(horizontal: 15),),
             HomeButton(
-              icon:const Icon(
+              icon: Icon(
                 Icons.play_lesson_outlined,
-                color: Colors.teal,
+                color: context.theme.primaryColor,
                 size: 60,),
               width: 80,
               height: 80,
@@ -59,7 +61,7 @@ class Home extends StatelessWidget {
               onTap: () {
                 AddNewPlayer().alert();
               },
-              padding: const EdgeInsets.only(right: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
             ),
           ],
         ),

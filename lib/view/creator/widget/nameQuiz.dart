@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/decoration/font.dart';
+import 'package:get/get.dart';
 
 class NameQuiz extends StatelessWidget {
 
@@ -18,7 +18,10 @@ class NameQuiz extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text( name,
-              style:   TextStyle(fontSize: titleSize,fontFamily: Font.f1),),
+              style:context.textTheme.labelMedium
+
+             // TextStyle(fontSize: titleSize,fontFamily: Font.f1),
+            ),
             const SizedBox(height: 10,),
 
           ],

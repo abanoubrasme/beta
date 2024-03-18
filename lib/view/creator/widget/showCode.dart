@@ -24,13 +24,12 @@ class ShowCode extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(15.0)),
             ),
             elevation: 10,
-            color: ColorC.teal,
+            color: context.theme.canvasColor,
             itemBuilder: (BuildContext context)=><PopupMenuEntry>[
               PopupMenuItem(
                 child: Text(code,textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: ColorC.white,fontSize: 25,
-                      fontFamily:Font.f1),),
+                    style:context.textTheme.labelMedium
+                ),
               ),
             ]
         ),),

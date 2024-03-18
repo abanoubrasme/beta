@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import '../../../control/creator/nameQuizController.dart';
 import '../../../control/player/playerController.dart';
 import '../../../core/constant/widget/customButton.dart';
-import '../../../core/decoration/color.dart';
 import '../../../core/decoration/font.dart';
 import '../../player/widget/namePlayerTextField.dart';
 
@@ -17,11 +16,12 @@ class AddNewPlayer {
   Future alert(){
   return   Get.defaultDialog(
     contentPadding: EdgeInsets.zero,
-    title:  "BeTa",
-    titlePadding: const EdgeInsets.symmetric(vertical: 15),
-    titleStyle: const TextStyle(fontFamily: Font.f3,fontSize: 50,
-        //color: ColorC.teal,
-        fontWeight: FontWeight.w600),
+    title:  "connect to quiz",
+    titlePadding: const EdgeInsets.symmetric(vertical: 20),
+    // titleStyle: const TextStyle(
+    //     fontFamily: Font.f3,fontSize: 50,
+    //     //color: ColorC.teal,
+    //     fontWeight: FontWeight.w600),
     content: SizedBox(
       width: 350,
       child: Form(

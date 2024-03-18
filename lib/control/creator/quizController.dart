@@ -106,8 +106,8 @@ class QuizController extends GetxController{
   }
 
   String lengthQuestion(String s){
-    if(s.length>=25){
-      return s.substring(0,25)+("...");}
+    if(s.length>=21){
+      return s.substring(0,21)+("...");}
     else {
       return s;
     }

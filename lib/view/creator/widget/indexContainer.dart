@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../core/decoration/font.dart';
 import '../../../core/decoration/color.dart';
 
@@ -20,13 +21,13 @@ class IndexContainer extends StatelessWidget {
         height: height,
         width: width,
         decoration: BoxDecoration(
-            color: ColorC.teal,
+            color: context.theme.canvasColor,
             borderRadius: const BorderRadius.only(
                 topRight:Radius.circular(5),
                 bottomRight:Radius.circular(5))
         ),
         child: Center(child: Text((index+1).toString(),
-          style:  TextStyle(fontSize: 30,color: ColorC.white,fontFamily: Font.f1),))
+          style:  TextStyle(fontSize: 30,color: ColorC.grey,fontFamily: Font.f1),))
     );
   }
 }

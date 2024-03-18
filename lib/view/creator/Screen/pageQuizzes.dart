@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:beta/control/creator/quizzesController.dart';
 import 'package:beta/core/constant/widget/customText.dart';
 import 'package:beta/view/creator/widget/addNewQuiz.dart';
@@ -11,7 +10,6 @@ import '../../../core/constant/widget/customTextButton.dart';
 import '../../../core/decoration/color.dart';
 import '../../../core/decoration/font.dart';
 import '../../../services/myServices.dart';
-import '../widget/TextField/nameQuizTextField.dart';
 import '../widget/cardView.dart';
 import '../widget/indexContainer.dart';
 import '../widget/editNameTextField.dart';
@@ -32,10 +30,12 @@ class PageOfQuizzes extends StatelessWidget {
           String lang = myServices.sharePref!.get("lang").toString();
         return   Scaffold(
           appBar: AppBar(
-           // backgroundColor:ColorC.white2,
             elevation: 0,
             toolbarHeight: 70,
-            title:CustomText(text:"Main Page".tr, fontSize: 22, color: ColorC.teal, padding: const EdgeInsets.symmetric(horizontal: 0),),
+            title:CustomText(
+              text:"Main Page".tr,
+              style: context.textTheme.labelMedium,
+              padding: const EdgeInsets.symmetric(horizontal: 0),),
             centerTitle: true,
             actions: [
              AddNewQuiz()

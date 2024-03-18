@@ -29,16 +29,17 @@ class HomeButton extends StatelessWidget {
         child: Container(
           height: 160,
           width: 150,
-          decoration:  const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            boxShadow:  [
+          decoration:   BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            boxShadow:   [
               BoxShadow(
+                color: context.theme.shadowColor,
                   blurRadius: 7,
                   spreadRadius: 2,
-                  offset: Offset(0, 0),
-                  color: Colors.grey)
+                  offset: const Offset(0, 0),
+              )
             ],
-            color: Colors.white,
+            color: context.theme.scaffoldBackgroundColor,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -46,19 +47,10 @@ class HomeButton extends StatelessWidget {
               Container(
                     height: height,
                     width: width,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                    ),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: icon,
-                  padding: EdgeInsets.only(bottom: 20),
                 ),
-              Text(text,
-                style: TextStyle(
-                color: ColorC.teal,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w100,
-                    fontFamily: Font.f1),
-                ),
+              Text(text, style: context.textTheme.displayMedium),
             ],
           ),
         ),

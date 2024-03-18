@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       locale: changeLanguageController.language,
       getPages: Pages.pages,
-      theme:lightTheme(),
-      darkTheme: darkTheme(),
+      theme:light(),
+      darkTheme: dark(),
       themeMode: ThemeMode.system,
       // ThemeData(fontFamily: myServices.sharePref!.get("lang").toString()=="en"? Font.f1:Font.f2),
       home: AnimatedSplashScreen(

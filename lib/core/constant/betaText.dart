@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BeTaText extends StatelessWidget {
 
    BeTaText({super.key,
      required this.text,
-     required this.color,
+      this.color,
      required this.fontSize,
      required this.padding
    });
 
       String text;
-      Color color;
+      Color? color;
       double fontSize;
       EdgeInsetsGeometry padding;
 
@@ -20,10 +21,7 @@ class BeTaText extends StatelessWidget {
       padding:padding ,
       child: Text(
         text,
-        style: TextStyle(
-            fontSize: fontSize,
-            color: color,
-            fontFamily: "Water_Brush"),
+        style: context.textTheme.displayLarge
       ),
     );
   }

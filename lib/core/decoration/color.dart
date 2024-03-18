@@ -32,6 +32,7 @@ class ColorC {
 
   static  Color grey =   Colors.grey;
   static  Color grey2 =    Colors.grey.shade700;
+  static const Color grey3 =  Color(0xC03A3A3A);
 
 
   static  const Color tealDark =  Color(0xC00D3D31);
@@ -39,8 +40,13 @@ class ColorC {
   static  Color tealDark2 =  Colors.teal.shade900;
 
 
-  static const Color backgroundDark = Color(0xFF111B21);
-  static  const Color backgroundLight =  Color(0xFFFFFFFF);
+  static const Color backgroundDark2 = Color(0xFF111B21);
+  static const Color backgroundDark = Color(0xC01F1F1F);
+  static const Color backgroundDark3 = Color(0xC0363636);
+
+
+  static  const Color backgroundLight2 =  Color(0xFFFFFFFF);
+  static  const Color backgroundLight =  Color(0xFFDCDCDC);
 
 
   static  const Color tealLight =   Colors.teal;

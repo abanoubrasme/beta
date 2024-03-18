@@ -22,7 +22,6 @@ class AddNewQuiz extends StatelessWidget {
           barrierDismissible: false,
           contentPadding: const EdgeInsets.symmetric(horizontal: 15),
           title: "Add new quiz".tr,
-          titleStyle: const TextStyle(fontFamily: Font.f1),
           titlePadding:  const EdgeInsets.symmetric(vertical: 15),
           content: GetBuilder<QuizzesController>(
               builder: (quizzesController){
