@@ -18,12 +18,11 @@ class SignUpButton extends StatelessWidget {
     return  Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(text,style: TextStyle(color: ColorC.grey,fontFamily: Font.f1),),
+        Text(text,style: TextStyle(color: ColorC.grey,),),
         TextButton(
             onPressed: onPressed,
-            child:  Text(
-             textButton,
-              style:  TextStyle(color: ColorC.teal,fontFamily: Font.f1,fontSize: 18),
+            child:Text(textButton,
+              style:TextStyle(color: ColorC.teal,fontSize: 18),
             ))
       ],
     );

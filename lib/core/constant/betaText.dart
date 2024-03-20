@@ -6,13 +6,13 @@ class BeTaText extends StatelessWidget {
    BeTaText({super.key,
      required this.text,
       this.color,
-     required this.fontSize,
+      this.fontSize,
      required this.padding
    });
 
       String text;
       Color? color;
-      double fontSize;
+      double? fontSize;
       EdgeInsetsGeometry padding;
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class QuestionTextFieldEdit extends StatelessWidget {
 
@@ -18,7 +19,7 @@ class QuestionTextFieldEdit extends StatelessWidget {
             decoration: BoxDecoration(color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
+                      color: context.theme.shadowColor,
                       spreadRadius: 3,
                       blurRadius: 3,
                       offset: const Offset(0, 2)),

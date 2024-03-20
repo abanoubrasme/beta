@@ -21,7 +21,6 @@ class Quiz extends StatelessWidget {
         builder: (quizController){
           return Scaffold(
             appBar: AppBar(
-            //  backgroundColor: ColorC.white2,
               elevation: 0,
               toolbarHeight: 70,
               centerTitle: true,
@@ -30,7 +29,7 @@ class Quiz extends StatelessWidget {
                 onPressed: () {
                   Get.back();
                 },
-                child: CustomText(text:"Cancel".tr, fontSize: 20, color: ColorC.grey, padding: const EdgeInsets.symmetric(horizontal:0),),
+                child: CustomText(text:"Cancel".tr, style: context.textTheme.labelSmall, padding: const EdgeInsets.symmetric(horizontal:0),),
               ),
               leadingWidth: 80,
               actions: [
@@ -42,7 +41,7 @@ class Quiz extends StatelessWidget {
                     Get.offAllNamed("/pageOfQuiz");
                     quizController.update();
                   },
-                  child:CustomText(text:"Save".tr,color: ColorC.grey, fontSize: 20, padding: const EdgeInsets.symmetric(horizontal: 0),),
+                  child:CustomText(text:"Save".tr, style: context.textTheme.labelSmall, padding: const EdgeInsets.symmetric(horizontal: 0),),
                 ),
               ],
             ),
@@ -50,17 +49,13 @@ class Quiz extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Expanded(
-                      child:ButtonTime(
-                        time: quizController.time,
-                        selectIndexTime: quizController.selectIndexTime,),
-                    ),
-                    Expanded(
-                      child:CorrectAnswerButton(
-                        text: quizController.correctAnswer.tr,
-                        answerColor: quizController.answerColor,
-                        selectIndexCorrect: quizController.selectIndexCorrect,),
-                    )
+                    ButtonTime(
+                      time: quizController.time,
+                      selectIndexTime: quizController.selectIndexTime,),
+                    CorrectAnswerButton(
+                      text: quizController.correctAnswer.tr,
+                      answerColor: quizController.answerColor.toString(),
+                      selectIndexCorrect: quizController.selectIndexCorrect,),
                   ],
                 ),
                 QuestionTextField(

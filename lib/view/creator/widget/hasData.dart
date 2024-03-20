@@ -18,7 +18,7 @@ class HasData extends StatelessWidget {
               child: Image(image: AssetImage('image/notebook.png'))),
           const SizedBox(height: 18,),
           Text("you have no data".tr,
-            style: const TextStyle(fontSize: 18,fontFamily: Font.f1),),
+            style: context.textTheme.displaySmall),
           const SizedBox(height: 150,),
         ],
       ),

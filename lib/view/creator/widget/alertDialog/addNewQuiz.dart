@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../control/creator/quizzesController.dart';
-import '../../../core/constant/widget/customTextButton.dart';
-import '../../../core/decoration/color.dart';
-import '../../../core/decoration/font.dart';
-import '../../../services/myServices.dart';
-import 'TextField/nameQuizTextField.dart';
+import '../../../../control/creator/quizzesController.dart';
+import '../../../../core/constant/widget/customTextButton.dart';
+import '../../../../core/decoration/color.dart';
+import '../../../../services/myServices.dart';
+import '../TextField/customTextField.dart';
 
 class AddNewQuiz extends StatelessWidget {
    AddNewQuiz({super.key});
@@ -31,28 +30,28 @@ class AddNewQuiz extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        NameQuizTextField(
-                          labelText: 'quiz name'.tr,
+                        CustomTextField(
+                          hintText: 'quiz name'.tr,
                           controller: quizzesController.nameC,
-                          icon: const Icon(Icons.drive_file_rename_outline),
+                          prefixIcon: const Icon(Icons.drive_file_rename_outline),
                           maxLength: 20,
                           keyboardType: TextInputType.name,
                           padding: const EdgeInsets.only(top: 20),
-                          valid: (name){
+                          validator: (name){
                             return  quizzesController.validatorName(name!, 20, 2);
                           },
                           // onChanged: (name) {
                           //   quizzesController.name = name ;
                           // },
                         ),
-                        NameQuizTextField(
-                          labelText: 'quiz code'.tr,
+                        CustomTextField(
+                          hintText: 'quiz code'.tr,
                           controller: quizzesController.codeC,
-                          icon: const Icon(Icons.code),
+                          prefixIcon: const Icon(Icons.code),
                           maxLength: 8,
                           keyboardType: TextInputType.number,
                           padding: const EdgeInsets.only(top: 10,bottom: 20),
-                          valid: (code) {
+                          validator: (code) {
                             return quizzesController.validatorName(code!, 8, 4);
                           },
                           onChanged:(code) {

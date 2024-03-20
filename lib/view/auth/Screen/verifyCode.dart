@@ -9,28 +9,27 @@ import '../../../core/decoration/color.dart';
 class VerifyCode extends StatelessWidget {
   const VerifyCode({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
             body: Form(
               child: ListView(
                 children: [
-                  const SizedBox(height: 40,),
-                  CustomText(text: "Verification Code".tr,
-                      fontSize: 25, color: ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
-                  const SizedBox(height: 50,),
-                  CustomText(text: "Check Code".tr, fontSize: 35, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
-                  const SizedBox(height: 30,),
+                  // CustomText(text: "Verification Code".tr,
+                  //     style: context.textTheme.titleSmall,
+                  //     padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 30)),
+                  CustomText(text: "Check Code".tr,
+                    style: context.textTheme.titleMedium,
+                    padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),),
                   CustomText(text:"Please enter the digit code sent to your email".tr,
-                      fontSize: 15, color:  ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
+                      style: context.textTheme.titleSmall,
+                    padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),),
                   const SizedBox(height: 30,),
                   OtpTextField(
                     fieldWidth: 50,
                     numberOfFields: 5,
                     borderColor:ColorC.grey2,
-                    focusedBorderColor: ColorC.teal,
+                    focusedBorderColor: context.theme.canvasColor,
                     showFieldAsBox: true,
                     onCodeChanged: (String code) {
                     },

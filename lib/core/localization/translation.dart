@@ -26,7 +26,8 @@ class MyTranslation extends Translations{
       "  code of quiz"           :" الكود الخاص بالاختبار",
       'enter the code'           : "ادخل الكود",
       'enter your name'          : "ادخل اسمك",
-      "Forget password"          : "نسيت كلمة المرور" ,
+      "connect to quiz"          :"الاتصال بالاختبار",
+      "Forget password?"         : "نسيت كلمة المرور؟" ,
       "Back to Login"            : "العودة إلى تسجيل الدخول",
       "Verification Code"        : "رمز التحقق",
       "Check Code"               : "التحقق من الكود",
@@ -64,7 +65,7 @@ class MyTranslation extends Translations{
       "Write The ِِِAnswers First, Then Choose The Correct Answer"  : "اكتب الاجابات اولا , ثم اختر الاجابة الصحيحة",
       "Are you sure you want to delete this quiz?"               : "هل أنت متأكد أنك تريد حذف هذا الاختبار؟",
       "Are you sure you want to delete this question?"           : "هل أنت متأكد أنك تريد حذف هذا السؤال؟" ,
-      "     Please enter your email address you would like your password reset information sent to":
+      "Please enter your email address you would like your password reset information sent to":
               "من فضلك أدخل عنوان بريدك الإلكتروني الذي ترغب في إرسال معلومات إعادة تعيين كلمة المرور إليه",
 
     },
@@ -93,7 +94,8 @@ class MyTranslation extends Translations{
       "  code of quiz"            :"  code of quiz",
       'enter the code'            :'enter the code' ,
       'enter your name'           :'enter your name',
-      "Forget password"           :"Forget password",
+      "connect to quiz"           :"connect to quiz",
+      "Forget password?"          :"Forget password?",
       "Back to Login"             :"Back to Login",
       "Verification Code"         :"Verification Code",
       "Check Code"                :"Check Code",
@@ -131,8 +133,8 @@ class MyTranslation extends Translations{
       "Write The ِِِAnswers First, Then Choose The Correct Answer"  : "Write The ِِِAnswers First, Then Choose The Correct Answer",
       "Are you sure you want to delete this quiz?"               : "Are you sure you want to delete this quiz?" ,
       "Are you sure you want to delete this question?"           : "Are you sure you want to delete this question?",
-      "     Please enter your email address you would like your password reset information sent to":
-      "     Please enter your email address you would like your password reset information sent to",
+      "Please enter your email address you would like your password reset information sent to":
+      "Please enter your email address you would like your password reset information sent to",
 
     },
 

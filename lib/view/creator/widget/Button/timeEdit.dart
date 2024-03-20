@@ -18,74 +18,71 @@ class TimeButtonEdit extends StatelessWidget {
     required this.onSelected
   });
 
-  //EditQuizController editQuizController = Get.put(EditQuizController());
   MyServices myServices = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-            child: Container(
-              height: 50,
-              margin:
-              const EdgeInsets.symmetric(vertical: 10),
-              decoration: BoxDecoration(
-                  color: ColorC.teal,
-                  borderRadius: BorderRadius.circular(5),
-                  // boxShadow: [
-                  //   BoxShadow(
-                  //       color: ColorC.grey.withOpacity(0.5),
-                  //       spreadRadius: 3,
-                  //       blurRadius: 5,
-                  //       offset: const Offset(2, 4)),
-                  // ]
-              ),
-              child:  Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.watch_later_outlined,
-                        color: Colors.white,
-                      ),
-                      const SizedBox(width: 8,),
-                      CustomText(text:"$time  Second" ,
-                       fontSize: 20, color: Colors.white, padding: EdgeInsets.zero,
-                      ),
-                    ],
-                  )),
-            ),
-            onPressed: () {
-              Get.defaultDialog(
-                  backgroundColor: Colors.white.withOpacity(0),
-                  title: "",
-                  content:  GroupButton(
-                    controller: GroupButtonController(
-                      selectedIndex:selectIndexTime,
+    return Expanded(
+      child: Container(
+        height: 60,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: MaterialButton(
+          color: context.theme.canvasColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            //   side: BorderSide(color: Theme.of(context).primaryColor),
+          ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.watch_later_outlined,
+                      color: Colors.white,
                     ),
-                    options: GroupButtonOptions(
-                      alignment: Alignment.center,
-                      borderRadius: BorderRadius.circular(5),
-                      buttonHeight: 50,
-                      buttonWidth: 100,
-                      textAlign: TextAlign.center,
-                      textPadding: const EdgeInsets.all(5),
+                    Text("  $time ${" Second".tr}" ,
+                     style: TextStyle(color: ColorC.white,fontSize: 20)
                     ),
-                    buttons: const [
-                      "5 Second",
-                      "10 Second",
-                      "15 Second",
-                      "20 Second",
-                      "25 Second",
-                      "30 Second",
-                      "35 Second",
-                      "40 Second",
-                    ],
-                    onSelected: onSelected,
-                  )
-              );
-            },
+                  ],
+                ),
+                onPressed: () {
+                  Get.defaultDialog(
+                      backgroundColor: Colors.white.withOpacity(0),
+                      title: "",
+                      content:  GroupButton(
+                        controller: GroupButtonController(
+                          selectedIndex:selectIndexTime,
+                        ),
+                        options: GroupButtonOptions(
+                          selectedColor: context.theme.canvasColor,
+                          unselectedColor: ColorC.white,
+                          alignment: Alignment.center,
+                          borderRadius: BorderRadius.circular(5),
+                          buttonHeight: 50,
+                          buttonWidth: 100,
+                          textAlign: TextAlign.center,
+                          textPadding: const EdgeInsets.all(5),
+                        ),
+                        buttons:  [
+                          "5 Second".tr,
+                          "10 Second".tr,
+                          "15 Second".tr,
+                          "20 Second".tr,
+                          "25 Second".tr,
+                          "30 Second".tr,
+                          "35 Second".tr,
+                          "40 Second".tr,
+                        ],
+                        onSelected: onSelected,
+                      )
+                  );
+                },
 
-          );
+              ),
+      ),
+    );
 
 
   }

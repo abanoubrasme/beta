@@ -16,7 +16,8 @@ class QuizController extends GetxController{
   int time = 5 ;
   int selectIndexTime    = 8 ;
   int selectIndexCorrect = 5 ;
-  String answerColor = ColorC.teal.value.toString();
+  late String answerColor  ;
+  //ColorC.black4.value.toString();
 
   // TextEditingController questionE = TextEditingController();
   // TextEditingController answer1E  = TextEditingController();
@@ -35,8 +36,6 @@ class QuizController extends GetxController{
   String valid = "" ;
 
   insertData(String idUser,String idQuiz)async{
-    print(question);
-    print("======================");
     var response = await requestData.postRequest(linkInsertData,{
       "question"       :question.toString(),
       "answer1"        :answer1.toString(),
@@ -52,8 +51,6 @@ class QuizController extends GetxController{
       "id_user"        :idUser.toString(),
     });
     if(response["status"]=="success"){
-      print(question);
-      print("======================2");
       Get.toNamed("/pageOfQuiz");
     }else{
       print("Sign Up is Fail -----------------------------");

@@ -3,11 +3,16 @@ import 'package:beta/view/auth/widget/loginTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/auth/helperController.dart';
+import '../../../core/constant/widget/customText.dart';
 import '../../../core/decoration/font.dart';
 import '../../../services/myServices.dart';
+import '../../creator/widget/TextField/customTextField.dart';
+import '../widget/loginButton.dart';
+import '../widget/signUpTextButton.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({Key? key}) : super(key: key);
+
   AuthController authController = Get.put(AuthController());
   Helper helper = Get.put(Helper());
   MyServices myServices = Get.find();
@@ -22,42 +27,43 @@ class SignUp extends StatelessWidget {
             key: formKey,
             child: ListView(
               children: [
-                const SizedBox(height: 20,),
-                 Center(
-                    child: Text("Sign Up".tr,
-                      style: const TextStyle(color: Colors.black38,fontSize: 25,fontFamily: 'ProtestStrike'),
-                    )),
-                const SizedBox(height: 50,),
-                 Center(
-                    child: Text("Welcome to BeTa".tr,
-                      style: const TextStyle(
-                          color: Colors.black54,
-                          fontSize: 35,fontFamily: Font.f1),
-                    )),
-                const SizedBox(height: 30,),
-                LoginTextField(
-                  labelText: 'user name'.tr,
+                   CustomText(text: "Sign Up".tr,
+                   style: context.textTheme.titleSmall,
+                   padding: const EdgeInsets.symmetric(vertical: 30),
+                 ),
+                   CustomText(text: "Welcome to BeTa".tr, style: context.textTheme.titleMedium,
+                     padding: const EdgeInsets.symmetric(vertical: 20),
+                 ),
+                   CustomTextField(
+                  hintText: 'user name'.tr,
                   prefixIcon: const Icon(
                     Icons.person_outline_outlined,
                   ),
                   controller: authController.userName,
+                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 8),
+                  obscureText: false,
+                  enableSuggestions: true,
                   validator: (s) {
                     return authController.validator(s!, 15, 3);
-                  }, obscureText: false, enableSuggestions: true,
+                  },
 
                 ),
-                LoginTextField(
-                  labelText: 'email'.tr,
+                   CustomTextField(
+                  hintText: 'email'.tr,
                   prefixIcon: const Icon(
                     Icons.email_outlined,
                   ),
                   controller: authController.email,
+                  obscureText: false,
+                  enableSuggestions: true,
+                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 8),
                   validator: (s) {
                     return authController.validator(s!, 40, 3);
-                  }, obscureText: false, enableSuggestions: true,
+                  },
                 ),
-                LoginTextField(
-                  labelText: 'password'.tr,
+                   CustomTextField(
+                  hintText: 'password'.tr,
+                  controller: authController.password,
                   prefixIcon: const Icon(Icons.lock_outline),
                   suffixIcon: SizedBox(
                     width: 55,
@@ -69,7 +75,7 @@ class SignUp extends StatelessWidget {
                           helper.obscure ? Icons.visibility_rounded : Icons.visibility_off_rounded,
                           color: Colors.grey.shade500),),
                   ),
-                  controller: authController.password,
+                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 8),
                   validator: (s) {
                     return authController.validator(s!, 15, 3);
                   },
@@ -77,51 +83,30 @@ class SignUp extends StatelessWidget {
                   enableSuggestions: helper.obscure,
                 ),
                 const SizedBox(height: 70,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 140),
-                  child: MaterialButton(
-                    minWidth: 100,
-                    height: 50,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    color: Colors.teal,
-                    child:  Text(
-                      "Sign Up".tr,
-                      style: const TextStyle(color: Colors.white, fontSize: 20,fontFamily: Font.f1),
-                    ),
-                    onPressed: () {
-                      authController.getEmail();
-                      helper.update();
-                      if(formKey.currentState!.validate()){
-                        myServices.sharePref!.setString("userName", authController.userName.text);
-                        myServices.sharePref!.setString("email", authController.email.text);
-                        myServices.sharePref!.setString("password", authController.password.text);
-                        authController.signUp(
-                          authController.userName.text,
-                          authController.email.text,
-                          authController.password.text,
-                        );
+                LoginButton(
+                    text: "Sign Up".tr,
+                  onPressed: () {
+                    authController.getEmail();
+                    helper.update();
+                    if(formKey.currentState!.validate()){
+                      myServices.sharePref!.setString("userName", authController.userName.text);
+                      myServices.sharePref!.setString("email", authController.email.text);
+                      myServices.sharePref!.setString("password", authController.password.text);
+                      authController.signUp(
+                        authController.userName.text,
+                        authController.email.text,
+                        authController.password.text,
+                      );
 
-                      }
+                    }
 
 
-                    },
-                  ),
+                  },
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Do you have an account?".tr),
-                    TextButton(
-                        onPressed: () {
-                          Get.toNamed("/login");
-                        },
-                        child:  Text(
-                          "Login".tr,
-                          style: const TextStyle(color: Colors.teal,fontFamily: Font.f1),
-                        ))
-                  ],
-                ),
+                SignUpButton(
+                  text: "Do you have an account?".tr,
+                  textButton:  "Login".tr,
+                  onPressed: () { Get.offNamed("/login"); }, ),
               ],
             ),
           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../decoration/font.dart';
 
 class CustomTextButton extends StatelessWidget {
 
@@ -29,7 +28,7 @@ class CustomTextButton extends StatelessWidget {
           style: TextStyle(
             color: color,
             fontSize: fontSize,
-            fontFamily: Font.f1),),),
+          ),),),
     );
   }
 }

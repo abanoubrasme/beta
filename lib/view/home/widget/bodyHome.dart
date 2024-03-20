@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/decoration/color.dart';
+
 
 class BodyHome extends StatelessWidget {
 
@@ -21,11 +23,11 @@ class BodyHome extends StatelessWidget {
           child: Container(
             width: double.infinity,
             decoration:  BoxDecoration(
-                color: context.theme.scaffoldBackgroundColor,
+                color: context.theme.primaryColor,
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
                 boxShadow:  [
                   BoxShadow(
-                      color: context.theme.primaryColorDark,
+                      color: ColorC.black2,
                       spreadRadius: 3,
                       blurRadius: 18,
                       offset: const Offset(0,5),

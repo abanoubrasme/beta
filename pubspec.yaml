@@ -102,6 +102,10 @@ flutter:
     - family: ProtestStrike
       fonts:
        - asset: font/ProtestStrike/ProtestStrike-Regular.ttf
+
+    - family: Cairo
+      fonts:
+       - asset: font/Cairo/Cairo-VariableFont_slnt,wght.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
 #    - family: Marhey

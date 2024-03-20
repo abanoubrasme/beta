@@ -1,9 +1,10 @@
-import 'package:beta/view/home/widget/appBarHome.dart';
+import 'package:beta/view/home/widget/popupMenuButtonAppBar.dart';
 import 'package:beta/view/home/widget/bodyHome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/nameQuizController.dart';
 import '../../../control/player/playerController.dart';
+import '../../../core/constant/widget/customText.dart';
 import '../../../services/myServices.dart';
 import '../widget/addNewPlayer.dart';
 import '../widget/homeButton.dart';
@@ -19,47 +20,46 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.theme.focusColor,
-      appBar: AppBarHome(
-          text1: 'Setting',
-          text2: 'LogOut',
-          iconItem1: Icons.settings,
-          iconItem2: Icons.login,
-          color: context.theme.focusColor.withOpacity(0),
-          onSelected:(e){
-            if(e==1){
-              Get.toNamed('/setting');
-            }
-            if(e==2){
-              myServices.sharePref!.clear();
-              Get.offAllNamed('/welcome');
-            }
-          },
-        ).buildAppBar(),
-
+      backgroundColor: context.theme.primaryColorDark,
+      appBar:AppBar(
+        title: CustomText(text:"BeTa", style:context.textTheme.headlineLarge,padding: const EdgeInsets.only(top: 30),),
+        backgroundColor: context.theme.primaryColorDark.withOpacity(0),
+        centerTitle: true,
+        elevation: 0,
+        toolbarHeight: 100,
+        leading:const Text(""),
+        actions: [
+          PopupMenuButtonAppBar(
+            text1: 'Setting',
+            text2: 'LogOut',
+            iconItem1: Icons.settings,
+            iconItem2: Icons.login,
+            onSelected:(e){
+              if(e==1){
+                Get.toNamed('/setting');
+              }
+              if(e==2){
+                myServices.sharePref!.clear();
+                Get.offAllNamed('/welcome');
+              }
+            },
+          )
+        ],
+      ),
         body: BodyHome(
           children: [
             HomeButton(
-              icon:  Icon(
-                Icons.content_paste, size: 60,
-                color: context.theme.primaryColor,),
-              width: 80,
-              height: 80,
+              icon: Icons.content_paste,
               text: 'Create'.tr,
               onTap: () {
                 Get.toNamed("/pageOfQuizzes");
               },
               padding: const EdgeInsets.symmetric(horizontal: 15),),
             HomeButton(
-              icon: Icon(
-                Icons.play_lesson_outlined,
-                color: context.theme.primaryColor,
-                size: 60,),
-              width: 80,
-              height: 80,
+              icon: Icons.play_lesson_outlined,
               text: 'Play'.tr,
               onTap: () {
-                AddNewPlayer().alert();
+                AddNewPlayer().alert(context);
               },
               padding: const EdgeInsets.symmetric(horizontal: 15),
             ),

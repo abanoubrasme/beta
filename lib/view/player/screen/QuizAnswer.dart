@@ -101,14 +101,14 @@ class QuizAnswer extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    CustomButtonChosseExpanded(ColorC.red),
-                    CustomButtonChosseExpanded(ColorC.amber),
+                    CustomButtonChosseExpanded(ColorC.redDark),
+                    CustomButtonChosseExpanded(ColorC.amberDark),
                   ],
                 ),
                 Row(
                   children: [
-                    CustomButtonChosseExpanded(ColorC.blue),
-                    CustomButtonChosseExpanded(ColorC.green),
+                    CustomButtonChosseExpanded(ColorC.blueDark),
+                    CustomButtonChosseExpanded(ColorC.greenDark),
                   ],
                 ),
               ],

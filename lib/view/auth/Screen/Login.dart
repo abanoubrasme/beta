@@ -4,8 +4,10 @@ import 'package:beta/view/auth/widget/loginTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/auth/helperController.dart';
+import '../../../core/constant/widget/customButton.dart';
 import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
+import '../../creator/widget/TextField/customTextField.dart';
 import '../widget/forgetPassword.dart';
 import '../widget/signUpTextButton.dart';
 import '../../../core/constant/widget/customText.dart';
@@ -26,29 +28,27 @@ class Login extends StatelessWidget {
           key: formKey,
           child: ListView(
             children: [
-              const SizedBox(height: 30,),
-               CustomText(text: "Login".tr, fontSize: 22, color: ColorC.grey, padding: const EdgeInsets.symmetric(horizontal: 20.0),),
-              const SizedBox(height: 50,),
-               CustomText(text: 'Welcome to BeTa'.tr, fontSize: 40, color: ColorC.grey2, padding: const EdgeInsets.symmetric(horizontal: 20.0),
+               CustomText(text: "Login".tr,style: context.textTheme.titleSmall,
+                 padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),),
+               CustomText(text: 'Welcome to BeTa'.tr, style: context.textTheme.titleMedium,
+                 padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
                ),
-              const SizedBox(height: 30,),
-              LoginTextField(
-                labelText: 'user name'.tr,
-                prefixIcon:  const Icon(
-                  Icons.person_outline_outlined,
-                ),
+               CustomTextField(
+                hintText: 'user name'.tr,
+                prefixIcon:  const Icon(Icons.person_outline_outlined,),
                 controller: loginController.userName,
+                padding: const EdgeInsets.symmetric(horizontal:15,vertical: 10 ),
                 validator: (s) {
                   return loginController.validLogin(helper.validator);
                 },
-                onChange: (s){
+                onChanged: (s){
                   loginController.getUserName();
                   loginController.checkEP();
                 },
-                obscureText: false, enableSuggestions: true,
+
               ),
-              LoginTextField(
-                labelText: 'password'.tr,
+               CustomTextField(
+                hintText: 'password'.tr,
                 prefixIcon:   const Icon(Icons.lock_outline,),
                 suffixIcon: SizedBox(
                   width: 55,
@@ -60,7 +60,10 @@ class Login extends StatelessWidget {
                         helper.obscure ? Icons.visibility_rounded : Icons.visibility_off_rounded,
                         color: Colors.grey.shade500),),
                 ),
-                onChange: (s){
+                padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
+                obscureText: !helper.obscure,
+                enableSuggestions: helper.obscure,
+                onChanged: (s){
                   loginController.getUserName();
                   loginController.checkEP();
                 },
@@ -68,8 +71,7 @@ class Login extends StatelessWidget {
                 validator: (s) {
                   return loginController.validLogin(helper.validator);
                 },
-                obscureText: !helper.obscure,
-                enableSuggestions: helper.obscure,
+
               ),
               const ForgetPassword(),
               const SizedBox(height: 50,),
@@ -87,7 +89,9 @@ class Login extends StatelessWidget {
               SignUpButton(
                 text: 'Do you want create a new account?'.tr,
                 textButton: 'Sign Up'.tr,
-                onPressed: () { Get.toNamed("/signUp"); }, ),
+                onPressed: () {
+                  Get.offNamed("/signUp");
+                  }, ),
               const SizedBox(height: 25,),
             ],
           ),

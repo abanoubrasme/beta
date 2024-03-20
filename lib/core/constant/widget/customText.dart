@@ -7,7 +7,7 @@ class CustomText extends StatelessWidget {
      required this.text,
       this.fontSize,
       this.color,
-     required this.padding,
+      this.padding,
      this.style
 
    });
@@ -16,12 +16,12 @@ class CustomText extends StatelessWidget {
      double? fontSize;
      Color? color;
      TextStyle? style;
-     EdgeInsetsGeometry padding ;
+     EdgeInsetsGeometry? padding ;
 
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: padding,
+      padding: padding ?? EdgeInsets.zero,
       child: Text(text,
         textAlign: TextAlign.center,
         style: style,

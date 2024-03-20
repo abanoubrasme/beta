@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/decoration/color.dart';
+import '../../../../../core/decoration/color.dart';
 
 class EditNameTextField extends StatelessWidget {
 

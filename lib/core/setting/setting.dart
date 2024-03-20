@@ -1,4 +1,5 @@
 import 'package:beta/control/settingController.dart';
+import 'package:beta/core/constant/widget/customText.dart';
 import 'package:beta/core/localization/changeLanguage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,14 +19,14 @@ class Setting extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ColorC.white.withOpacity(0),
         title: Text("Setting".tr,
-          style: TextStyle(color: ColorC.black,fontFamily: Font.f1),),
+          style: context.textTheme.headlineMedium,),
         elevation: 0,
         leading: IconButton(
             onPressed: (){
               Get.back();
             },
             icon: const Icon(Icons.arrow_back_ios_new_outlined),
-            color: ColorC.black,
+          color: ColorC.grey2,
         ),
       ),
       body:  GetBuilder<SettingController>(
@@ -33,8 +34,8 @@ class Setting extends StatelessWidget {
           return  ListView(
             children: [
               ListTile(
-                title:  Text("Language".tr,style: TextStyle(color: ColorC.black,fontFamily: Font.f1)),
-                leading: const Icon(Icons.language),
+                title:  Text("Language".tr,style: context.textTheme.titleSmall),
+                leading:  Icon(Icons.language,color:ColorC.grey2),
                 onTap: (){
                   if(myServices.sharePref!.get("lang")=="ar"){
                     settingController.checkBoxAR = true;
@@ -57,32 +58,31 @@ class Setting extends StatelessWidget {
                           builder: (settingController){
                         return  Container(
                           height: 180,
-                          decoration:  BoxDecoration(
-                            color: ColorC.white,
+                          decoration:   BoxDecoration(
+                            color: context.theme.secondaryHeaderColor,
                             borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
                           ),
                           child: Column(
                             children: [
                               Center(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(top: 10),
+                                  padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
                                   child: Container(
                                     decoration: BoxDecoration(
                                         color: Colors.grey,
                                         borderRadius: BorderRadius.circular(5)
                                     ),
-
                                     height: 5,
                                     width: 60,
                                   ),
                                 ),),
-                              const SizedBox(height: 15,),
+
                                  Padding(
-                                   padding: const EdgeInsets.only(left: 8,right: 8),
+                                   padding:  const EdgeInsets.symmetric(horizontal: 8),
                                    child: Card(
                                      elevation: 0,
                                      child: CheckboxListTile(
-                                       title:  const Text("english"),
+                                         title: Text("english",style: context.textTheme.displaySmall,),
                                        activeColor: ColorC.greenDark,
                                        value: settingController.checkBoxEN,
                                        onChanged: (value) {
@@ -97,11 +97,11 @@ class Setting extends StatelessWidget {
                                    ),
                                  ),
                                  Padding(
-                                   padding: const EdgeInsets.only(left: 8,right: 8),
+                                   padding: const EdgeInsets.symmetric(horizontal: 8),
                                    child: Card(
                                      elevation: 0,
                                      child: CheckboxListTile(
-                                       title:  Text("arabic".tr),
+                                       title:  Text("arabic".tr,style: context.textTheme.displaySmall),
                                        activeColor: ColorC.greenDark,
                                        value:  settingController.checkBoxAR,
                                        onChanged: (value) {

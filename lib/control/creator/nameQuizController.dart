@@ -61,6 +61,8 @@ class NameOfQuizController extends GetxController{
     });
     if(response["status"]=="success"){
       valid = response["data"][0]["code_quiz"];
+      print(valid);
+      print("=====================");
       update();
     }
   }

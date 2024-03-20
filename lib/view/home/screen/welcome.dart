@@ -1,15 +1,10 @@
 import 'package:beta/core/constant/widget/customText.dart';
 import 'package:beta/view/home/widget/addNewPlayer.dart';
-import 'package:beta/view/home/widget/bodyWelcome.dart';
 import 'package:beta/view/home/widget/homeButton.dart';
-import 'package:beta/core/constant/widget/customButton.dart';
-import 'package:beta/view/player/widget/namePlayerTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/creator/nameQuizController.dart';
 import '../../../control/player/playerController.dart';
-import '../../../core/constant/betaText.dart';
-import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
 
 class Welcome extends StatelessWidget {
@@ -22,46 +17,59 @@ class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-             backgroundColor: ColorC.teal,
+             backgroundColor:context.theme.primaryColorDark,
              appBar: AppBar(
-               title: BeTaText(text: "BeTa", color: ColorC.white, fontSize: 50, padding: EdgeInsets.zero,),
+               title: CustomText(text:"BeTa", style:context.textTheme.headlineLarge,
+                 padding: const EdgeInsets.only(top: 30),),
                centerTitle: true,
                elevation: 0,
-               toolbarHeight: 80,
-               backgroundColor: ColorC.teal,
+               toolbarHeight: 120,
+               backgroundColor:context.theme.primaryColorDark.withOpacity(0),
                leading:const Text(""),
              ),
-             body:BodyWelcome(
-                children: [
-                  CustomText(text: "login as admin".tr, fontSize: 22, color: ColorC.grey, padding: const EdgeInsets.only(top: 50),),
-                  HomeButton(
-                    icon: const Icon(
-                      Icons.content_paste,
-                      color: Colors.teal,
-                      size: 60,),
-                    width: 80,
-                    height: 80,
-                    text: 'Login'.tr,
-                    onTap: () {Get.toNamed("/login");},
-                    padding: const EdgeInsets.symmetric(horizontal: 135.0,vertical: 30),
+             body: Column(
+               children: [
+                 Container(height: 15,),
+                 Expanded(
+                     child:Container(
+                       decoration:  BoxDecoration(
+                           color: context.theme.primaryColor,
+                           borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+                           boxShadow: [
+                             BoxShadow(
+                                 color: Colors.black.withOpacity(.3),
+                                 spreadRadius: 8,
+                                 blurRadius: 7,
+                                 offset:  const Offset(5, 1)
+                             )
+                           ]
+                       ),
+                       child:  ListView(
+                         children: [
+                           CustomText(text: "login as admin".tr, style:context.textTheme.headlineMedium, padding: const EdgeInsets.only(top: 50),),
+                           HomeButton2(
+                             icon: Icons.content_paste,
+                             text: 'Login'.tr,
+                             onTap: () {Get.toNamed("/login");},
+                             padding: const EdgeInsets.symmetric(horizontal: 130,vertical: 30),
 
-                  ),
-                  CustomText(text: "login as player".tr, fontSize: 22, color: ColorC.grey, padding: EdgeInsets.zero,),
-                  HomeButton(
-                    width: 80,
-                    height: 80,
-                    text: 'Play'.tr,
-                    padding:const EdgeInsets.symmetric(horizontal: 135.0,vertical: 30),
-                    icon: const Icon(
-                      Icons.play_lesson_outlined,
-                      color: Colors.teal,
-                      size: 60,),
-                    onTap: (){
-                      AddNewPlayer().alert();
-                    },
-                   ),
-                ]
-            ),
+                           ),
+                           CustomText(text: "login as player".tr, style:context.textTheme.headlineMedium, padding: EdgeInsets.zero,),
+                           HomeButton2(
+                             text: 'Play'.tr,
+                             padding:const EdgeInsets.symmetric(horizontal: 130,vertical: 30),
+                             icon: Icons.play_lesson_outlined,
+                             onTap: (){
+                               AddNewPlayer().alert(context);
+                             },
+                           ),
+                         ],
+                       ),
+                     )
+                 ),
+               ],
+             )
+
           );
   }
 }

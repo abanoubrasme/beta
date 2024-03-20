@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MultiChooseEdit extends StatelessWidget {
   Color color;
@@ -23,7 +24,7 @@ class MultiChooseEdit extends StatelessWidget {
             color: color,
             boxShadow: [
               BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
+                  color: context.theme.shadowColor,
                   spreadRadius: 3,
                   blurRadius: 3,
                   offset: const Offset(0, 2)),
