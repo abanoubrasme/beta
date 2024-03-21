@@ -2,11 +2,21 @@ import 'package:beta/core/decoration/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:group_button/group_button.dart';
+import 'package:timer_count_down/timer_controller.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 import '../../../../control/creator/quizController.dart';
 
 class ButtonTimePlayer extends StatelessWidget {
+
   int time ;
-  ButtonTimePlayer({super.key, required this.time,});
+  Function? onFinished;
+  CountdownController controller =  CountdownController(autoStart: true);
+
+  ButtonTimePlayer({super.key,
+    required this.time,
+    required this.controller,
+    required this.onFinished,
+  });
   QuizController quizController =Get.put(QuizController());
   @override
   Widget build(BuildContext context) {
@@ -15,33 +25,39 @@ class ButtonTimePlayer extends StatelessWidget {
           return   Padding(
             padding: const EdgeInsets.symmetric(horizontal: 110),
             child: Container(
-                height: 50,
-                margin:
-                const EdgeInsets.symmetric(vertical: 10),
+                height: 60,
+                margin: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
-                    color: ColorC.teal,
+                    color: context.theme.canvasColor,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 3,
-                          blurRadius: 5,
-                          offset: const Offset(2, 4)),
-                    ]),
-                child:  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.watch_later_outlined,
-                          color: Colors.white,
-                        ),
-                        const SizedBox(width: 8,),
-                        Text("$time Second" ,
+                  ),
+                child:  Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.watch_later_outlined,
+                      color: ColorC.white,
+                    ),
+                    Countdown(
+                      controller: controller,
+                      seconds: time,
+                      build: (BuildContext context, double time) {
+                        // if(time == 0.0 ){
+                        //
+                        //   controller.restart();
+                        // }
+
+                       print(time);
+                        return  Text("  $time ${" Second".tr}" ,
                           style: const TextStyle(fontSize: 18, color: Colors.white),
-                        ),
-                      ],
-                    )),
+                        );
+                      },
+                      interval: const Duration(seconds: 1),
+                      onFinished: onFinished,
+                    ),
+
+                  ],
+                ),
               ),
           );
         });

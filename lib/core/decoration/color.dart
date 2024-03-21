@@ -37,6 +37,7 @@ class ColorC {
 
   static  const Color tealDark =  Color(0xC00D3D31);
   static  const Color tealDark4 =  Color(0xC00C3F34);
+  static  const Color tealDark5 =  Color(0x008080FF);
   static  Color tealDark2 =  Colors.teal.shade900;
   static  Color teal2 =  Colors.teal.shade300;
 

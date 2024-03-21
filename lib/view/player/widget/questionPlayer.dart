@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../control/creator/quizController.dart';
+import '../../../core/decoration/color.dart';
 
 class QuestionPlayer extends StatelessWidget {
   final String question ;
@@ -12,18 +13,19 @@ class QuestionPlayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 260,
-      width: Material.defaultSplashRadius,
-      decoration: BoxDecoration(color: Colors.white,
+      decoration: BoxDecoration(
+          color: ColorC.white,
           boxShadow: [
             BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
+                color: context.theme.shadowColor,
                 spreadRadius: 3,
                 blurRadius: 3,
                 offset: const Offset(0, 2)),
-          ]),
-      margin: const EdgeInsets.all(10),
+          ]
+      ),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       child:  Center(
-          child: Text(question,style: const TextStyle(fontSize: 22),)),
+          child: Text(question,style: TextStyle(fontSize: 22,color: ColorC.grey2),)),
     );
   }
 }

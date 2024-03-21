@@ -37,6 +37,8 @@ class MyTranslation extends Translations{
       "Edit"                     : "تعديل" ,
       "Save"                     : "حفظ",
       "Connect"                  : "اتصال",
+      'ٍScore'                    : 'نتيجة',
+      'Total'                    : "المجموع",
 
       'quiz name'                :"اسم الاختبار",
       'quiz code'                : "كود الاختبار",
@@ -105,6 +107,8 @@ class MyTranslation extends Translations{
       "Delete"                    : "Delete",
       "Edit"                      : "Edit"  ,
       "Connect"                   :"Connect",
+      'ٍScore'                     :'ٍScore',
+      'Total'                     :'Total',
 
       'quiz name'                 :'quiz name',
       'quiz code'                 : 'quiz code',

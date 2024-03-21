@@ -4,12 +4,19 @@ import '../../../../control/creator/quizController.dart';
 import '../../../core/decoration/color.dart';
 
 class MultiChoosePlayer extends StatelessWidget {
+
   Color color;
   int ke;
   String answer;
   void Function()? onTap;
   QuizController quizController = Get.put(QuizController());
-  MultiChoosePlayer({super.key, required this.color, required this.ke,required this.answer,required this.onTap});
+
+  MultiChoosePlayer({super.key,
+    required this.color,
+    required this.ke,
+    required this.answer,
+    required this.onTap
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +31,7 @@ class MultiChoosePlayer extends StatelessWidget {
               color: color,
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
+                    color: context.theme.shadowColor,
                     spreadRadius: 3,
                     blurRadius: 3,
                     offset: const Offset(0, 2)),
@@ -32,7 +39,7 @@ class MultiChoosePlayer extends StatelessWidget {
           ),
           child:  Center(
               child: Text(answer,
-                  style:  TextStyle(fontSize: 20,color: ColorC.white))),
+                  style:TextStyle(fontSize: 20,color: ColorC.white))),
         ),
       ),
     );

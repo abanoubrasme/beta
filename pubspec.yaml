@@ -45,15 +45,29 @@ dependencies:
   firebase_storage:
   shared_preferences:
   get_storage:
+  timer_count_down:
   flutter_native_splash:
   animated_splash_screen:
   animated_icon:
   flutter_otp_text_field:
 #  firebase_database:
-#flutter_native_splash:
-#  color: "#FFFFFF"
-#  color_dark: "#111B21"
-#  android_12:
+
+
+flutter_native_splash:
+  color: "#008080"
+  color_dark: "#1C1C1C"
+  image: image/betaLight.png
+  image_dark: image/betaDark.png
+  android_12:
+    color: "#008080"
+    color_dark: "#1C1C1C"
+    image: image/betaLight.png
+    image_dark: image/betaDark.png
+    icon_background_color: "#1C1C1C"
+    icon_background_color_dark: "#1C1C1C"
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

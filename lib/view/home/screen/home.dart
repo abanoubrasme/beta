@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../control/creator/nameQuizController.dart';
 import '../../../control/player/playerController.dart';
 import '../../../core/constant/widget/customText.dart';
+import '../../../core/decoration/color.dart';
 import '../../../services/myServices.dart';
 import '../widget/addNewPlayer.dart';
 import '../widget/homeButton.dart';
@@ -46,25 +47,27 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-        body: BodyHome(
-          children: [
-            HomeButton(
-              icon: Icons.content_paste,
-              text: 'Create'.tr,
-              onTap: () {
-                Get.toNamed("/pageOfQuizzes");
-              },
-              padding: const EdgeInsets.symmetric(horizontal: 15),),
-            HomeButton(
-              icon: Icons.play_lesson_outlined,
-              text: 'Play'.tr,
-              onTap: () {
-                AddNewPlayer().alert(context);
-              },
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-            ),
-          ],
-        ),
+        body: GetBuilder<NameOfQuizController>(
+        builder: (nameOfQuizController){
+            return BodyHome(
+                children: [
+                  HomeButton(
+                    icon: Icons.content_paste,
+                    text: 'Create'.tr,
+                    onTap: () {
+                      Get.toNamed("/pageOfQuizzes");
+                    },
+                    padding: const EdgeInsets.symmetric(horizontal: 15),),
+                  HomeButton(
+                    icon: Icons.play_lesson_outlined,
+                    text: 'Play'.tr,
+                    onTap: () {
+                      AddNewPlayer().alert(context);
+                    },
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                  ),
+                ],
+              );})
     );
   }
 

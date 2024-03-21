@@ -31,7 +31,6 @@ class ButtonTime extends StatelessWidget {
               color: context.theme.canvasColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5),
-                //   side: BorderSide(color: Theme.of(context).primaryColor),
               ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -143,8 +142,3 @@ class ButtonTime extends StatelessWidget {
         });
   }
 }
-// margin: const EdgeInsets.symmetric(horizontal: 10),
-// decoration: BoxDecoration(
-// color: ColorC.tealDark,
-// borderRadius: BorderRadius.circular(5)
-// ),

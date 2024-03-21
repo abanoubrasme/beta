@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../core/decoration/font.dart';
 import '../../../core/decoration/color.dart';
 
 class RankBox extends StatelessWidget {
 
-  int rank ;
+  int total ;
   String text ;
-   RankBox({super.key,required this.rank ,required this.text});
+   RankBox({super.key,required this.total ,required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +18,13 @@ class RankBox extends StatelessWidget {
         height: 60,
         decoration:  BoxDecoration(
             borderRadius: BorderRadius.circular(7),
-            color: ColorC.teal,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 3,
-                  blurRadius: 3,
-                  offset: const Offset(0, 2)),
-            ]
+            color: context.theme.canvasColor,
+
         ),
-        child: Row(children: [
+        child: Row(
+          children: [
           const SizedBox(width: 10,),
-          Text("$text :   $rank",style: TextStyle(color: ColorC.white,fontSize: 22,
-              fontFamily: Font.f1),)
+          Text("$text :   $total",style: TextStyle(color: ColorC.white,fontSize: 22,),)
         ],),
       ),
     );

@@ -55,7 +55,7 @@ class NameOfQuizController extends GetxController{
 
   }
 
-  getCode()async{
+  getCode(code)async{
     var response = await requestData.postRequest(linkGetCode, {
       "code_quiz" :code.toString(),
     });
@@ -64,6 +64,8 @@ class NameOfQuizController extends GetxController{
       print(valid);
       print("=====================");
       update();
+    }else{
+      print("erorr==================erorr");
     }
   }
 

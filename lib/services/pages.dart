@@ -9,7 +9,6 @@ import '../view/creator/Screen/editQuiz.dart';
 import '../view/creator/Screen/pageQuiz.dart';
 import '../view/creator/Screen/pageQuizzes.dart';
 import '../view/home/screen/home.dart';
-import '../view/player/screen/codeOfQuiz.dart';
 import '../view/player/screen/finalScore.dart';
 import '../view/player/screen/player.dart';
 import '../core/middleware/authMiddleware.dart';
@@ -22,7 +21,6 @@ class Pages {
     GetPage(name: "/pageOfQuiz",     page: () =>   PageOfQuiz()),
     GetPage(name: "/editQuiz",       page: () =>   EditQuiz()),
     GetPage(name: "/pageOfQuizzes",  page: () =>   PageOfQuizzes()),
-    GetPage(name: "/codeOfQuiz",     page: () =>   CodeOfQuiz()),
     GetPage(name: "/player",         page: () =>   Player()),
     GetPage(name: "/finalScore",     page: () =>   FinalScore()),
     GetPage(name: "/setting",        page: () =>   Setting()),

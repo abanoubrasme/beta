@@ -14,7 +14,6 @@ class AddNewPlayer {
 
   Future alert(BuildContext context){
   return   Get.defaultDialog(
-   // backgroundColor:ColorC.amberDark,
     contentPadding: EdgeInsets.zero,
     title:  "connect to quiz".tr,
     titlePadding: const EdgeInsets.symmetric(vertical: 20),
@@ -41,7 +40,7 @@ class AddNewPlayer {
                     keyboardType: TextInputType.number,
                     padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
                     onChanged: (s){
-                      nameOfQuizController.getCode();
+                      nameOfQuizController.getCode(s);
                       nameOfQuizController.update();
                     },
                     validator: (code) {
@@ -52,6 +51,7 @@ class AddNewPlayer {
                   CustomButton(
                     text: 'Connect'.tr,
                     onPressed: () {
+                      nameOfQuizController.update();
                       if(formKey.currentState!.validate()){
                         nameOfQuizController.getCodeCheck(nameOfQuizController.codeC.text);}
                     }, )
