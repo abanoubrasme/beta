@@ -40,8 +40,12 @@ class Home extends StatelessWidget {
                 Get.toNamed('/setting');
               }
               if(e==2){
+                var lang =  myServices.sharePref!.get("lang");
+                var theme =  myServices.sharePref!.get("theme");
                 myServices.sharePref!.clear();
-                Get.offAllNamed('/welcome');
+                myServices.sharePref!.setString("lang",lang.toString());
+                myServices.sharePref!.setString("theme",theme.toString());
+                Get.offAllNamed('/login');
               }
             },
           )

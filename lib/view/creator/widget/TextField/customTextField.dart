@@ -1,9 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../control/RDB_Controller.dart';
-import '../../../../control/creator/nameQuizController.dart';
-import '../../../../control/creator/quizzesController.dart';
 import '../../../../core/decoration/color.dart';
 
 

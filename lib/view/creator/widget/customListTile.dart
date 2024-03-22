@@ -62,6 +62,7 @@ class CustomListTile extends StatelessWidget {
   CustomListTile({super.key,
      this.subtitle,
      this.onTap,
+     this.trailing,
      required this.keys,
      required this.leading,
      required this.title,
@@ -73,6 +74,7 @@ class CustomListTile extends StatelessWidget {
    Widget title;
    Widget? subtitle;
    Widget leading;
+  Widget? trailing;
    Widget background;
    Widget secondaryBackground;
   void Function()? onTap;
@@ -99,6 +101,7 @@ class CustomListTile extends StatelessWidget {
                   title: title,
                   minVerticalPadding: 5,
                   leading: leading,
+                  trailing: trailing,
                   onTap: onTap,
                 ),
               )

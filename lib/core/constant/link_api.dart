@@ -8,6 +8,7 @@ const String linkGetIdUser      = "$linkServerName/auth/getIdUser.php";
 
 const String linkInsertData     = "$linkServerName/quiz/insert/add.php";
 const String linkAddName        = "$linkServerName/quiz/insert/addName.php";
+const String linkAddInfoPlayer  = "$linkServerName/quiz/insert/addInfoPlayer.php";
 
 
 const String linkUpdateData     = "$linkServerName/quiz/update/edit.php";
@@ -24,6 +25,7 @@ const String linkGetName        = "$linkServerName/quiz/get/getName.php";
 const String linkGetCode        = "$linkServerName/quiz/get/getCode.php";
 const String linkGetIdQuiz      = "$linkServerName/quiz/get/getIdQuiz.php";
 const String linkGetIdQuestion  = "$linkServerName/quiz/get/getIdQuestion.php";
+const String linkGetInfoPlayer  = "$linkServerName/quiz/get/getInfoPlayer.php";
 
 
 const String linkDeleteQuiz     = "$linkServerName/quiz/delete/deleteQuiz.php";

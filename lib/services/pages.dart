@@ -6,6 +6,7 @@ import '../view/auth/Screen/forgetPassword.dart';
 import '../view/auth/Screen/verifyCode.dart';
 import '../view/creator/Screen/Quiz.dart';
 import '../view/creator/Screen/editQuiz.dart';
+import '../view/creator/Screen/infoPlayer.dart';
 import '../view/creator/Screen/pageQuiz.dart';
 import '../view/creator/Screen/pageQuizzes.dart';
 import '../view/home/screen/home.dart';
@@ -24,7 +25,7 @@ class Pages {
     GetPage(name: "/player",         page: () =>   Player()),
     GetPage(name: "/finalScore",     page: () =>   FinalScore()),
     GetPage(name: "/setting",        page: () =>   Setting()),
-    GetPage(name: "/welcome",        page: () =>   Welcome()),
+    GetPage(name: "/info",           page: () =>   Info()),
     GetPage(name: "/verifyCode",     page: () =>   VerifyCode()),
     GetPage(name: "/forget",         page: () =>   Forget()),
     GetPage(name: "/signUp",         page: () =>   SignUp(),middlewares:[AuthMiddleware()]),

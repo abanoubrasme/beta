@@ -1,12 +1,10 @@
 import 'package:beta/core/decoration/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../../services/myServices.dart';
 import '../font.dart';
 
-ThemeData darkTheme(){
+ThemeData darkTheme2(){
   final ThemeData base = ThemeData.dark(useMaterial3: true);
   return base.copyWith(
 
@@ -72,7 +70,7 @@ ThemeData darkTheme(){
   );
 }
 
-ThemeData dark(){
+ThemeData darkTheme(){
 
   MyServices myServices = Get.find();
   String lang = myServices.sharePref!.get("lang").toString();
@@ -142,9 +140,7 @@ ThemeData dark(){
       style: ElevatedButton.styleFrom(
         backgroundColor:ColorC.tealDark,
         foregroundColor:ColorC.tealDark,
-       // splashFactory: NoSplash.splashFactory,
         elevation: 0,
-        //shadowColor: Colors.transparent,
       ),
     ),
 

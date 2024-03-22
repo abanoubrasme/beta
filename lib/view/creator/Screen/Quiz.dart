@@ -38,7 +38,7 @@ class Quiz extends StatelessWidget {
                     String idQuiz = myServices.sharePref!.get("idQuiz").toString();
                     String idUser = myServices.sharePref!.get("id_user").toString();
                     quizController.insertData(idUser,idQuiz);
-                    Get.offAllNamed("/pageOfQuiz");
+                    Get.offNamed("/pageOfQuiz");
                     quizController.update();
                   },
                   child:CustomText(text:"Save".tr, style: context.textTheme.labelSmall, padding: const EdgeInsets.symmetric(horizontal: 0),),

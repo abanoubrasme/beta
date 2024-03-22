@@ -6,7 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import '../../../services/myServices.dart';
 import '../font.dart';
 
-ThemeData lightTheme(){
+ThemeData lightTheme2(){
   final ThemeData base = ThemeData.light();
   return base.copyWith(
    // textTheme: const TextTheme(),
@@ -47,7 +47,7 @@ ThemeData lightTheme(){
   );
 }
 
-ThemeData light(){
+ThemeData lightTheme(){
   MyServices myServices = Get.find();
   String lang = myServices.sharePref!.get("lang").toString();
   return ThemeData(
@@ -96,7 +96,6 @@ ThemeData light(){
           titleLarge  : const TextStyle(color: ColorC.amberDark,),
 
           displaySmall:  TextStyle(fontSize: 22, color: ColorC.black2),
-
           displayMedium:  TextStyle(fontSize: 24, color: ColorC.teal),
           displayLarge: const TextStyle(
               fontSize: 72,

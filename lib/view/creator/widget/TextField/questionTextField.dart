@@ -1,3 +1,4 @@
+import 'package:beta/core/decoration/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,7 +35,7 @@ class QuestionTextField extends StatelessWidget {
             cursorHeight: 40,
             textAlign: TextAlign.center,
             maxLines: 5,
-            style: const TextStyle(fontSize: 25),
+            style: TextStyle(color: ColorC.grey2,fontSize: 22 ),
             decoration:  InputDecoration(
               hintText: "Add Question".tr,
               enabledBorder: InputBorder.none,

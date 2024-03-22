@@ -1,14 +1,12 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:beta/core/decoration/theme/dark_theme.dart';
 import 'package:beta/core/decoration/theme/light_theme.dart';
 import 'package:beta/core/localization/changeLanguage.dart';
 import 'package:beta/core/localization/translation.dart';
+import 'package:beta/core/decoration/theme/themeMode.dart';
 import 'package:beta/services/myServices.dart';
 import 'package:beta/services/pages.dart';
 import 'package:beta/view/auth/Screen/Login.dart';
 import 'package:beta/view/home/screen/home.dart';
-import 'package:beta/view/home/screen/welcome.dart';
-import 'package:beta/view/player/screen/player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -27,16 +25,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ChangeLanguageController changeLanguageController =Get.put(ChangeLanguageController());
+    ThemeModes themeModes =Get.put(ThemeModes());
     return GetMaterialApp(
       translations: MyTranslation(),
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'BeTa',
       locale: changeLanguageController.language,
       getPages: Pages.pages,
-      theme:light(),
-      darkTheme: dark(),
-      themeMode: ThemeMode.system,
-      home: myServices.sharePref!.get("userName") != null? Home():Login(),
+      theme:lightTheme(),
+      darkTheme: darkTheme(),
+      themeMode: themeModes.themeMode,
+      initialRoute: myServices.sharePref!.get("userName") != null? "/home": "/login",
+      // home: myServices.sharePref!.get("userName") != null? Home():Login(),
     );
   }
 }

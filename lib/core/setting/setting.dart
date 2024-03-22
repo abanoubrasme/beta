@@ -1,17 +1,17 @@
 import 'package:beta/control/settingController.dart';
-import 'package:beta/core/constant/widget/customText.dart';
 import 'package:beta/core/localization/changeLanguage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../services/myServices.dart';
-import '../decoration/font.dart';
 import '../decoration/color.dart';
+import '../decoration/theme/themeMode.dart';
 
 class Setting extends StatelessWidget {
    Setting({super.key});
    MyServices myServices = Get.put(MyServices());
    SettingController settingController = Get.put(SettingController());
    ChangeLanguageController localeController = Get.put(ChangeLanguageController());
+   ThemeModes themeModes =Get.put(ThemeModes());
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +120,19 @@ class Setting extends StatelessWidget {
                         );
                       })
                   );
+                },
+              ),
+              ListTile(
+                title: Text(themeModes.themeMode == ThemeMode.light ? "Dark Mode" : "Light Mode",style: context.textTheme.titleSmall),
+                leading: Icon(themeModes.themeMode == ThemeMode.light ? Icons.dark_mode_outlined : Icons.light_mode_outlined
+                    ,color:ColorC.grey2),
+                onTap: (){
+                  myServices.sharePref!.get("theme");
+                  if(themeModes.themeMode == ThemeMode.light) {
+                    themeModes.changeLanguage("dark");
+                  }else if(themeModes.themeMode == ThemeMode.dark){
+                    themeModes.changeLanguage("light");
+                  }
                 },
               )
             ],

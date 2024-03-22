@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../services/myServices.dart';
 
@@ -7,6 +8,9 @@ class SettingController extends GetxController{
   MyServices myServices = Get.find();
   bool checkBoxEN = false ;
   bool checkBoxAR = false ;
+
+  String theme = "Dark Mode";
+  // Icon iconTheme = Icons.dark_mode_outlined;
       checkBox(){
         if(myServices.sharePref!.get("lang")=="ar"){
           checkBoxAR = true;
@@ -21,4 +25,6 @@ class SettingController extends GetxController{
           }
         }
       }
+
+
 }

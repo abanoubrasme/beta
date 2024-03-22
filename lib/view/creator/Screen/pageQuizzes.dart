@@ -61,6 +61,12 @@ class PageOfQuizzes extends StatelessWidget {
                                     index: index,
                                     width: 90,
                                     style: TextStyle(color: ColorC.white,fontSize: 28)),
+                                  trailing: IconButton(
+                                    icon:  Icon(Icons.info_outline,color: ColorC.grey,),
+                                    onPressed: (){
+                                      myServices.sharePref!.setString("quizName", snapshot.data["data"][index]["name_quiz"].toString());
+                                      Get.toNamed("/info");
+                                    },),
                                   title:Text(
                                     snapshot.data['data'][index]["name_quiz"],
                                     style: context.textTheme.labelMedium,),

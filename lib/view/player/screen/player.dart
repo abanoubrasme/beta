@@ -9,6 +9,7 @@ import 'package:timer_count_down/timer_controller.dart';
 import '../../../../control/creator/quizController.dart';
 import '../../../../control/creator/nameQuizController.dart';
 import '../../../../core/decoration/color.dart';
+import '../../../control/infoPlayerController.dart';
 import '../../../control/player/playerController.dart';
 import '../../../services/myServices.dart';
 import '../widget/rankBox.dart';
@@ -18,6 +19,7 @@ class Player extends StatelessWidget {
 
   QuizController quizController =Get.put(QuizController());
   NameOfQuizController nameOfQuizController =Get.put(NameOfQuizController());
+  InfoPlayerController infoPlayerController = Get.put(InfoPlayerController());
   PlayerController playerController = Get.put(PlayerController());
   CountdownController controller =  CountdownController(autoStart: true);
 
@@ -66,19 +68,9 @@ class Player extends StatelessWidget {
                      return PageView.builder(
                        itemCount: 1,
                        itemBuilder: (context,index){
+                         String userName = myServices.sharePref!.get("userName").toString();
+                         String quizName = myServices.sharePref!.get("quizName").toString();
                           int time = snapshot.data["data"][playerController.next]['time'];
-                         // Timer(
-                         //   Duration(seconds: snapshot.data["data"][playerController.next]['time']),
-                         //         () {
-                         //         if(playerController.next<playerController.content.length-1){
-                         //           playerController.next++;
-                         //           playerController.update();
-                         //         }else{
-                         //           Get.offAllNamed("/home");
-                         //           playerController.next = 0;
-                         //         }
-                         //   },
-                         // );
                          return ListView(
                            children: [
                              ButtonTimePlayer(
@@ -91,7 +83,15 @@ class Player extends StatelessWidget {
                                           controller.restart();
                                         playerController.update();}
                                       else{
-                                        Get.offAllNamed("/home");
+                                        int finalDegree = snapshot.data['data'].length;
+                                        print("------------------------------");
+                                        print(finalDegree);
+                                        print(userName);
+                                        print(quizName);
+                                        print(playerController.rank);
+                                        infoPlayerController.addInfo(userName, quizName,finalDegree , playerController.rank);
+                                        infoPlayerController.update();
+                                        Get.offAllNamed("/finalScore");
                                         playerController.next = 0;
                                       }
 
@@ -120,6 +120,15 @@ class Player extends StatelessWidget {
                                              time = snapshot.data["data"][playerController.next]['time'];
                                              controller.restart();
                                            }else{
+
+                                             int finalDegree = snapshot.data['data'].length;
+                                             print("------------------------------");
+                                             print(finalDegree);
+                                             print(userName);
+                                             print(quizName);
+                                             print(playerController.rank);
+                                             infoPlayerController.addInfo(userName, quizName,finalDegree , playerController.rank);
+                                             infoPlayerController.update();
                                              Get.offNamed("/finalScore");
                                              playerController.next = 0;
                                            }
@@ -142,6 +151,9 @@ class Player extends StatelessWidget {
                                              controller.restart();
                                            }
                                            else{
+                                             int finalDegree = snapshot.data['data'].length;
+                                             infoPlayerController.addInfo(userName, quizName,finalDegree , playerController.rank);
+                                             infoPlayerController.update();
                                              Get.offNamed("/finalScore");
                                              playerController.next = 0;
                                            }
@@ -165,6 +177,9 @@ class Player extends StatelessWidget {
                                              time = snapshot.data["data"][playerController.next]['time'];
                                              controller.restart();
                                            }else{
+                                             int finalDegree = snapshot.data['data'].length;
+                                             infoPlayerController.addInfo(userName, quizName,finalDegree , playerController.rank);
+                                             infoPlayerController.update();
                                              Get.offNamed("/finalScore");
                                              playerController.next = 0;
                                            }
@@ -185,6 +200,9 @@ class Player extends StatelessWidget {
                                              time = snapshot.data["data"][playerController.next]['time'];
                                              controller.restart();
                                            }else{
+                                             int finalDegree = snapshot.data['data'].length;
+                                             infoPlayerController.addInfo(userName, quizName,finalDegree , playerController.rank);
+                                             infoPlayerController.update();
                                              Get.offNamed("/finalScore");
                                              playerController.next = 0;
                                            }
