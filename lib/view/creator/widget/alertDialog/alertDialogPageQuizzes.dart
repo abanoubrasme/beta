@@ -13,12 +13,16 @@ class AlertDialogs {
     this.onPressedCancel,
     this.onPressedEdit,
     this.onChangedEdit,
+    this.validator,
+    this.formKey,
   });
 
   void Function()? onPressedDelete;
   void Function()? onPressedCancel;
   void Function()? onPressedEdit;
   void Function(String)? onChangedEdit;
+  String? Function(String?)? validator;
+   GlobalKey<FormState>? formKey = GlobalKey<FormState>();
 
   Future<dynamic> deleteQuiz(BuildContext context) {
     return Get.defaultDialog(
@@ -63,13 +67,17 @@ class AlertDialogs {
               text: snapshot.data["data"][index]["name_quiz"],
               style: context.textTheme.labelMedium,
               padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),),
-            CustomTextField(
-              hintText: 'quiz name'.tr,
-              onChanged:onChangedEdit,
-              prefixIcon: const Icon(Icons.drive_file_rename_outline),
-              maxLength: 20,
-              keyboardType: TextInputType.name,
-              padding:  EdgeInsets.zero,
+            Form(
+              key: formKey,
+              child: CustomTextField(
+                hintText: 'quiz name'.tr,
+                onChanged:onChangedEdit,
+                prefixIcon: const Icon(Icons.drive_file_rename_outline),
+                maxLength: 20,
+                keyboardType: TextInputType.name,
+                padding:  EdgeInsets.zero,
+                validator: validator,
+              ),
             ),
           ],
         ),

@@ -28,32 +28,35 @@ class AddNewPlayer {
                 children: [
                   CustomTextField(
                     controller: playerController.nameP,
-                    hintText: 'enter your name'.tr,
+                    hintText: 'quiz name'.tr,
                     prefixIcon: const Icon(Icons.person_outline_outlined),
                     padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                    validator: (name){
+                      return playerController.validatorName(name!);
+                    },
                   ),
                   CustomTextField(
-                    hintText: 'enter the code'.tr,
+                    hintText: 'quiz code'.tr,
                     maxLength: 8,
-                    controller: nameOfQuizController.codeC,
+                    controller: playerController.codeP,
                     prefixIcon: const Icon(Icons.code),
-                    keyboardType: TextInputType.number,
                     padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-                    onChanged: (s){
-                      nameOfQuizController.getCode(s);
-                      nameOfQuizController.update();
+                    onChanged: (code){
+                      playerController.getCode();
                     },
                     validator: (code) {
-                      return nameOfQuizController.validatorCode(code!);
+                      return playerController.validatorCode(code!);
                     },
 
                   ),
                   CustomButton(
                     text: 'Connect'.tr,
                     onPressed: () {
-                      nameOfQuizController.update();
+                    //  playerController.update();
                       if(formKey.currentState!.validate()){
-                        nameOfQuizController.getCodeCheck(nameOfQuizController.codeC.text);}
+                        playerController.getCodeCheck(playerController.codeP.text,playerController.nameP.text);
+
+                      }
                     }, )
                 ],
               ),

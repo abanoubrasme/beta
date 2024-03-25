@@ -31,8 +31,8 @@ class Home extends StatelessWidget {
         leading:const Text(""),
         actions: [
           PopupMenuButtonAppBar(
-            text1: 'Setting',
-            text2: 'LogOut',
+            text1: 'Setting'.tr,
+            text2: 'LogOut'.tr,
             iconItem1: Icons.settings,
             iconItem2: Icons.login,
             onSelected:(e){

@@ -10,34 +10,13 @@ class NameOfQuizController extends GetxController{
 
   RequestData requestData = RequestData();
   MyServices myServices = Get.find();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController nameC = TextEditingController();
   final TextEditingController codeC = TextEditingController();
 
    String name = "";
-   int code = 111;
-   int valid = 1;
-
-  validatorName (String val ,int max,int min ){
-    if(valid.toString()==val){
-      return "this code is already existing";
-    }
-    if(val.isEmpty){
-      return "not validator";
-    }
-    if(val.length>max){
-      return "not validator";
-    }
-    if(val.length<min){
-      return "not validator";
-    }
-
-  }
-
-  validatorCode(String code){
-    if(code != valid.toString() ){
-      return "Wrong code";
-    }
-  }
+   String code = "";
+   String valid = "";
 
   addName(var name,var code, var idUser)async{
     var response = await requestData.postRequest(linkAddName, {
@@ -48,24 +27,19 @@ class NameOfQuizController extends GetxController{
     if (response["status"] == "success") {
       nameC.text = "";
       codeC.text = "";
-      Get.toNamed("/pageOfQuizzes");
-    } else {
-      print("Sign Up is Fail -----------------------------");
     }
 
   }
 
-  getCode(code)async{
+  getCode()async{
     var response = await requestData.postRequest(linkGetCode, {
-      "code_quiz" :code.toString(),
+      "code_quiz" : codeC.text.toString(),
+      "name_quiz" : nameC.text.toString(),
     });
     if(response["status"]=="success"){
-      valid = response["data"][0]["code_quiz"];
-      print(valid);
-      print("=====================");
+      code = response["data"][0]["code_quiz"];
+      name  = response["data"][0]["name_quiz"];
       update();
-    }else{
-      print("erorr==================erorr");
     }
   }
 
@@ -82,6 +56,19 @@ class NameOfQuizController extends GetxController{
         Get.toNamed("/pageOfQuiz");
       }
     }
+  }
+
+
+  validatorCode(String text){
+    if(text != code.toString()){
+      return "Wrong code or name".tr;
+    }
+  }
+
+  validatorName(String text){
+      if(text != name.toString()){
+        return "Wrong code or name".tr;
+      }
   }
 
 }

@@ -40,22 +40,22 @@ class AddNewQuiz extends StatelessWidget {
                           validator: (name){
                             return  quizzesController.validatorName(name!, 20, 2);
                           },
-                          // onChanged: (name) {
-                          //   quizzesController.name = name ;
-                          // },
+                          onChanged: (name) {
+                           // formKey.currentState!.validate();
+                            quizzesController.getCode();
+                          },
                         ),
                         CustomTextField(
                           hintText: 'quiz code'.tr,
                           controller: quizzesController.codeC,
                           prefixIcon: const Icon(Icons.code),
-                          maxLength: 8,
-                          keyboardType: TextInputType.number,
+                          maxLength: 10,
                           padding: const EdgeInsets.only(top: 10,bottom: 20),
                           validator: (code) {
-                            return quizzesController.validatorName(code!, 8, 4);
+                            return quizzesController.validatorName(code!,10, 4);
                           },
                           onChanged:(code) {
-                              quizzesController.code = int.parse(code)  ;
+                            //formKey.currentState!.validate();
                               quizzesController.getCode();
                           },
                         ),
@@ -66,6 +66,8 @@ class AddNewQuiz extends StatelessWidget {
                               text: "Cancel".tr,
                               fontSize: 20,
                               onPressed: (){
+                                quizzesController.nameC.text = "";
+                                quizzesController.codeC.text = "";
                                 Get.back();
                               },
                               color: ColorC.redDark, padding: const EdgeInsets.symmetric(horizontal: 35),),
@@ -74,12 +76,12 @@ class AddNewQuiz extends StatelessWidget {
                               fontSize: 20,
                               onPressed: () {
                                 quizzesController.getCode();
-                                quizzesController.update();
+                                print("================");
                                 if(formKey.currentState!.validate()){
-                                  var idUser =  myServices.sharePref!.get("id_user").toString();
-                                  quizzesController.addName(quizzesController.name, quizzesController.code, idUser);
-                                  Get.back();
+                                  String idUser =  myServices.sharePref!.get("id_user").toString();
+                                  quizzesController.addName(quizzesController.nameC.text, quizzesController.codeC.text, idUser);
                                   quizzesController.update();
+                                  Get.back();
                                 }
                                 quizzesController.update();
                               },

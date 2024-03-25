@@ -69,7 +69,7 @@ class PageOfQuiz extends StatelessWidget {
                                   style:   TextStyle(color: ColorC.white,fontSize: 26)),
                                 title: Text(
                                   quizController.lengthQuestion(snapshot.data["data"][index]["question"]),
-                                  style: context.textTheme.labelMedium,),
+                                  style: TextStyle(color: ColorC.grey2,fontSize: 20),),
                                 background: SlideBackground(
                                   color: ColorC.greenDark ,
                                   text:  'Edit'.tr       ,

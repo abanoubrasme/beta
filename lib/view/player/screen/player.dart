@@ -31,7 +31,7 @@ class Player extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
                 centerTitle: true,
-                title: Text(playerController.nameP.text,style: TextStyle(color: ColorC.grey2),),
+                title: Text(nameOfQuizController.name,style: TextStyle(color: ColorC.grey2),),
                 actions: [
                   MaterialButton(
                       onPressed: (){

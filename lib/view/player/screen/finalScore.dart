@@ -1,17 +1,19 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../control/player/playerController.dart';
 import '../../../core/decoration/font.dart';
 import '../../../core/decoration/color.dart';
+import '../../../services/myServices.dart';
 
 class FinalScore extends StatelessWidget {
    FinalScore({super.key});
 
   PlayerController playerController = Get.put(PlayerController());
+   MyServices myServices = Get.find();
 
   @override
   Widget build(BuildContext context) {
+    String userName = myServices.sharePref!.get("userName").toString();
     return Scaffold(
       body: InkWell(
         onTap: (){
@@ -25,7 +27,7 @@ class FinalScore extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 200,),
-             Text("${playerController.name}",style: TextStyle(fontSize: 35,fontFamily: Font.f1,color: ColorC.teal),),
+             Text(userName,style: TextStyle(fontSize: 35,fontFamily: Font.f1,color: ColorC.teal),),
             SizedBox(height: 30,),
             Row(
               children: [

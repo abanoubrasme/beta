@@ -9,23 +9,28 @@ class QuizzesController extends GetxController{
   RequestData requestData = RequestData();
   MyServices myServices = Get.find();
 
-  int updates = 0;
-  final TextEditingController nameC = TextEditingController();
-   TextEditingController nameE = TextEditingController();
-  final TextEditingController codeC = TextEditingController();
 
+  final TextEditingController nameC = TextEditingController();
+  final TextEditingController codeC = TextEditingController();
+  final TextEditingController nameE = TextEditingController();
+
+  int updates = 0;
   String name = "";
-  int code = 111;
-  int valid = 1;
+  String nameEdit = "";
+  String code = "";
+
+  String valid = "";
+
 
   getName(String idUser)async{
     var response = await requestData.postRequest(linkGetName, {
       "id_user" : idUser.toString(),
     });
     if (response["status"] == "success"){
+      name = response["data"][0]["name_quiz"];
       return response;
     }else{
-      print("error ===============");
+
     }
   }
   deleteQuiz(idQuiz)async{
@@ -33,12 +38,8 @@ class QuizzesController extends GetxController{
       "id_quiz" :idQuiz.toString(),
     });
     if(response["status"]=="success"){
-
       update();
       return response;
-
-    }else{
-      print("Error===================");
     }
   }
   getAllData(String idUser)async{
@@ -49,46 +50,50 @@ class QuizzesController extends GetxController{
       return response;
     }
   }
-
-  validatorName (String val ,int max,int min ){
-    if(valid.toString()==val){
-      return "this code is already existing";
-    }
-    if(val.isEmpty){
-      return "not validator";
-    }
-    if(val.length>max){
-      return "not validator";
-    }
-    if(val.length<min){
-      return "not validator";
-    }
-
-  }
-  addName(var name,var code, var idUser)async{
+  addName(String name,String code, String idUser)async{
     var response = await requestData.postRequest(linkAddName, {
       "name_quiz": name.toString(),
       "code_quiz": code.toString(),
-      "id_user": idUser.toString(),
+      "id_user"  : idUser.toString(),
     });
     if (response["status"] == "success") {
       nameC.text = "";
       codeC.text = "";
-      Get.toNamed("/pageOfQuizzes");
-    } else {
-      print("Sign Up is Fail -----------------------------");
     }
-
   }
+
   getCode()async{
     var response = await requestData.postRequest(linkGetCode, {
-      "code_quiz" :code.toString(),
+      "code_quiz" :codeC.text.toString(),
+      "name_quiz" :nameC.text.toString(),
     });
     if(response["status"]=="success"){
-      valid = response["data"][0]["code_quiz"];
+      code = response["data"][0]["code_quiz"];
+      name = response["data"][0]["name_quiz"];
+      if(name == nameC.text && code == codeC.text){
+        valid = code;
+      }
+      print(code);
+      print(name);
       update();
     }
   }
+
+  getCode2(codes , names)async{
+    var response = await requestData.postRequest(linkGetCode, {
+      "code_quiz" :codes.toString(),
+      "name_quiz" :names.toString(),
+    });
+    if(response["status"]=="success"){
+      code = response["data"][0]["code_quiz"];
+      name = response["data"][0]["name_quiz"];
+      if(name == names && code == codes){
+        valid = name;
+      }
+      update();
+    }
+  }
+
   getCodeCheck(code)async{
     var response = await requestData.postRequest(linkGetCode, {
       "code_quiz" :code.toString(),
@@ -96,7 +101,6 @@ class QuizzesController extends GetxController{
     if(response["status"]=="success"){
       myServices.sharePref!.setInt("idQuiz",response["data"][0]["id_quiz"]) ;
       if(response["data"].length > 0){
-        print(response["data"].length);
         Get.toNamed("/player");
       }
       else{
@@ -104,18 +108,37 @@ class QuizzesController extends GetxController{
       }
     }
   }
+
   updateName(idQuiz)async{
    var response = await requestData.postRequest(linkUpdateName, {
-     "name_quiz" : name.toString(),
+     "name_quiz" : nameEdit.toString(),
      "id_quiz" : idQuiz.toString()
    });
    if(response["status"]=="success"){
      return response;
-   }else{
-     print("error ===============");
    }
   }
 
+  validatorName (String text ,int max,int min ){
+    if(text == valid ){
+        return "this name or code are already existing".tr;
+    }
 
+    if(text.isEmpty){
+      return "The field is empty. It should not be empty".tr ;
+    }
+    if(text.length>max){
+      return "${"the maximum is".tr} $max";
+    }
+    if(text.length<min){
+      return "${"the minimum is".tr} $min";
+    }
+  }
+
+  validatorNameEdit(String text){
+    if(text == valid ){
+      return "this name is already existing".tr;
+    }
+  }
 
 }

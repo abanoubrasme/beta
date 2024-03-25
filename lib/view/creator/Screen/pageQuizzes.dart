@@ -106,18 +106,30 @@ class PageOfQuizzes extends StatelessWidget {
                                           WidgetsBinding.instance.addPersistentFrameCallback((_) {
                                           quizzesController.nameE.text = snapshot.data?['data'][index]["name_quiz"]??"";});
                                           AlertDialogs(
-                                            onPressedCancel: (){
-                                              Get.back();
+                                              formKey: formKey,
+                                              onPressedCancel: (){
+                                                Get.back();
+                                              },
+                                              onPressedEdit: () {
+                                               String code = snapshot.data['data'][index]["code_quiz"];
+                                               quizzesController.getCode2(code, quizzesController.nameEdit);
+                                               formKey.currentState!.validate();
+                                               if(formKey.currentState!.validate()){
+                                                 quizzesController.updateName(idQuiz);
+                                                 quizzesController.update();
+                                                 Get.back();
+                                               }
+                                                // quizzesController.updateName(idQuiz);
+                                                // quizzesController.update();
+                                                // Get.back();
                                             },
-                                            onPressedEdit: () {
-                                              quizzesController.updateName(idQuiz);
-                                              quizzesController.update();
-                                              Get.back();
-                                              quizzesController.update();
-                                          },
                                             onChangedEdit: (name){
-                                              quizzesController.name = name;
-                                            }
+                                              quizzesController.nameEdit = name;
+                                              quizzesController.validatorNameEdit(name);
+                                            },
+                                            validator: (text){
+                                                return quizzesController.validatorNameEdit(text!);
+                                          }
                                           ).editNameQuiz(snapshot, index,context);}
                                       }
                               ) ;

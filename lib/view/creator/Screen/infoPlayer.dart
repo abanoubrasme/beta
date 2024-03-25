@@ -35,17 +35,17 @@ class Info extends StatelessWidget {
               child: Row(
               children: [
                 Expanded(
-                    flex: 2,
-                    child: Text("Name",style: TextStyle(color: ColorC.grey2,fontSize: 22),textAlign:TextAlign.center)),
+                    flex: 3,
+                    child: Text("Name".tr,style: TextStyle(color: ColorC.grey2,fontSize: 22),textAlign:TextAlign.center)),
+                Expanded(
+                    flex: 3,
+                    child: Text("Quiz".tr,style: TextStyle(color: ColorC.grey2,fontSize: 22),textAlign:TextAlign.center)),
                 Expanded(
                     flex: 2,
-                    child: Text("Quiz",style: TextStyle(color: ColorC.grey2,fontSize: 22),textAlign:TextAlign.center)),
+                    child: Text("Total".tr,style: TextStyle(color: ColorC.grey2,fontSize: 18),textAlign:TextAlign.center)),
                 Expanded(
-                    flex: 1,
-                    child: Text("Total",style: TextStyle(color: ColorC.grey2,fontSize: 20),textAlign:TextAlign.center)),
-                Expanded(
-                    flex: 1,
-                    child: Text("Degree",style: TextStyle(color: ColorC.grey2,fontSize: 20),textAlign:TextAlign.center)),
+                    flex: 2,
+                    child: Text("Degree".tr,style: TextStyle(color: ColorC.grey2,fontSize: 18),textAlign:TextAlign.center)),
               ],
             ) ,),
 
@@ -64,32 +64,32 @@ class Info extends StatelessWidget {
 
                         Table(
                             columnWidths: const {
-                              0: FlexColumnWidth(2),
-                              1: FlexColumnWidth(2),
-                              2: FlexColumnWidth(1),
-                              3: FlexColumnWidth(1),
+                              0: FlexColumnWidth(3),
+                              1: FlexColumnWidth(3),
+                              2: FlexColumnWidth(2),
+                              3: FlexColumnWidth(2),
                             },
                             border: TableBorder.all(color: ColorC.grey2,width: 0),
                             children:  [
 
                               TableRow(
-                                //    decoration: BoxDecoration(border: Border.all(width: 1,color: ColorC.grey2)),
+                                    decoration: BoxDecoration(border: Border.all(width: 1,color: ColorC.grey2)),
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                      child: Text(snapshot.data["data"][index]["user_name"],style: TextStyle(color: ColorC.grey2,fontSize: 18),textAlign:TextAlign.center),
+                                      child: Text(snapshot.data["data"][index]["user_name"],style: TextStyle(color: ColorC.grey2,fontSize: 16),textAlign:TextAlign.center),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                      child: Text(snapshot.data["data"][index]["quiz_name"],style: TextStyle(color: ColorC.grey2,fontSize: 18),textAlign:TextAlign.center),
+                                      child: Text(snapshot.data["data"][index]["quiz_name"],style: TextStyle(color: ColorC.grey2,fontSize: 16),textAlign:TextAlign.center),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                      child: Text(snapshot.data["data"][index]["final_degree"].toString(),style: TextStyle(color: ColorC.grey2,fontSize: 16),textAlign:TextAlign.center ),
+                                      child: Text(snapshot.data["data"][index]["final_degree"].toString(),style: TextStyle(color: ColorC.grey2,fontSize: 15),textAlign:TextAlign.center ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(vertical: 10.0),
-                                      child: Text(snapshot.data["data"][index]["degree"].toString(),style: TextStyle(color: ColorC.grey2,fontSize: 16),textAlign:TextAlign.center ),
+                                      child: Text(snapshot.data["data"][index]["degree"].toString(),style: TextStyle(color: ColorC.grey2,fontSize: 15),textAlign:TextAlign.center ),
                                     ),
                                   ]),
 
