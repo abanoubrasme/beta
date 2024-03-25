@@ -28,18 +28,18 @@ class FinalScore extends StatelessWidget {
             children: [
               const SizedBox(height: 200,),
              Text(userName,style: TextStyle(fontSize: 35,fontFamily: Font.f1,color: ColorC.teal),),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             Row(
               children: [
-                SizedBox(width: 120,),
+                const SizedBox(width: 120,),
                 Text("Score :  ",style: TextStyle(fontSize: 35,fontFamily: Font.f1,color: ColorC.teal)),
                 Text("${playerController.rank}",style: TextStyle(fontSize: 30,fontFamily: Font.f1,color: ColorC.teal)),
               ],
             ),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             Row(
               children: [
-                SizedBox(width: 80,),
+                const SizedBox(width: 80,),
                 Text("Final Score :  ",style: TextStyle(fontSize: 35,fontFamily: Font.f1,color: ColorC.teal)),
                 Text("${playerController.totalRank}",style: TextStyle(fontSize: 30,fontFamily: Font.f1,color: ColorC.teal)),
               ],

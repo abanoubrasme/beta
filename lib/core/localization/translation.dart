@@ -62,6 +62,7 @@ class MyTranslation extends Translations{
       "!Warning"                 :"عفوا!",
 
       "not validator"                                            : "غير صالح" ,
+      "check Code"                                               : "التحقق من الكود",
       "Wrong code or name"                                       : "الكود أو الاسم خاطئ",
       "this name is already existing"                            : "هذا الاسم موجود بالفعل",
       "the minimum is"                                           : "الحد الأدنى هو",
@@ -142,6 +143,7 @@ class MyTranslation extends Translations{
       "!Warning"                  :"!Warning",
 
       "not validator"                                            : "not validator",
+      "check Code"                                               : "check Code",
       "this name is already existing"                            : "this name is already existing",
       "Wrong code or name"                                       : "Wrong code or name",
       "the minimum is"                                           : "the minimum is",

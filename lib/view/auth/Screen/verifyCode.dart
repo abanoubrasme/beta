@@ -28,6 +28,7 @@ class VerifyCode extends StatelessWidget {
                   OtpTextField(
                     fieldWidth: 50,
                     numberOfFields: 5,
+                    textStyle: TextStyle(color: ColorC.grey2,fontSize: 20),
                     borderColor:ColorC.grey2,
                     focusedBorderColor: context.theme.canvasColor,
                     showFieldAsBox: true,
@@ -38,9 +39,9 @@ class VerifyCode extends StatelessWidget {
                           context: context,
                           builder: (context){
                             return  AlertDialog(
-                              title: const Center(child:  Text("check Code")),
+                              title:  Center(child:  Text("check Code".tr)),
                               content: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 90.0),
+                                padding: const EdgeInsets.symmetric(horizontal: 100.0),
                                 child: CircularProgressIndicator(
                                   color: ColorC.teal,
                                 ),
