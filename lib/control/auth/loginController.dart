@@ -9,12 +9,17 @@ class LoginController extends GetxController {
 
   RequestData requestData = RequestData();
   MyServices myServices = Get.find();
-  Helper helper = Get.put(Helper());
 
   final TextEditingController userName = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController email    = TextEditingController();
 
+  String emailH = "";
+  String userNameH = "";
+  String passwordH = "";
+
+  bool valid = true;
+  bool obscure = false;
 
   login()async{
     var response = await requestData.postRequest(linkLogin, {
@@ -22,33 +27,11 @@ class LoginController extends GetxController {
       "password"     :password.text,
     });
     if(response["status"]=="success"){
-      helper.validator=false;
-      helper.update();
+      valid = false;
+      update();
       Get.toNamed("/home",arguments: [getIdUser()]);
     }else{
-      validLogin(helper.validator);
-    }
-  }
-  getUserName()async{
-    var response = await requestData.postRequest(linkGetUserName, {
-      "user_name"    :userName.text,
-    });
-    if(response["status"]=="success"){
-      helper.email_H = response["data"][0]["email"];
-      helper.userName_H = response["data"][0]["user_name"];
-      update();
-    }else{
-      validLogin(false);
-    }
-  }
-  checkEP() async {
-    var response = await requestData.postRequest(linkLogin, {
-      "user_name"    :userName.text,
-      "password" :password.text,
-    });
-    if(response["status"]=="success"){
-      helper.validator=false;
-      helper.update();
+      validLogin(valid);
     }
   }
   getIdUser()async{
@@ -60,9 +43,32 @@ class LoginController extends GetxController {
 
     }
   }
+  getUserName()async{
+    var response = await requestData.postRequest(linkGetUserName, {
+      "user_name"    :userName.text,
+    });
+    if(response["status"]=="success"){
+      emailH = response["data"][0]["email"];
+      userNameH = response["data"][0]["user_name"];
+      update();
+    }else{
+      validLogin(false);
+    }
+  }
+
+  checkEP() async {
+    var response = await requestData.postRequest(linkLogin, {
+      "user_name"    :userName.text,
+      "password" :password.text,
+    });
+    if(response["status"]=="success"){
+     valid = false;
+      update();
+    }
+  }
 
   validator (String val ,int max,int min ){
-    if(helper.email_H==val||helper.userName_H==val){
+    if(emailH == val || userNameH == val){
       return "the User Name or Email is already exist";
     }
     if(val.isEmpty){
@@ -79,14 +85,12 @@ class LoginController extends GetxController {
     if(s){
       return "the user name or password are not correct ";
     }
-
   }
 
-@override
-  void dispose() {
-    email.dispose();
-    password.dispose();
-    super.dispose();
+  showPassword(){
+    obscure = !obscure;
+    update();
   }
+
 
 }

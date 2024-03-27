@@ -28,7 +28,7 @@ class AuthController extends GetxController {
         myServices.sharePref!.setString("password", password);
         Get.toNamed("/home",arguments: [getIdUser()]);
       }else{
-        getEmail();
+      // getEmail();
         helper.update();
       }
   }
@@ -66,31 +66,31 @@ class AuthController extends GetxController {
 
     }
   }
-  getEmail()async{
-    var response = await requestData.postRequest(linkGetUserName, {
-      "email"    :email.text,
-    });
-    if(response["status"]=="success"){
-      helper.email_H = response["data"][0]["email"];
-      helper.userName_H = response["data"][0]["user_name"];
-      update();
-    }
-  }
-  validator (String val ,int max,int min ){
-
-    if(helper.email_H==val||helper.userName_H==val){
-      return "the User Name or Email is already exist";
-    }
-    if(val.isEmpty){
-      return "not validator";
-    }
-    if(val.length>max){
-      return "not validator";
-    }
-    if(val.length<min){
-      return "not validator";
-    }
-  }
+  // getEmail()async{
+  //   var response = await requestData.postRequest(linkGetUserName, {
+  //     "email"    :email.text,
+  //   });
+  //   if(response["status"]=="success"){
+  //     helper.email_H = response["data"][0]["email"];
+  //     helper.userName_H = response["data"][0]["user_name"];
+  //     update();
+  //   }
+  // }
+  // validator (String val ,int max,int min ){
+  //
+  //   if(helper.email_H==val||helper.userName_H==val){
+  //     return "the User Name or Email is already exist";
+  //   }
+  //   if(val.isEmpty){
+  //     return "not validator";
+  //   }
+  //   if(val.length>max){
+  //     return "not validator";
+  //   }
+  //   if(val.length<min){
+  //     return "not validator";
+  //   }
+  // }
   validLogin (bool s){
     if(s){
       return "the user name or password is ";

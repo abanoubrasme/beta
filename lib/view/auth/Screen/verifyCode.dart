@@ -15,14 +15,11 @@ class VerifyCode extends StatelessWidget {
             body: Form(
               child: ListView(
                 children: [
-                  // CustomText(text: "Verification Code".tr,
-                  //     style: context.textTheme.titleSmall,
-                  //     padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 30)),
                   CustomText(text: "Check Code".tr,
-                    style: context.textTheme.titleMedium,
+                    style: context.textTheme.titleSmall,
                     padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),),
                   CustomText(text:"Please enter the digit code sent to your email".tr,
-                      style: context.textTheme.titleSmall,
+                    style: TextStyle(color: ColorC.grey2,fontSize: 16),
                     padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),),
                   const SizedBox(height: 30,),
                   OtpTextField(
@@ -53,14 +50,13 @@ class VerifyCode extends StatelessWidget {
                   ),
                   const SizedBox(height: 50,),
                   LoginButton(
-                      text: "Request reset a link".tr,
-                    onPressed: () {  } ,),
-                  const SizedBox(height: 20,),
+                    padding: const EdgeInsets.only(bottom: 10 , left: 50 ,right: 50),
+                      text: "resend code".tr,
+                    onPressed: () { Get.offNamed("/reset"); } ,),
                   SignUpButton(text: '',
                     textButton:  "Back to Login".tr,
                     onPressed: () {  Get.offNamed("/login"); },
                     ),
-
                 ],
               ),
             ),

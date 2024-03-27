@@ -15,7 +15,7 @@ class HasData extends StatelessWidget {
           const SizedBox(
               height: 150,
               width: 150,
-              child: Image(image: AssetImage('image/notebook.png'))),
+              child: Image(image: AssetImage('image/hasData.png'))),
           const SizedBox(height: 18,),
           Text("you have no data".tr,
             style: context.textTheme.displaySmall),

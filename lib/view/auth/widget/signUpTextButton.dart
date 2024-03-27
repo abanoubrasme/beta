@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../core/decoration/font.dart';
 import '../../../core/decoration/color.dart';
 
@@ -22,7 +23,7 @@ class SignUpButton extends StatelessWidget {
         TextButton(
             onPressed: onPressed,
             child:Text(textButton,
-              style:TextStyle(color: ColorC.teal,fontSize: 18),
+              style:TextStyle(color: context.theme.canvasColor,fontSize: 18),
             ))
       ],
     );

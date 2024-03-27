@@ -5,15 +5,13 @@ import 'package:beta/core/localization/translation.dart';
 import 'package:beta/core/decoration/theme/themeMode.dart';
 import 'package:beta/services/myServices.dart';
 import 'package:beta/services/pages.dart';
-import 'package:beta/view/auth/Screen/Login.dart';
-import 'package:beta/view/home/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 GetStorage box = GetStorage();
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+
   await initialServices();
   runApp( MyApp());
 }
@@ -35,8 +33,7 @@ class MyApp extends StatelessWidget {
       theme:lightTheme(),
       darkTheme: darkTheme(),
       themeMode: themeModes.themeMode,
-      initialRoute: myServices.sharePref!.get("userName") != null? "/home": "/login",
-      // home: myServices.sharePref!.get("userName") != null? Home():Login(),
+      initialRoute: myServices.sharePref!.get("userName") != null? "/home" : myServices.sharePref!.get("onBoard") != null ?  "/login" : "/onBoarding",
     );
   }
 }

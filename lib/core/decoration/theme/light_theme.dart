@@ -1,57 +1,13 @@
 import 'package:beta/core/decoration/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../../services/myServices.dart';
 import '../font.dart';
-
-ThemeData lightTheme2(){
-  final ThemeData base = ThemeData.light();
-  return base.copyWith(
-   // textTheme: const TextTheme(),
-    appBarTheme:  const AppBarTheme(
-      backgroundColor: ColorC.backgroundLight,
-    ),
-
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor:ColorC.tealLight,
-        foregroundColor:ColorC.tealLight,
-        splashFactory: NoSplash.splashFactory,
-        elevation: 0,
-        shadowColor: Colors.transparent,
-      ),
-    ),
-
-    dialogTheme: DialogTheme(
-        titleTextStyle: TextStyle(color:ColorC.black2 ,fontFamily: Font.f1)
-    ),
-
-    scaffoldBackgroundColor: ColorC.backgroundLight,
-
-    colorScheme:  const ColorScheme(
-        background: ColorC.backgroundLight, 
-        brightness: Brightness.light,
-        primary: ColorC.backgroundLight,
-        onPrimary: ColorC.backgroundLight,
-        secondary: ColorC.backgroundLight,
-        onSecondary: ColorC.backgroundLight,
-        error: ColorC.redLight,
-        onError: ColorC.redLight,
-        onBackground: ColorC.backgroundLight,
-        surface: ColorC.backgroundLight,
-        onSurface: ColorC.backgroundLight),
-
-
-  );
-}
 
 ThemeData lightTheme(){
   MyServices myServices = Get.find();
   String lang = myServices.sharePref!.get("lang").toString();
   return ThemeData(
-
       useMaterial3: true,
       fontFamily: lang == "en" ? Font.f1 : Font.f2,
 
@@ -59,16 +15,15 @@ ThemeData lightTheme(){
       canvasColor: ColorC.teal,
       scaffoldBackgroundColor: ColorC.backgroundLight,
       secondaryHeaderColor: ColorC.white,
-
       focusColor: ColorC.backgroundLight,
       hintColor: ColorC.grey,
-
       primaryColorLight: ColorC.backgroundLight2,
       primaryColorDark: ColorC.teal,
 
+
       bottomSheetTheme: BottomSheetThemeData(
         elevation: 5,
-      backgroundColor: ColorC.white,
+        backgroundColor: ColorC.white,
     ),
       appBarTheme:  const AppBarTheme(
         backgroundColor: ColorC.backgroundLight,
@@ -91,7 +46,7 @@ ThemeData lightTheme(){
               color: ColorC.backgroundLight
           ),
 
-          titleSmall  :       TextStyle(fontSize: 20, color: ColorC.grey2,),
+          titleSmall  :       TextStyle(fontSize: 22, color: ColorC.grey2,),
           titleMedium : const TextStyle(fontSize: 30, color: ColorC.grey3,),
           titleLarge  : const TextStyle(color: ColorC.amberDark,),
 
@@ -149,3 +104,44 @@ ThemeData lightTheme(){
 
   );
 }
+
+// ThemeData lightTheme2(){
+//   final ThemeData base = ThemeData.light();
+//   return base.copyWith(
+//     // textTheme: const TextTheme(),
+//     appBarTheme:  const AppBarTheme(
+//       backgroundColor: ColorC.backgroundLight,
+//     ),
+//
+//     elevatedButtonTheme: ElevatedButtonThemeData(
+//       style: ElevatedButton.styleFrom(
+//         backgroundColor:ColorC.tealLight,
+//         foregroundColor:ColorC.tealLight,
+//         splashFactory: NoSplash.splashFactory,
+//         elevation: 0,
+//         shadowColor: Colors.transparent,
+//       ),
+//     ),
+//
+//     dialogTheme: DialogTheme(
+//         titleTextStyle: TextStyle(color:ColorC.black2 ,fontFamily: Font.f1)
+//     ),
+//
+//     scaffoldBackgroundColor: ColorC.backgroundLight,
+//
+//     colorScheme:  const ColorScheme(
+//         background: ColorC.backgroundLight,
+//         brightness: Brightness.light,
+//         primary: ColorC.backgroundLight,
+//         onPrimary: ColorC.backgroundLight,
+//         secondary: ColorC.backgroundLight,
+//         onSecondary: ColorC.backgroundLight,
+//         error: ColorC.redLight,
+//         onError: ColorC.redLight,
+//         onBackground: ColorC.backgroundLight,
+//         surface: ColorC.backgroundLight,
+//         onSurface: ColorC.backgroundLight),
+//
+//
+//   );
+// }

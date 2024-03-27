@@ -44,37 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCeFNft4p-Du7ck557oEwot73p_8Zz-IKk',
-    appId: '1:801934231614:web:ac83f4106fe9a4cd2e696f',
-    messagingSenderId: '801934231614',
-    projectId: 'beta-d8322',
-    authDomain: 'beta-d8322.firebaseapp.com',
-    storageBucket: 'beta-d8322.appspot.com',
+    apiKey: 'AIzaSyBl5tjetFlujjCQer1lgEsLToumBUFFggI',
+    appId: '1:885383775500:web:3c20f9fd59039a5f197529',
+    messagingSenderId: '885383775500',
+    projectId: 'deta-5c114',
+    authDomain: 'deta-5c114.firebaseapp.com',
+    storageBucket: 'deta-5c114.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCDJjuwN8YmmFoCjlx2DY_p-uHFEEq2_ZU',
-    appId: '1:801934231614:android:fc046d4a4c5ddf9c2e696f',
-    messagingSenderId: '801934231614',
-    projectId: 'beta-d8322',
-    storageBucket: 'beta-d8322.appspot.com',
+    apiKey: 'AIzaSyBDT09skQ3eSl2bbyl1DWXjaEbLxb9tPjA',
+    appId: '1:885383775500:android:05ba3c0722b09b6b197529',
+    messagingSenderId: '885383775500',
+    projectId: 'deta-5c114',
+    storageBucket: 'deta-5c114.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBCBUGOxE5KpNeT1W2wecYBO25KXF16rfI',
-    appId: '1:801934231614:ios:728e2376c15712fd2e696f',
-    messagingSenderId: '801934231614',
-    projectId: 'beta-d8322',
-    storageBucket: 'beta-d8322.appspot.com',
+    apiKey: 'AIzaSyD-FMb_9krXLFQxnpv3_7mGUN8pUyzlbYE',
+    appId: '1:885383775500:ios:2754473e56fdbfbf197529',
+    messagingSenderId: '885383775500',
+    projectId: 'deta-5c114',
+    storageBucket: 'deta-5c114.appspot.com',
+    iosClientId: '885383775500-nt0lmj4bkii0qdb1vl7v1qkkqdgahiaf.apps.googleusercontent.com',
     iosBundleId: 'com.example.beta',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBCBUGOxE5KpNeT1W2wecYBO25KXF16rfI',
-    appId: '1:801934231614:ios:32071a00f79df5e52e696f',
-    messagingSenderId: '801934231614',
-    projectId: 'beta-d8322',
-    storageBucket: 'beta-d8322.appspot.com',
+    apiKey: 'AIzaSyD-FMb_9krXLFQxnpv3_7mGUN8pUyzlbYE',
+    appId: '1:885383775500:ios:9e2c7e4fa9df9025197529',
+    messagingSenderId: '885383775500',
+    projectId: 'deta-5c114',
+    storageBucket: 'deta-5c114.appspot.com',
+    iosClientId: '885383775500-gqrp4c0vumvj5mqa9ga81e4ialdgetm7.apps.googleusercontent.com',
     iosBundleId: 'com.example.beta.RunnerTests',
   );
 }

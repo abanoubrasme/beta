@@ -4,72 +4,6 @@ import 'package:get/get.dart';
 import '../../../services/myServices.dart';
 import '../font.dart';
 
-ThemeData darkTheme2(){
-  final ThemeData base = ThemeData.dark(useMaterial3: true);
-  return base.copyWith(
-
-    scaffoldBackgroundColor: ColorC.backgroundDark,
-
-    canvasColor: ColorC.backgroundDark,
-    hoverColor: ColorC.tealDark,
-
-    shadowColor: ColorC.blueLight,
-    splashColor: ColorC.tealDark,
-
-
-    appBarTheme:  const AppBarTheme(
-        backgroundColor: ColorC.backgroundDark,
-    ),
-
-    buttonTheme:  ButtonThemeData(
-        buttonColor: ColorC.white2),
-
-    textButtonTheme:  const TextButtonThemeData(style: ButtonStyle(
-
-    )),
-
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor:ColorC.tealDark,
-        foregroundColor:ColorC.tealDark,
-        splashFactory: NoSplash.splashFactory,
-        elevation: 0,
-        shadowColor: Colors.transparent,
-      ),
-    ),
-
-    dialogTheme: DialogTheme(
-      titleTextStyle: TextStyle(color:ColorC.white2 ,fontFamily: Font.f1)
-    ),
-
-    textTheme: TextTheme(
-
-      labelSmall: const TextStyle(color: ColorC.amberDark),
-      labelMedium: const TextStyle(color: ColorC.amberDark),
-        labelLarge: TextStyle(color: ColorC.white2),
-      titleSmall:const TextStyle(color: ColorC.amberDark,),
-      titleMedium:const TextStyle(color: ColorC.amberDark,),
-      titleLarge:const TextStyle(color: ColorC.amberDark,),
-    ),
-
-
-    colorScheme:   ColorScheme(
-        shadow: ColorC.black,
-        background: ColorC.backgroundDark,
-        brightness: Brightness.dark,
-        primary: ColorC.backgroundDark,
-        onPrimary: ColorC.backgroundDark,
-        secondary: ColorC.backgroundDark,
-        onSecondary:ColorC.backgroundDark,
-        error: ColorC.redDark,
-        onError: ColorC.redDark,
-        onBackground:ColorC.backgroundDark,
-        surface: ColorC.backgroundDark,
-        onSurface: ColorC.backgroundDark,
-    ),
-  );
-}
-
 ThemeData darkTheme(){
 
   MyServices myServices = Get.find();
@@ -83,7 +17,6 @@ ThemeData darkTheme(){
     secondaryHeaderColor: ColorC.grey3, // used
     focusColor: ColorC.backgroundDark3,  //not used
     hintColor: ColorC.grey2, // used
-
     primaryColorLight: ColorC.backgroundDark3,
     primaryColorDark: ColorC.backgroundDark3,
 
@@ -113,7 +46,7 @@ ThemeData darkTheme(){
           color: ColorC.white
       ),
 
-      titleSmall  : TextStyle(fontSize: 20,color: ColorC.white),
+      titleSmall  : TextStyle(fontSize: 22,color: ColorC.white),
       titleMedium : TextStyle(fontSize: 30, color: ColorC.white),
       titleLarge  : const TextStyle(color: ColorC.amberDark,),
 
@@ -174,3 +107,70 @@ ThemeData darkTheme(){
     ),
   );
 }
+
+
+// ThemeData darkTheme2(){
+//   final ThemeData base = ThemeData.dark(useMaterial3: true);
+//   return base.copyWith(
+//
+//     scaffoldBackgroundColor: ColorC.backgroundDark,
+//
+//     canvasColor: ColorC.backgroundDark,
+//     hoverColor: ColorC.tealDark,
+//
+//     shadowColor: ColorC.blueLight,
+//     splashColor: ColorC.tealDark,
+//
+//
+//     appBarTheme:  const AppBarTheme(
+//       backgroundColor: ColorC.backgroundDark,
+//     ),
+//
+//     buttonTheme:  ButtonThemeData(
+//         buttonColor: ColorC.white2),
+//
+//     textButtonTheme:  const TextButtonThemeData(style: ButtonStyle(
+//
+//     )),
+//
+//     elevatedButtonTheme: ElevatedButtonThemeData(
+//       style: ElevatedButton.styleFrom(
+//         backgroundColor:ColorC.tealDark,
+//         foregroundColor:ColorC.tealDark,
+//         splashFactory: NoSplash.splashFactory,
+//         elevation: 0,
+//         shadowColor: Colors.transparent,
+//       ),
+//     ),
+//
+//     dialogTheme: DialogTheme(
+//         titleTextStyle: TextStyle(color:ColorC.white2 ,fontFamily: Font.f1)
+//     ),
+//
+//     textTheme: TextTheme(
+//
+//       labelSmall: const TextStyle(color: ColorC.amberDark),
+//       labelMedium: const TextStyle(color: ColorC.amberDark),
+//       labelLarge: TextStyle(color: ColorC.white2),
+//       titleSmall:const TextStyle(color: ColorC.amberDark,),
+//       titleMedium:const TextStyle(color: ColorC.amberDark,),
+//       titleLarge:const TextStyle(color: ColorC.amberDark,),
+//     ),
+//
+//
+//     colorScheme:   ColorScheme(
+//       shadow: ColorC.black,
+//       background: ColorC.backgroundDark,
+//       brightness: Brightness.dark,
+//       primary: ColorC.backgroundDark,
+//       onPrimary: ColorC.backgroundDark,
+//       secondary: ColorC.backgroundDark,
+//       onSecondary:ColorC.backgroundDark,
+//       error: ColorC.redDark,
+//       onError: ColorC.redDark,
+//       onBackground:ColorC.backgroundDark,
+//       surface: ColorC.backgroundDark,
+//       onSurface: ColorC.backgroundDark,
+//     ),
+//   );
+// }

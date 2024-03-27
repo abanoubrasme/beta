@@ -41,13 +41,15 @@ dependencies:
   flutter_slidable:
   group_button:
   flutter_custom_clippers:
-  sqflite:
   firebase_storage:
+  firebase_auth:
+  firebase_messaging:
+  firebase_core:
+  google_sign_in:
   shared_preferences:
   get_storage:
   timer_count_down:
   flutter_native_splash:
-  animated_splash_screen:
   animated_icon:
   flutter_otp_text_field:
 #  firebase_database:
@@ -93,6 +95,17 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - image/notebook.png
+    - image/hasData.png
+    - image/on1.png
+    - image/on2.png
+    - image/on3.png
+    - image/on4.png
+    - image/on5.png
+    - image/quiz1.png
+    - image/quiz2.png
+    - image/quiz3.png
+    - image/Reset.png
+    - image/forget.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

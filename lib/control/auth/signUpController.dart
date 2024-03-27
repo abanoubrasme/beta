@@ -3,57 +3,59 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../core/constant/link_api.dart';
 import '../../model/RequestData.dart';
-import 'helperController.dart';
 
-class AuthController extends GetxController {
+class SignUpController extends GetxController {
 
   RequestData requestData = RequestData();
   MyServices myServices = Get.find();
+
   final TextEditingController userName = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController email    = TextEditingController();
-  Helper helper = Get.put(Helper());
 
+  String emailH = "";
+  String userNameH = "";
+  String passwordH = "";
+
+  bool valid = true;
+  bool obscure = false;
 
   signUp(String userName,String email,String password)async{
     update();
     var response = await requestData.postRequest(linkSignUp, {
-      "user_name":userName,
-      "email"    :email,
-      "password" :password,
+      "user_name":userName.toString(),
+      "email"    :email.toString(),
+      "password" :password.toString(),
     });
     if(response["status"]=="success"){
-      myServices.sharePref!.setString("userName", userName);
-      myServices.sharePref!.setString("email", email);
-      myServices.sharePref!.setString("password", password);
-      Get.toNamed("/home",arguments: [getIdUser()]);
+      Get.toNamed("/home");
     }else{
-      getEmail();
-      helper.update();
+      getUserName();
     }
   }
+
   getIdUser()async{
-    var response = await requestData.postRequest(linkGetIdUser, {
-      "email"    :email.text,
+    var response = await requestData.postRequest(linkGetUserName, {
+      "user_name"    :userName.text,
     });
     if(response["status"]=="success"){
       myServices.sharePref!.setString("id_user", response["data"][0]["id_user"].toString());
 
     }
   }
-  getEmail()async{
+  getUserName()async{
     var response = await requestData.postRequest(linkGetUserName, {
-      "email"    :email.text,
+      "user_name"    :userName.text,
     });
     if(response["status"]=="success"){
-      helper.email_H = response["data"][0]["email"];
-      helper.userName_H = response["data"][0]["user_name"];
+      emailH = response["data"][0]["email"];
+      userNameH = response["data"][0]["user_name"];
       update();
     }
   }
-  validator (String val ,int max,int min ){
 
-    if(helper.email_H==val||helper.userName_H==val){
+  validator (String val ,int max,int min ){
+    if(emailH==val || userNameH==val){
       return "the User Name or Email is already exist";
     }
     if(val.isEmpty){
@@ -66,12 +68,10 @@ class AuthController extends GetxController {
       return "not validator";
     }
   }
-  validLogin (bool s){
-    if(s){
-      return "the user name or password is ";
-    }
 
+  showPassword(){
+    obscure = !obscure;
+    update();
   }
-
 
 }

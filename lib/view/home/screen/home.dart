@@ -22,35 +22,36 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.theme.primaryColorDark,
-      appBar:AppBar(
-        title: CustomText(text:"BeTa", style:context.textTheme.headlineLarge,padding: const EdgeInsets.only(top: 30),),
-        backgroundColor: context.theme.primaryColorDark.withOpacity(0),
-        centerTitle: true,
-        elevation: 0,
-        toolbarHeight: 100,
-        leading:const Text(""),
-        actions: [
-          PopupMenuButtonAppBar(
-            text1: 'Setting'.tr,
-            text2: 'LogOut'.tr,
-            iconItem1: Icons.settings,
-            iconItem2: Icons.login,
-            onSelected:(e){
-              if(e==1){
-                Get.toNamed('/setting');
-              }
-              if(e==2){
-                var lang =  myServices.sharePref!.get("lang");
-                var theme =  myServices.sharePref!.get("theme");
-                myServices.sharePref!.clear();
-                myServices.sharePref!.setString("lang",lang.toString());
-                myServices.sharePref!.setString("theme",theme.toString());
-                Get.offAllNamed('/login');
-              }
-            },
-          )
-        ],
-      ),
+      // appBar:AppBar(
+      //   title: CustomText(text:"BeTa", style:context.textTheme.headlineLarge,padding: const EdgeInsets.only(top: 30),),
+      //   backgroundColor: context.theme.primaryColorDark.withOpacity(0),
+      //   centerTitle: true,
+      //   elevation: 0,
+      //   toolbarHeight: 100,
+      //   leading:const Text(""),
+      //   actions: [
+      //     PopupMenuButtonAppBar(
+      //       text1: 'Setting'.tr,
+      //       text2: 'LogOut'.tr,
+      //       iconItem1: Icons.settings,
+      //       iconItem2: Icons.login,
+      //       onSelected:(e){
+      //         if(e==1){
+      //           Get.toNamed('/setting');
+      //         }
+      //         if(e==2){
+      //           var lang =  myServices.sharePref!.get("lang");
+      //           var theme =  myServices.sharePref!.get("theme");
+      //           myServices.sharePref!.clear();
+      //           myServices.sharePref!.setString("lang",lang.toString());
+      //           myServices.sharePref!.setString("theme",theme.toString());
+      //           myServices.sharePref!.setString("onBoard","succeed");
+      //           Get.offAllNamed('/login');
+      //         }
+      //       },
+      //     )
+      //   ],
+      // ),
         body: GetBuilder<NameOfQuizController>(
         builder: (nameOfQuizController){
             return BodyHome(

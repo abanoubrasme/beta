@@ -1,4 +1,5 @@
 const String linkServerName     = "http://10.0.2.2:8012/beta";
+//const String linkServerName   = "https://files.000webhost.com/?betaquizapp/public_html";
 
 const String linkSignUp         = "$linkServerName/auth/signUp.php";
 const String linkLogin          = "$linkServerName/auth/login.php";

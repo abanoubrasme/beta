@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class Helper extends GetxController{
-  String email_H = "";
-  String userName_H = "";
-  String password_H = "";
+
+ // String email_H = "";
+ // String userName_H = "";
+ // String password_H = "";
   bool validator = true;
   bool obscure = false;
 

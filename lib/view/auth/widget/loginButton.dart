@@ -4,18 +4,20 @@ import '../../../core/decoration/font.dart';
 
 class LoginButton extends StatelessWidget {
 
-   const LoginButton({super.key,
+    LoginButton({super.key,
      required this.text,
      required this.onPressed,
+     this.padding
    });
 
    final void Function()? onPressed;
    final String text;
+   EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 80),
+      padding: padding ?? const EdgeInsets.symmetric(horizontal: 50),
       child: MaterialButton(
         height: 60,
         shape: RoundedRectangleBorder(
